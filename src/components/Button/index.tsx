@@ -1,16 +1,18 @@
 import React, { ReactNode } from "react";
-import {Container} from "./index"
+import {Container} from "./styles"
 
-interface IButton {
-  children: ReactNode
-  color: string
-  width: string
-  height: string
+interface IButton extends React.HTMLProps<HTMLButtonElement> {
+  children: ReactNode;
+  color: string;
+  width: string;
+  height: string;
+  background: string
 }
-export const Button = ({children, width, height, color}:IButton) => {
+const Button = ({children, width, height, color, background}:IButton) => {
   return(
-    <Container width={width} height={height} color={color}>
+    <Container width={width} height={height} color={color} background={background}>
       {children}
     </Container>
   )
 }
+export default Button
