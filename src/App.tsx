@@ -1,8 +1,10 @@
-import React from 'react';
-
+import React from "react";
+import "./style.css";
+import { LandingPage } from "./components/LandingPage/LandingPage";
 function App() {
   return (
-    <div className="App">
+    <div>
+      <LandingPage />
     </div>
   );
 }
