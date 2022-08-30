@@ -1,5 +1,5 @@
 import { LandingPageBackground } from "./styles";
-
+import { Link } from "react-router-dom";
 export const LandingPage = () => {
   return (
     <LandingPageBackground>
@@ -21,7 +21,7 @@ export const LandingPage = () => {
           <a href="#">Registrar-se grátis</a>
         </div>
       </div>
-      
+      <div></div>
     </LandingPageBackground>
   );
 };

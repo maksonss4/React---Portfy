@@ -5,7 +5,7 @@ export const LandingPageBackground = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   .allContent {
     width: 100vw;
@@ -62,6 +62,8 @@ export const LandingPageBackground = styled.div`
     margin-bottom: 70px;
     a {
       margin-top: 18px;
+      text-decoration: none;
+      color: black;
     }
   }
   .landingPageButton {
@@ -78,9 +80,18 @@ export const LandingPageBackground = styled.div`
     font-size: 14px;
     line-height: 17px;
   }
+  .phone {
+    background-color: brown;
+    width: 204px;
+    height: 365px;
+  }
+
   @media (min-width: 1000px) {
     .containerTopContentText {
       display: inline;
+    }
+    .allContent {
+      width: 600px;
     }
     .containerTopContent {
       align-items: flex-start;
@@ -99,6 +110,9 @@ export const LandingPageBackground = styled.div`
       align-items: center;
       margin-top: 0;
       margin-bottom: 13px;
+    }
+    .containerBottonContent {
+      margin-left: -75px;
     }
   }
 `;
