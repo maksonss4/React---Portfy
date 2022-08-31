@@ -1,22 +1,23 @@
 import Button from "../../components/Button";
 import { Input } from "../../components/Input";
-import { Container, DivForm, DivInformations, DivLogo, DivPai } from "./styles";
+import { Container, DivForm, DivInformations, DivLogo, ParentDiv } from "./styles";
 
 export const Register = () => {
   return (
     <Container>
-      <DivPai>
+      <ParentDiv>
         <DivLogo>
           <img src="logo.png" alt="logo portfy" />
           <h1>Portfy</h1>
         </DivLogo>
         <DivInformations>
-          <h2>Páigina de cadastro</h2>
+          <h2>Página de cadastro</h2>
           <p>
             Com apenas alguns simples passos conecte-se à rede social de
             empregabilidade que mais cresce do mercado.
           </p>
         </DivInformations>
+<<<<<<< HEAD
         <Button
           children="Voltar"
           color="Black"
@@ -27,6 +28,12 @@ export const Register = () => {
       </DivPai>
       <DivForm>
         <div className="divBigode" />
+=======
+        <Button children="Voltar" color="Black" width="9" height="2.68" background="white"/>
+      </ParentDiv>
+      <DivForm>
+        <div className="divBigode"/>
+>>>>>>> 372921e068ef61216d523963a4e737894abc1714
         <h2>Cadastro</h2>
         <form>
           <label htmlFor="username">Nome de Usuário</label>
@@ -44,12 +51,16 @@ export const Register = () => {
             id="name"
           />
           <label htmlFor="cpf">CPF</label>
+<<<<<<< HEAD
           <Input
             type="number"
             placeholder="Coloque seu CPF"
             name="cpf"
             id="cpf"
           />
+=======
+          <Input type="text" placeholder="Coloque seu CPF" name="cpf" id="cpf"/>
+>>>>>>> 372921e068ef61216d523963a4e737894abc1714
           <label htmlFor="address">Endereço de residência</label>
           <Input
             type="text"

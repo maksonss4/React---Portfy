@@ -135,3 +135,32 @@ export const LandingPageBackground = styled.div`
     }
   }
 `;
+
+export const CircleBG = styled.div`
+  top: -5rem;
+  left: -5rem;
+
+  width: 100vw;
+  height: 100vw;
+  border-width: 0 2rem 0 2rem;
+  position: fixed;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--ligth-green);
+  animation: spin infinite 20s linear;
+
+  @media (min-width: 1024px) {
+    top: -15rem;
+    left: -10rem;
+
+    width: 50rem;
+    height: 50rem;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(360deg);
+    }
+  }
+`;
