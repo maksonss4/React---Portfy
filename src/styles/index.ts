@@ -8,6 +8,7 @@ export const Global = createGlobalStyle`
     --green-black:#005C57;
     --ligth-green:#0CBABA;
     --gradient: linear-gradient(115.77deg, #47DAC5 10.59%, #19CAE5 87.7%);
+    --boxshadow: rgba(0, 0, 0, 0.25);
   }
 
   html, body, div, span, applet, object, iframe,
