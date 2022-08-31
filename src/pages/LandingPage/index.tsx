@@ -1,3 +1,4 @@
+import PhoneContainer from "../../components/PhoneContainer";
 import { LandingPageBackground } from "./styles";
 export const LandingPage = () => {
   return (
@@ -20,7 +21,9 @@ export const LandingPage = () => {
           <a href="#">Registrar-se grátis</a>
         </div>
       </div>
-      
+      <div className="landingPagePhones">
+        <PhoneContainer />
+      </div>
     </LandingPageBackground>
   );
 };

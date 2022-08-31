@@ -2,7 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
   :root {
-    --white:      #ffffff;
+    --white:      #FFFFFF;
+    --whitesmoke: #f1f3f5;
     --black:      #000000;
     --green-black:#005C57;
     --gradient: linear-gradient(115.77deg, #47DAC5 10.59%, #19CAE5 87.7%);
