@@ -1,15 +1,15 @@
 import styled from "styled-components";
 export interface IButtonSTLD {
-  backgroundColor: string;
-  fontColor: string;
+  backgroundColor?: string;
+  fontColor?: string;
 
-  btWidth: string;
-  btHeight: string;
+  btWidth?: string;
+  btHeight?: string;
 
-  btMargin: string;
-  btPadding: string;
+  btMargin?: string;
+  btPadding?: string;
 
-  borderRadius: string;
+  borderRadius?: string;
 }
 export const ButtonSTLD = styled.button<IButtonSTLD>`
   background-color: ${({ backgroundColor }) => backgroundColor};

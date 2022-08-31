@@ -3,7 +3,8 @@ import { ButtonSTLD, IButtonSTLD } from "./Button.style";
 
 export interface IButton extends IButtonSTLD {
   children: ReactNode;
-  onClick: MouseEventHandler;
+  onClick?: MouseEventHandler;
+  type?: string;
 }
 
 const Button = ({
