@@ -1,10 +1,9 @@
-import React from 'react';
-import { Resgister } from './pages/Register';
+import { Global } from "./styles";
 
 function App() {
   return (
     <div className="App">
-      <Resgister/>
+      <Global />
     </div>
   );
 }
