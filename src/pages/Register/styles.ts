@@ -65,7 +65,7 @@ export const DivInformations = styled.div`
 `;
 
 export const DivForm = styled.div`
-  width: 27rem;
+  width: 25rem;
   max-height: 95vh;
   background-color: var(--whitesmoke);
   border-radius: 20px;
@@ -77,9 +77,24 @@ export const DivForm = styled.div`
   gap: 20px;
   overflow-y: scroll;
   box-sizing: border-box;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--medium-grey);
+    border-radius: 20px;
+  }
+
+  h2 {
+    margin-top: 2rem;
+  }
 
   .divBigode {
-    background: white;
+    position: fixed;
+    background: var(--white);
     height: 1.25rem;
     width: 12.5rem;
     border-radius: 0px 0px 6px 6px;
@@ -105,9 +120,8 @@ export const DivForm = styled.div`
   }
 
   form button {
-    margin-top: 60px;
+    margin: 1rem 0 1.5rem 0;
     font-size: 20px;
-    margin-bottom: 2rem;
   }
 
   @media (max-width: 1000px) {
