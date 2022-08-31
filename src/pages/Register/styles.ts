@@ -2,9 +2,12 @@ import styled from "styled-components"
 
 export const Container = styled.div`
 background: var(--gradient);
-width: 100vw;
-height: 100vh;
+width: 100%;
+height: 100%;
 display: flex;
+@media (max-width: 1000px) {
+  justify-content: center;
+}
 ` 
 export const DivPai = styled.div`
 display: flex;
@@ -16,6 +19,9 @@ justify-content: space-between;
   button {
     margin-bottom: 40px;
   }
+  @media (max-width: 1000px) {
+  display: none;
+}
 `
 export const DivLogo = styled.div`
 display: flex;
@@ -52,7 +58,7 @@ gap: 40px;
   }
 `
 export const DivForm = styled.div`
-width: 400px;
+width: 25rem;
 height: 95%;
 background: #F1F3F5;
 border-radius: 20px ;
@@ -64,12 +70,11 @@ align-items: center;
 gap: 20px;
   .divBigode {
     background: white;
-    height: 20px;
-    width: 200px;
+    height: 1.25rem;
+    width: 12.5rem;
     border-radius: 0px 0px 6px 6px ;
   }
   label {
-    display: block;
     font-size: 14px;
   }
   form {
@@ -89,5 +94,20 @@ gap: 20px;
     margin-top: 60px;
     font-size: 20px;
   }
+  @media (max-width: 1000px) {
+  width: 20rem;
+  height: 100%;
+  margin: 0px;
+  form input {
+    width: 16.87rem;
+  }
+  form select {
+    width: 17.5rem
+  }
+  form button {
+    margin-top: 20px;
+    width: 17.5rem;
+  }
+}
 
 `
