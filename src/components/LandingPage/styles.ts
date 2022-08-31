@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const LandingPageBackground = styled.div`
-  background: linear-gradient(115.77deg, #47dac5 10.59%, #19cae5 87.7%);
-   width: 100vw;
+  background: var(--gradient);
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   .allContent {
     width: 100vw;
     height: 100vh;
@@ -14,6 +15,7 @@ export const LandingPageBackground = styled.div`
     flex-direction: column;
     justify-content: space-between;
   }
+
   .containerTopContent {
     width: 100%;
     margin-top: 82px;
@@ -21,6 +23,7 @@ export const LandingPageBackground = styled.div`
     flex-direction: column;
     align-items: center;
   }
+
   .portfyName {
     font-family: "Goldman";
     font-style: normal;
@@ -30,6 +33,7 @@ export const LandingPageBackground = styled.div`
     text-align: center;
     color: #005c57;
   }
+
   .logoPortfy {
     width: 50%;
     height: 100%;
@@ -40,13 +44,13 @@ export const LandingPageBackground = styled.div`
   .containerTopContentText {
     display: none;
     width: 395px;
-    font-family: "Poppins";
     font-style: normal;
     font-weight: 700;
     font-size: 28px;
     line-height: 42px;
     color: white;
   }
+
   .portfyContents {
     width: 100%;
     margin-top: 82px;
@@ -54,6 +58,7 @@ export const LandingPageBackground = styled.div`
     flex-direction: column;
     align-items: center;
   }
+
   .containerBottonContent {
     width: 100%;
     display: flex;
@@ -66,6 +71,7 @@ export const LandingPageBackground = styled.div`
       color: black;
     }
   }
+
   .landingPageButton {
     height: 43px;
     width: 58%;
@@ -74,16 +80,10 @@ export const LandingPageBackground = styled.div`
     border: none;
     margin-top: 6px;
 
-    font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-  }
-  .phone {
-    background-color: brown;
-    width: 204px;
-    height: 365px;
   }
 
   @media (min-width: 1000px) {
