@@ -1,36 +1,34 @@
 import Button from "../../components/Button/index"
 import { Input } from "../../components/Input";
-import { Container, DivForm, DivInformations, DivLogo, DivPai } from "./styles";
+import { Container, DivForm, DivInformations, DivLogo, ParentDiv } from "./styles";
 
 export const Resgister = () => {
   return (
     <Container>
-      <DivPai>
+      <ParentDiv>
         <DivLogo>
           <img src="logo.png" alt="logo portfy" />
           <h1>Portfy</h1>
         </DivLogo>
         <DivInformations>
-          <h2>Páigina de cadastro</h2>
+          <h2>Página de cadastro</h2>
           <p>
             Com apenas alguns simples passos conecte-se à rede social de
             empregabilidade que mais cresce do mercado.
           </p>
         </DivInformations>
         <Button children="Voltar" color="Black" width="9" height="2.68" background="white"/>
-      </DivPai>
+      </ParentDiv>
       <DivForm>
         <div className="divBigode"/>
-        <h2>
-          Cadastro
-        </h2>
+        <h2>Cadastro</h2>
         <form>
           <label htmlFor="username">Nome de Usuário</label>
           <Input type="text" placeholder="Coloque seu nome de usuário" name="username" id="username"/>
           <label htmlFor="name">Nome completo</label>
           <Input type="text" placeholder="Coloque seu nome completo" name="name" id="name"/>
           <label htmlFor="cpf">CPF</label>
-          <Input type="number" placeholder="Coloque seu CPF" name="cpf" id="cpf"/>
+          <Input type="text" placeholder="Coloque seu CPF" name="cpf" id="cpf"/>
           <label htmlFor="address">Endereço de residência</label>
           <Input type="text" placeholder="Coloque seu Endereço" name="address" id="address"/>
           <label htmlFor="email">Email</label>
