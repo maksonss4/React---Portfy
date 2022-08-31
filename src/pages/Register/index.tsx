@@ -1,6 +1,12 @@
 import Button from "../../components/Button";
 import { Input } from "../../components/Input";
-import { Container, DivForm, DivInformations, DivLogo, ParentDiv } from "./styles";
+import {
+  Container,
+  DivForm,
+  DivInformations,
+  DivLogo,
+  ParentDiv,
+} from "./styles";
 
 export const Register = () => {
   return (
@@ -17,7 +23,6 @@ export const Register = () => {
             empregabilidade que mais cresce do mercado.
           </p>
         </DivInformations>
-<<<<<<< HEAD
         <Button
           children="Voltar"
           color="Black"
@@ -25,15 +30,9 @@ export const Register = () => {
           height="2.68"
           background="white"
         />
-      </DivPai>
-      <DivForm>
-        <div className="divBigode" />
-=======
-        <Button children="Voltar" color="Black" width="9" height="2.68" background="white"/>
       </ParentDiv>
       <DivForm>
-        <div className="divBigode"/>
->>>>>>> 372921e068ef61216d523963a4e737894abc1714
+        <div className="divBigode" />
         <h2>Cadastro</h2>
         <form>
           <label htmlFor="username">Nome de Usuário</label>
@@ -51,16 +50,12 @@ export const Register = () => {
             id="name"
           />
           <label htmlFor="cpf">CPF</label>
-<<<<<<< HEAD
           <Input
-            type="number"
+            type="text"
             placeholder="Coloque seu CPF"
             name="cpf"
             id="cpf"
           />
-=======
-          <Input type="text" placeholder="Coloque seu CPF" name="cpf" id="cpf"/>
->>>>>>> 372921e068ef61216d523963a4e737894abc1714
           <label htmlFor="address">Endereço de residência</label>
           <Input
             type="text"

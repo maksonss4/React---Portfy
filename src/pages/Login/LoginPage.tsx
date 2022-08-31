@@ -1,7 +1,6 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
 import Button from "./Button/Button";
 import {
   FormSTLD,
@@ -11,7 +10,7 @@ import {
   SubDivision,
 } from "./styles";
 
-export interface ILoginProps {
+export interface ILoginRequest {
   email: string;
   password: string;
 }
@@ -31,7 +30,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginProps>({ resolver: yupResolver(formSchema) });
+  } = useForm<ILoginRequest>({ resolver: yupResolver(formSchema) });
 
   const loginFunction = () => {};
 
@@ -90,8 +89,6 @@ const Login = () => {
           </fieldset>
           <p>
             Ainda não é membro?
-            {/* <Link to="#" replace>
-              Cadastre-se aqui </Link>*/}
             <a href="#">Cadastre-se aqui</a>
           </p>
           <p>Ou faça seu login via</p>
