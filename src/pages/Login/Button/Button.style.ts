@@ -1,5 +1,6 @@
 import styled from "styled-components";
-export interface IButtonSTLD {
+import React from "react";
+export interface IButtonSTLD extends React.HTMLProps<HTMLButtonElement> {
   backgroundColor?: string;
   fontColor?: string;
 
@@ -10,14 +11,20 @@ export interface IButtonSTLD {
   btPadding?: string;
 
   borderRadius?: string;
+  borderColor?: string;
 }
 export const ButtonSTLD = styled.button<IButtonSTLD>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ fontColor }) => fontColor};
-  width: ${({ btWidth }) => btWidth}px;
-  height: ${({ btHeight }) => btHeight}px;
+  width: ${({ btWidth }) => btWidth};
+  height: ${({ btHeight }) => btHeight};
 
   margin: ${({ btMargin }) => btMargin};
   padding: ${({ btPadding }) => btPadding};
-  border-radius: ${({ borderRadius }) => borderRadius}px;
+  border-radius: ${({ borderRadius }) => borderRadius};
+  border: 2px solid ${({ borderColor }) => borderColor};
 `;

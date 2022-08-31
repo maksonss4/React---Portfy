@@ -1,23 +1,17 @@
-import { MouseEventHandler, ReactNode } from "react";
 import { ButtonSTLD, IButtonSTLD } from "./Button.style";
-
-export interface IButton extends IButtonSTLD {
-  children: ReactNode;
-  onClick?: MouseEventHandler;
-  type?: string;
-}
 
 const Button = ({
   backgroundColor = "transparent",
-  fontColor = "#fff",
+  fontColor = "#000",
   btWidth = "auto",
   btHeight = "auto",
   btMargin = "0",
   btPadding = "0",
   borderRadius = "0",
+  borderColor = "#000",
   onClick,
   children,
-}: IButton) => {
+}: IButtonSTLD) => {
   return (
     <ButtonSTLD
       onClick={onClick}
@@ -27,6 +21,7 @@ const Button = ({
       btHeight={btHeight}
       btMargin={btMargin}
       btPadding={btPadding}
+      borderColor={borderColor}
       borderRadius={borderRadius}
     >
       {children}
