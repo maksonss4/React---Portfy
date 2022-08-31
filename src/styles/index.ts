@@ -6,6 +6,7 @@ export const Global = createGlobalStyle`
     --whitesmoke: #f1f3f5;
     --black:      #000000;
     --green-black:#005C57;
+    --ligth-green:#0CBABA;
     --gradient: linear-gradient(115.77deg, #47DAC5 10.59%, #19CAE5 87.7%);
   }
 
