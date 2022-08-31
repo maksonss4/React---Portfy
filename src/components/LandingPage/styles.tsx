@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const LandingPageBackground = styled.div`
   background: linear-gradient(115.77deg, #47dac5 10.59%, #19cae5 87.7%);
-  width: 100vw;
+   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: row;
