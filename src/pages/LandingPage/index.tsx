@@ -1,8 +1,9 @@
 import PhoneContainer from "../../components/PhoneContainer";
-import { LandingPageBackground } from "./styles";
+import { CircleBG, LandingPageBackground } from "./styles";
 export const LandingPage = () => {
   return (
     <LandingPageBackground>
+      <CircleBG />
       <div className="allContent">
         <div className="containerTopContent">
           <div className="portfyContents">
