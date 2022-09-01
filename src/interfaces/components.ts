@@ -38,3 +38,9 @@ export interface IInputProps extends React.HTMLProps<HTMLImageElement> {
   type: string;
   placeholder: string;
 }
+
+export interface IPostContent {
+  src: string;
+  h2: string;
+  p: string;
+}
