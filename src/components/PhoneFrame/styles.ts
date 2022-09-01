@@ -9,7 +9,7 @@ export const Phone = styled.div`
   align-items: center;
   background-image: url("https://i.ibb.co/wsYLjFV/Curriculo.png");
   background-position: center;
-  background-size: 95% 100%;
+  background-size: 100% 100%;
   height: 20rem;
   width: 12rem;
   border: 7px solid var(--white);

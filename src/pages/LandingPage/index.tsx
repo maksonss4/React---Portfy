@@ -1,6 +1,4 @@
 import PhoneContainer from "../../components/PhoneContainer";
-import Login from "../Login";
-import Register from "../Register";
 import { CircleBG, LandingPageBackground } from "./styles";
 
 const LandingPage = () => {
@@ -31,10 +29,7 @@ const LandingPage = () => {
         </div>
       </div>
       <div className="landingPagePhones">
-        <PhoneContainer>
-          {/* <Login /> */}
-          {/* <Register /> */}
-        </PhoneContainer>
+        <PhoneContainer />
       </div>
     </LandingPageBackground>
   );

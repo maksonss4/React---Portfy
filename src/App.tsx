@@ -1,4 +1,3 @@
-import { Header } from "./components/Header";
 import { Global } from "./styles";
 import AppRoutes from "./routes/routes";
 

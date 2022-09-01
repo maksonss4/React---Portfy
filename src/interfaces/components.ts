@@ -30,7 +30,7 @@ export interface IInputProps2 extends InputHTMLAttributes<HTMLInputElement> {
 export interface IPhoneFrameProps extends HTMLAttributes<HTMLDivElement> {
   slide: "top" | "bottom";
   delay: number;
-  frame?: 1 | 2 | 3 | 4;
+  frame?: string[];
   children?: ReactNode;
 }
 
