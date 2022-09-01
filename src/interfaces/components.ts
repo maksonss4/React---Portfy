@@ -44,3 +44,13 @@ export interface IPostContent {
   h2: string;
   p: string;
 }
+
+export interface INews {
+  id: number
+  tipo: string
+  titulo: string
+  introducao: string
+  link: string
+  imagens: string
+  editorias: string
+}
