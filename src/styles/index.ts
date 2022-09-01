@@ -2,12 +2,15 @@ import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
   :root {
-    --white:      #FFFFFF;
-    --whitesmoke: #f1f3f5;
-    --black:      #000000;
-    --green-black:#005C57;
-    --ligth-green:#0CBABA;
+    --white:        #FFFFFF;
+    --whitesmoke:   #f1f3f5;
+    --black:        #000000;
+    --green-black:  #005C57;
+    --ligth-green:  #0CBABA;
+    --medium-grey:  #91959A7D;
+
     --gradient: linear-gradient(115.77deg, #47DAC5 10.59%, #19CAE5 87.7%);
+    --boxshadow: rgba(0, 0, 0, 0.25);
   }
 
   html, body, div, span, applet, object, iframe,
