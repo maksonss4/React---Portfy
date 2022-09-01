@@ -33,7 +33,7 @@ export const LandingPageBackground = styled.div`
     font-size: 2.5rem;
     line-height: 3rem;
     text-align: center;
-    color: #005c57;
+    color: var(--green-black);
   }
 
   .logoPortfy {

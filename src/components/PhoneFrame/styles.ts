@@ -2,27 +2,28 @@ import styled from "styled-components";
 import { IPhoneFrameProps } from "../../interfaces/components";
 
 export const Phone = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--whitesmoke);
+  background-image: url("https://i.ibb.co/wsYLjFV/Curriculo.png");
+  background-position: center;
+  background-size: 95% 100%;
   height: 20rem;
   width: 12rem;
   border: 7px solid var(--white);
   border-radius: 10px;
   animation: ${({ slide, delay }: IPhoneFrameProps) =>
     `slide-from-${slide} 1 ${delay}ms linear`};
-  
-  .main {
-    overflow-y: scroll;
-  }
 
   .phone__detail {
+    position: fixed;
+    top: 0;
     background-color: red;
     margin: -1px;
-    width: 50%;
-    height: 3%;
+    width: 50px;
+    height: 30px;
     border-radius: 0 0 4px 4px;
   }
 

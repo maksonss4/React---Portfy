@@ -3,7 +3,7 @@ import Login from "../Login";
 import Register from "../Register";
 import { CircleBG, LandingPageBackground } from "./styles";
 
-export const LandingPage = () => {
+const LandingPage = () => {
   
   return (
     <LandingPageBackground>
@@ -39,3 +39,5 @@ export const LandingPage = () => {
     </LandingPageBackground>
   );
 };
+
+export default LandingPage;

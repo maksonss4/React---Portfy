@@ -9,6 +9,7 @@ export const PhoneBox = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  background-color: black;
 
   div {
     display: flex;

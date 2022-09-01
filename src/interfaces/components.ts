@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FormHTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, FormHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ISelectOptions } from "../components/Input/options";
 
@@ -27,11 +27,11 @@ export interface IInputProps2 extends InputHTMLAttributes<HTMLInputElement> {
   options?: ISelectOptions[];
 }
 
-export interface IPhoneFrameProps {
+export interface IPhoneFrameProps extends HTMLAttributes<HTMLDivElement> {
   slide: "top" | "bottom";
   delay: number;
+  frame?: 1 | 2 | 3 | 4;
   children?: ReactNode;
-  main?: boolean;
 }
 
 export interface IInputProps extends React.HTMLProps<HTMLImageElement> {
