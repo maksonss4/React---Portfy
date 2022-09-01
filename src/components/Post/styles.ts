@@ -3,11 +3,14 @@ import styled from "styled-components";
 const PostContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 
   background-color: white;
   border-radius: 8px;
-  width: 343px;
+  width: 95%;
+  max-width: 343px;
   height: 137px;
+  min-height: 137px;
   -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -28,7 +31,6 @@ const PostContainer = styled.div`
     height: 80%;
   }
   .contentPost {
-    width: 250px;
     font-style: normal;
     font-weight: 400;
     font-size: 0.938rem;
@@ -36,6 +38,9 @@ const PostContainer = styled.div`
     max-width: 26ch;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .userName {
+    width: 80%;
   }
 `;
 
