@@ -2,12 +2,19 @@ import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
   :root {
-    --white:        #FFFFFF;
-    --whitesmoke:   #f1f3f5;
-    --black:        #000000;
-    --green-black:  #005C57;
-    --ligth-green:  #0CBABA;
-    --medium-grey:  #91959A7D;
+    --white:          #FFFFFF;
+    --whitesmoke:     #f1f3f5;
+    --black:          #1A1A1A;
+    --green-black:    #005C57;
+    --ligth-green:    #0CBABA;
+    --ligth-blue:     #19CAE5;
+    --medium-blue:    #09AAC5;
+    --disabled-blue:  #A9CAE5;
+    --success:        #6FD551;
+    --color-negative: #EA5345;
+    --ligth-grey:     #D9DADE;
+    --medium-grey:    #91959A;
+    --dark-grey:      #5A5A5A;
 
     --gradient: linear-gradient(115.77deg, #47DAC5 10.59%, #19CAE5 87.7%);
     --boxshadow: rgba(0, 0, 0, 0.25);

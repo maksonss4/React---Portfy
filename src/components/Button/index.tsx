@@ -1,18 +1,27 @@
-import React, { ReactNode } from "react";
-import {Container} from "./styles"
+import { IButtonProps } from "../../interfaces/components";
+import { PrimaryButton, SecondaryButton } from "./styles";
 
-interface IButton extends React.HTMLProps<HTMLButtonElement> {
-  children: ReactNode;
-  color: string;
-  width: string;
-  height: string;
-  background: string
-}
-const Button = ({children, width, height, color, background}:IButton) => {
-  return(
-    <Container width={width} height={height} color={color} background={background}>
+const Button = ({ buttonStyle, children, bg, color, hover, disColor, ...rest }: IButtonProps) =>
+  buttonStyle === "primary" ? (
+    <PrimaryButton
+      bg={bg}
+      color={color}
+      hover={hover}
+      disColor={disColor}
+      {...rest}
+    >
       {children}
-    </Container>
-  )
-}
-export default Button
+    </PrimaryButton>
+  ) : (
+    <SecondaryButton
+      bg={bg}
+      color={color}
+      hover={hover}
+      disColor={disColor}
+      {...rest}
+    >
+      {children}
+    </SecondaryButton>
+  );
+
+export default Button;

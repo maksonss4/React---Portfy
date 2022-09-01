@@ -1,10 +1,13 @@
+import { IGeneralProps } from "../../interfaces/components";
 import { Phone } from "../PhoneFrame/styles";
 import { PhoneBox } from "./styles";
 
-function PhoneContainer() {
+const PhoneContainer = ({children}: IGeneralProps) => {
   return (
     <PhoneBox>
-      <Phone slide="top" delay={1000} />
+      <Phone slide="top" delay={1000} main >
+        {children}
+      </Phone>
       <div>
         <Phone slide="top" delay={1200} />
         <Phone slide="bottom" delay={1200} />

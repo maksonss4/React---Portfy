@@ -84,7 +84,7 @@ export const DivForm = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--medium-grey);
+    background-color: var(--ligth-grey);
     border-radius: 20px;
   }
 

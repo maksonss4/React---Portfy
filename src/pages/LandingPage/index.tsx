@@ -1,6 +1,10 @@
 import PhoneContainer from "../../components/PhoneContainer";
+import Login from "../Login";
+import Register from "../Register";
 import { CircleBG, LandingPageBackground } from "./styles";
+
 export const LandingPage = () => {
+  
   return (
     <LandingPageBackground>
       <CircleBG />
@@ -10,10 +14,14 @@ export const LandingPage = () => {
             <img className="logoPortfy" src="logoPortfy.png" alt="" />
             <h1 className="portfyName">Portfy</h1>
           </div>
-          <p className="containerTopContentText">
-            Compartilhe, crie e busque portfólios profissionais de maneira
-            simples e intuitiva
-          </p>
+          {
+            false ? (<h1>teste</h1>) : (
+              <p className="containerTopContentText">
+                Compartilhe, crie e busque portfólios profissionais de maneira
+                simples e intuitiva
+              </p>
+            )
+          }
         </div>
 
         <div className="containerBottonContent">
@@ -23,7 +31,10 @@ export const LandingPage = () => {
         </div>
       </div>
       <div className="landingPagePhones">
-        <PhoneContainer />
+        <PhoneContainer>
+          {/* <Login /> */}
+          {/* <Register /> */}
+        </PhoneContainer>
       </div>
     </LandingPageBackground>
   );
