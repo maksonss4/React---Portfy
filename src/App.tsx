@@ -1,3 +1,4 @@
+import { Header } from "./components/Header";
 import { Global } from "./styles";
 import AppRoutes from "./routes/routes";
 
@@ -8,6 +9,6 @@ const App = () => {
       <AppRoutes />
     </div>
   );
-}
+};
 
 export default App;
