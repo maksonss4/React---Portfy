@@ -1,11 +1,11 @@
+import LandingPage from "./pages/LandingPage";
 import { Global } from "./styles";
-import AppRoutes from "./routes/routes";
 
 const App = () => {
   return (
     <div className="App">
       <Global />
-      <AppRoutes />
+      <LandingPage />
     </div>
   );
 };
