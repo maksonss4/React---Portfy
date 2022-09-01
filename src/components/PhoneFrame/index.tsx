@@ -1,11 +1,11 @@
 import { IPhoneFrameProps } from "../../interfaces/components";
 import { Phone } from "./styles";
 
-function PhoneFrame({ slide, delay }: IPhoneFrameProps) {
+const PhoneFrame = ({ slide, delay, children, main }: IPhoneFrameProps) => {
   return (
-    <Phone slide={slide} delay={delay}>
+    <Phone slide={slide} delay={delay} className={main ? "main" : undefined}>
       <span className="phone__detail"></span>
-      <div className="phone__content"></div>
+      {children}
     </Phone>
   );
 }

@@ -13,6 +13,10 @@ export const Phone = styled.div`
   border-radius: 10px;
   animation: ${({ slide, delay }: IPhoneFrameProps) =>
     `slide-from-${slide} 1 ${delay}ms linear`};
+  
+  .main {
+    overflow-y: scroll;
+  }
 
   .phone__detail {
     background-color: red;

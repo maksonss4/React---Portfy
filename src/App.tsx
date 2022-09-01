@@ -1,9 +1,11 @@
 import { Global } from "./styles";
+import { LandingPage } from "./pages/LandingPage";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Global />
+      <LandingPage />
     </div>
   );
 }
