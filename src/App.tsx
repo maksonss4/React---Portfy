@@ -1,11 +1,14 @@
-import LandingPage from "./pages/LandingPage";
+import SwitchProvider from "./contexts/SwitchContext";
+import AppRoutes from "./routes/routes";
 import { Global } from "./styles";
 
 const App = () => {
   return (
     <div className="App">
+      <SwitchProvider>
+        <AppRoutes />
+      </SwitchProvider>
       <Global />
-      <LandingPage />
     </div>
   );
 };
