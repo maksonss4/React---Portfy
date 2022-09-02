@@ -1,4 +1,5 @@
 import SwitchProvider from "./contexts/SwitchContext";
+import Feed from "./pages/Feed";
 import AppRoutes from "./routes/routes";
 import { Global } from "./styles";
 
@@ -7,7 +8,8 @@ const App = () => {
     <div className="App">
       <Global />
       <SwitchProvider>
-        <AppRoutes />
+        {/* <AppRoutes /> */}
+        <Feed />
       </SwitchProvider>
     </div>
   );

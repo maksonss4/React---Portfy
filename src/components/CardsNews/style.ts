@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 18.75rem;
   background: var(--white);
   border-radius: 8px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--boxshadow);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -37,22 +37,33 @@ export const Container = styled.div`
 `;
 export const Card = styled.li`
   width: 100%;
-  border-bottom: 1px solid black;
-  height: 30%;
+  border-bottom: 1px solid var(--ligth-grey);
+  height: 10rem;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  h3 {
+  padding: 1rem 2rem;
+
+  a {
     font-size: 16px;
     color: var(--dark-grey);
+    font-weight: 700;
+    transition: 200ms ease-in-out;
+
+    &:hover {
+      color: var(--dark-blue);
+    }
   }
+
   span {
     font-size: 14px;
   }
+  
   p {
     font-size: 10px;
     color: var(--medium-grey);
   }
+  
   a {
     font-size: 14px;
     text-decoration: none;

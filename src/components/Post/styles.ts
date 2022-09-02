@@ -27,7 +27,7 @@ const PostContainer = styled.li`
   .PostText {
     width: 100%;
   }
-  
+
   .contentPost {
     max-width: 90%;
     font-style: normal;
@@ -41,4 +41,4 @@ const PostContainer = styled.li`
   }
 `;
 
-export default LiContainer;
+export default PostContainer

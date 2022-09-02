@@ -7,6 +7,7 @@ export const Global = createGlobalStyle`
     --whitesmoke-2:   #E1E3E5;
     --black:          #1A1A1A;
     --green-black:    #005C57;
+    --dark-blue:      #114B5F;
     --ligth-green:    #47DAC5;
     --medium-green:   #0CBABA;
     --ligth-blue:     #19CAE5;
@@ -19,7 +20,7 @@ export const Global = createGlobalStyle`
     --dark-grey:      #5A5A5A;
 
     --gradient: linear-gradient(115.77deg, #47DAC5 10.59%, #19CAE5 87.7%);
-    --boxshadow: rgba(0, 0, 0, 0.25);
+    --boxshadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.1);
   }
 
   html, body, div, span, applet, object, iframe,

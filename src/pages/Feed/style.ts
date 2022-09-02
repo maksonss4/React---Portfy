@@ -6,6 +6,7 @@ export const ContainerFeed = styled.div`
   display: flex;
   gap: 20px;
   flex-direction: column;
+  align-items: center;
 
   .container-post {
     display: flex;

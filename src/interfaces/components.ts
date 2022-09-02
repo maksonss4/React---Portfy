@@ -1,4 +1,10 @@
-import { ButtonHTMLAttributes, FormHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  FormHTMLAttributes,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+} from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ISelectOptions } from "../components/Input/options";
 
@@ -47,11 +53,31 @@ export interface IPostContent {
 }
 
 export interface INews {
-  id: number
-  tipo: string
-  titulo: string
-  introducao: string
-  link: string
-  imagens: string
-  editorias: string
+  id: number;
+  tipo: string;
+  titulo: string;
+  introducao: string;
+  link: string;
+  imagens: string;
+  editorias: string;
+}
+
+export interface IpostResponse {
+  id: string;
+  userAvatar: string;
+  userID: string;
+  userName: string;
+  content: string;
+}
+
+export interface IPostList {
+  postList?: IpostResponse[];
+}
+
+export interface IPostProps {
+  id: string;
+  userID: string;
+  userAvatar: string;
+  content: string;
+  userName: string;
 }

@@ -1,14 +1,24 @@
 import { IPostContent } from "../../interfaces/components";
-import LiContainer from "./styles";
+import PostContainer from "./styles";
+import { HiUserCircle } from "react-icons/hi";
 
 export const Post = ({ src, h2, p }: IPostContent) => {
   return (
-    <LiContainer>
-      <img src={src} alt="" />
-      <div className="PostText">
-        <h2>{h2}</h2>
-        <p>{p}</p>
+    <PostContainer>
+      <div className="userDetails">
+        {src ? (
+          <img className="userLogo" src={src} alt="" />
+        ) : (
+          <HiUserCircle size={80} />
+        )}
       </div>
-    </LiContainer>
+      <div className="PostContent">
+        <h2 className="UserName">{h2}</h2>
+
+        <div className="PostText">
+          <p className="contentPost">{p}</p>
+        </div>
+      </div>
+    </PostContainer>
   );
 };
