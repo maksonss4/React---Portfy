@@ -1,7 +1,12 @@
-import React, { ButtonHTMLAttributes, Component, FormHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  FormHTMLAttributes,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+} from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ISelectOptions } from "../components/Input/options";
-import { IconType } from "react-icons/lib";
 
 export interface IGeneralProps {
   children: ReactNode;
@@ -77,8 +82,8 @@ export interface IPostProps {
   userName: string;
 }
 export interface ICardUserProps {
-  iconMore?: JSX.Element
-  iconPaper?: JSX.Element
-  iconPencil?: JSX.Element
-  buttonIcon?: string
-} 
+  iconMore?: JSX.Element;
+  iconPaper?: JSX.Element;
+  iconPencil?: JSX.Element;
+  buttonIcon?: "none";
+}
