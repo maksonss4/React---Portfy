@@ -24,8 +24,7 @@ const LandingPage = () => {
 
         <div className="containerBottonContent">
           <button className="landingPageButton">Entrar com minha conta</button>
-          <button className="landingPageButton">Entrar com Google</button>
-          <a href="#">Registrar-se grátis</a>
+          <button className="landingPageButton">Registrar-se grátis</button>
         </div>
       </div>
       <div className="landingPagePhones">
