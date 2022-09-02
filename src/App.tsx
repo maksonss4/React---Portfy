@@ -1,3 +1,5 @@
+
+import React from 'react';
 import LandingPage from "./pages/LandingPage";
 import { Global } from "./styles";
 
@@ -8,6 +10,6 @@ const App = () => {
       <LandingPage />
     </div>
   );
-};
+}
 
 export default App;
