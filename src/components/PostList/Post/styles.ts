@@ -1,42 +1,44 @@
 import styled from "styled-components";
 
-const PostContainer = styled.div`
+const PostContainer = styled.li`
   display: flex;
-  align-items: center;
-
+  flex-direction: row;
   background-color: white;
   border-radius: 8px;
-  width: 343px;
-  height: 137px;
+  width: 100%;
+  min-height: 137px;
   -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
   .PostContent {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
+    margin: 5px;
   }
-  .userLogo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-left: 10px;
+  .userDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
   .PostText {
-    width: 80%;
-    height: 80%;
+    width: 100%;
   }
+  
   .contentPost {
-    width: 250px;
+    max-width: 90%;
     font-style: normal;
     font-weight: 400;
     font-size: 0.938rem;
-    line-height: 1.375rem;
-    max-width: 26ch;
-    overflow: hidden;
+
     text-overflow: ellipsis;
+    margin: 0 10px 0 0;
+    white-space: normal;
+    color: var(--dark-grey);
   }
 `;
 
-export default PostContainer;
+export default LiContainer;

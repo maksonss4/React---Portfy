@@ -5,10 +5,10 @@ import { Global } from "./styles";
 const App = () => {
   return (
     <div className="App">
+      <Global />
       <SwitchProvider>
         <AppRoutes />
       </SwitchProvider>
-      <Global />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import { HeaderContainer } from "./styles";
 import { VscHome } from "react-icons/vsc";
 import { BsChatRightText } from "react-icons/bs";
-import { GiMagnifyingGlass } from "react-icons/gi";
+import { AiOutlineSearch } from "react-icons/ai";
+
 export const Header = () => {
   return (
     <HeaderContainer>
@@ -26,7 +27,10 @@ export const Header = () => {
           placeholder="Digite sua pesquisa aqui"
         />
         <button className="HeaderButtons">
-          <GiMagnifyingGlass className="SearchButton" />
+          <AiOutlineSearch
+            color="var(--medium-grey)"
+            className="SearchButton"
+          />
         </button>
       </div>
       <div className="HeaderUserConfigs">

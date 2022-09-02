@@ -1,16 +1,14 @@
 import { IPostContent } from "../../interfaces/components";
-import PostContainer from "./styles";
+import LiContainer from "./styles";
 
 export const Post = ({ src, h2, p }: IPostContent) => {
   return (
-    <PostContainer>
-      <div className="PostContent">
-        <img className="userLogo" src={src} alt="" />
-        <div className="PostText">
-          <h2 className="UserName">{h2}</h2>
-          <p className="contentPost">{p}</p>
-        </div>
+    <LiContainer>
+      <img src={src} alt="" />
+      <div className="PostText">
+        <h2>{h2}</h2>
+        <p>{p}</p>
       </div>
-    </PostContainer>
+    </LiContainer>
   );
 };
