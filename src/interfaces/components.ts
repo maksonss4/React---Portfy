@@ -47,9 +47,9 @@ export interface IInputProps extends React.HTMLProps<HTMLImageElement> {
 }
 
 export interface IPostContent {
-  src: string;
-  h2: string;
-  p: string;
+  src?: string;
+  h2?: string;
+  p?: string;
 }
 
 export interface INews {

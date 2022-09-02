@@ -17,23 +17,36 @@ export const ContainerCardUser = styled.div`
 
   .user-description {
     position: absolute;
-    width: 300px;
+    width: 100%;
     top: 90px;
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-
-    img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-left: 40px;
+    justify-content: space-around;
+    figure {
+      width: 50%;
     }
-
-    div {
+    img {
+      width: 80%;
+      height: 100%;
+      border-radius: 50%;
+      margin-left: 20px;
+    }
+    .description-icon {
+      display: flex;
+      gap: 5px;
+    }
+    .icon {
       display: flex;
       flex-direction: column;
-      margin-top: 40px;
+      justify-content: flex-end;
+      margin-top: 25px;
+      gap: 5px;
+    }
+    .userName {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+      gap: 8px;
     }
   }
 
@@ -69,31 +82,34 @@ export const ContainerCardUser = styled.div`
     height: 150px;
   }
   .user-description{
-    width: 80%;
-    height: 80%;
-    top: 50px;
-    img {
-      width: 200px;
-      height: 200px;
+    width: 100%;
+    justify-content: flex-start;
+    top: 40px;
+    figure {
+      width: 40%;
     }
-    .username {
+    img {
+      width: 80%;
+      height: 100%;
+    }
+    .userName {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      margin-top: 80px;
+      width: 350px;
     }
     .icon {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      margin-left: 20;
+      gap: 15px;
+      margin-top: 80px;
     }
     .description-icon {
-      position: absolute;
-      right: -120px;
-      top:40px;
       display: flex;
       flex-direction: row;
-      gap: 300px;
+      gap: 40px;
+      margin-top: 40px;
     }
   }
   } 

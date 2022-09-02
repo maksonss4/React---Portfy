@@ -25,7 +25,7 @@ const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps)
           />
         </figure>
         <div className="description-icon">
-          <div className="username">
+          <div className="userName">
             <h2>User name</h2>
             <p>UI | UX Design</p>
           </div>

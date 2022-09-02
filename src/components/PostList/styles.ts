@@ -20,7 +20,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 45vw;
-  background-color: var(--ligth-grey);
+  background-color: var(--white);
   @media screen and (min-width: 20px) and (max-width: 600px) {
     width: 100vw;
   }
