@@ -28,7 +28,7 @@ export const SecondaryButton = styled.button`
   color: ${({color}: IStyledButton) => color};
   padding: 0.6rem 1rem;
   border-radius: 4px;
-  transition: 200ms ease-in-out;
+  transition: 100ms ease-in;
 
   &:hover {
     background-color: ${({hover}: IStyledButton) => hover};

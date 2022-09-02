@@ -1,14 +1,14 @@
-import { Global } from "./styles";
+import SwitchProvider from "./contexts/SwitchContext";
 import AppRoutes from "./routes/routes";
-import Feed from "./pages/Feed";
+import { Global } from "./styles/index";
 
 const App = () => {
   return (
     <div className="App">
       <Global />
-      <Feed />
-      {/* <AppRoutes /> */}
-      
+      <SwitchProvider>
+        <AppRoutes />{" "}
+      </SwitchProvider>
     </div>
   );
 };

@@ -1,4 +1,10 @@
-import { ButtonHTMLAttributes, FormHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  FormHTMLAttributes,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+} from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ISelectOptions } from "../components/Input/options";
 
@@ -43,4 +49,9 @@ export interface IPostContent {
   src: string;
   h2: string;
   p: string;
+}
+
+export interface IHeader {
+  src?: string;
+  h2?: string;
 }
