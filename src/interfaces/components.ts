@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FormHTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, FormHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ISelectOptions } from "../components/Input/options";
 
@@ -27,11 +27,11 @@ export interface IInputProps2 extends InputHTMLAttributes<HTMLInputElement> {
   options?: ISelectOptions[];
 }
 
-export interface IPhoneFrameProps {
+export interface IPhoneFrameProps extends HTMLAttributes<HTMLDivElement> {
   slide: "top" | "bottom";
   delay: number;
+  frame?: string[];
   children?: ReactNode;
-  main?: boolean;
 }
 
 export interface IInputProps extends React.HTMLProps<HTMLImageElement> {
@@ -43,4 +43,14 @@ export interface IPostContent {
   src: string;
   h2: string;
   p: string;
+}
+
+export interface INews {
+  id: number
+  tipo: string
+  titulo: string
+  introducao: string
+  link: string
+  imagens: string
+  editorias: string
 }

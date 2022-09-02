@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ITextContent } from "../../interfaces/pages";
 
 export const LandingPageBackground = styled.div`
   background: var(--gradient);
@@ -33,7 +34,7 @@ export const LandingPageBackground = styled.div`
     font-size: 2.5rem;
     line-height: 3rem;
     text-align: center;
-    color: #005c57;
+    color: var(--green-black);
   }
 
   .logoPortfy {
@@ -41,16 +42,6 @@ export const LandingPageBackground = styled.div`
     height: 100%;
     max-width: 167px;
     max-height: 158px;
-  }
-
-  .containerTopContentText {
-    display: none;
-    width: 395px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 42px;
-    color: white;
   }
 
   .portfyContents {
@@ -67,11 +58,6 @@ export const LandingPageBackground = styled.div`
     align-items: center;
     flex-direction: column;
     margin-bottom: 70px;
-    a {
-      margin-top: 18px;
-      text-decoration: none;
-      color: black;
-    }
   }
 
   .landingPageButton {
@@ -133,6 +119,35 @@ export const LandingPageBackground = styled.div`
 
       position: fixed;
       right: 0;
+    }
+  }
+`;
+
+export const ParagraphText = styled.p`
+  display: none;
+  width: 395px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 42px;
+  color: white;
+  animation: ${({ aFade }: ITextContent) => aFade};
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
     }
   }
 `;
