@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 85vh;
-  width: 18.75rem;
-  background: var(--white);
-  border-radius: 8px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  h2 {
+height: 85vh;
+width: 18.75rem;
+background: var(--white);
+border-radius: 8px;
+margin-top: 20px;
+box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+text-align: center;
+display: flex;
+flex-direction: column;
+gap: 20px;
+  h2{
     margin-top: 20px;
     font-size: 20px;
   }
