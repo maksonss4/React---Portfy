@@ -14,3 +14,8 @@ export interface IStyledInput extends SelectHTMLAttributes<HTMLSelectElement> {
 export interface IPhoneBG {
   aSettings: string;
 }
+
+export interface IPhoneBox {
+  display?: string;
+  animation?: string;
+}

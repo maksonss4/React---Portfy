@@ -10,6 +10,7 @@ const PostContainer = styled.li`
   -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
   .PostContent {
     display: flex;
     flex-direction: column;
@@ -22,15 +23,11 @@ const PostContainer = styled.li`
     flex-direction: column;
     align-items: center;
   }
-  .userLogo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-left: 10px;
-  }
+
   .PostText {
     width: 100%;
   }
+  
   .contentPost {
     max-width: 90%;
     font-style: normal;
@@ -44,4 +41,4 @@ const PostContainer = styled.li`
   }
 `;
 
-export default PostContainer;
+export default LiContainer;

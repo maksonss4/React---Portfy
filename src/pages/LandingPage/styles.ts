@@ -81,7 +81,7 @@ export const LandingPageBackground = styled.div`
   @media (min-width: 1024px) {
     .containerTopContentText {
       display: inline;
-      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+
     }
     .allContent {
       width: 600px;
@@ -126,29 +126,20 @@ export const LandingPageBackground = styled.div`
 export const ParagraphText = styled.p`
   display: none;
   width: 395px;
-  font-style: normal;
   font-weight: 700;
   font-size: 28px;
   line-height: 42px;
-  color: white;
+  color: var(--green-black);
   animation: ${({ aFade }: ITextContent) => aFade};
 
   @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from {opacity: 0}
+    to {opacity: 1}
   }
-
+  
   @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
+    from {opacity: 1}
+    to {opacity: 0}
   }
 `;
 
@@ -163,7 +154,7 @@ export const CircleBG = styled.div`
   box-sizing: border-box;
   border-radius: 50%;
   border-style: solid;
-  border-color: var(--ligth-green);
+  border-color: var(--medium-green);
   animation: spin infinite 20s linear;
 
   @media (min-width: 1024px) {
