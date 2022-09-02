@@ -15,6 +15,10 @@ export interface IPhoneBG {
   aSettings: string;
 }
 
+export interface IButtonIconProp {
+  display?: string
+}
+
 export interface IPhoneBox {
   display?: string;
   animation?: string;
