@@ -1,13 +1,10 @@
-import { Global } from "./styles";
-import AppRoutes from "./routes/routes";
+import React from 'react';
 
-const App = () => {
+function App() {
   return (
     <div className="App">
-      <Global />
-      <AppRoutes />
     </div>
   );
-};
+}
 
 export default App;
