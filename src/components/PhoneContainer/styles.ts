@@ -84,7 +84,8 @@ export const PhoneContent = styled.div`
   }
 `;
 
-// dash > cur > fed > nw > mod
-// mod > dash > cur > fed > nw
-// nw > mod > dash > cur > fed
-// fed > nw > mod > dash > cur
+// Animation flow
+// C1: dash > cur > fed > nw > mod
+// C2: mod > dash > cur > fed > nw
+// C3: nw > mod > dash > cur > fed
+// C4: fed > nw > mod > dash > cur
