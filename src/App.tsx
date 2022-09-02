@@ -1,6 +1,5 @@
 import CardUser from "./components/CardUser";
 import SwitchProvider from "./contexts/SwitchContext";
-import Feed from "./pages/Feed";
 import AppRoutes from "./routes/routes";
 import { Global } from "./styles";
 import {MdAdd} from "react-icons/md"
@@ -13,10 +12,7 @@ const App = () => {
     <div className="App">
       <Global />
       <SwitchProvider>
-        {/* <AppRoutes /> */}
-        {/* <Feed /> */}
-        <Dashboard/>
-        {/* <CardUser iconMore={<MdAdd/>} iconPencil={<HiPencil/>} iconPaper={<BsFilePdf/>}/> */}
+        <AppRoutes />
       </SwitchProvider>
     </div>
   );
