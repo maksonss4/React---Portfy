@@ -5,7 +5,7 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import { CircleBG, LandingPageBackground, ParagraphText } from "./styles";
 
 const LandingPage = () => {
-  const [textAnimation, setTextAnimation] = useState("");
+  const [textAnimation, setTextAnimation] = useState("fade-in 1 250ms linear");
   const [text, setText] = useState(
     "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva."
   );

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerFeed = styled.div`
+  padding-top: 6rem;
   height: 100vh;
   display: flex;
   gap: 20px;

@@ -5,13 +5,9 @@ const LiContainer = styled.li`
   align-items: center;
   border-radius: 8px;
   padding: 10px;
+  margin: 0 2rem;
   gap: 10px;
-  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-
-  .PostContent {
-  }
 
   img {
     width: 80px;

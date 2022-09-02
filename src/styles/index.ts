@@ -7,7 +7,8 @@ export const Global = createGlobalStyle`
     --whitesmoke-2:   #E1E3E5;
     --black:          #1A1A1A;
     --green-black:    #005C57;
-    --ligth-green:    #0CBABA;
+    --ligth-green:    #47DAC5;
+    --medium-green:   #0CBABA;
     --ligth-blue:     #19CAE5;
     --medium-blue:    #09AAC5;
     --disabled-blue:  #A9CAE5;

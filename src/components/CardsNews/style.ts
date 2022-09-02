@@ -10,6 +10,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   h2 {
     margin-top: 20px;
     font-size: 20px;
@@ -23,6 +24,15 @@ export const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
+    
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--ligth-grey);
+      border-radius: 20px;
+    }
   }
 `;
 export const Card = styled.li`
