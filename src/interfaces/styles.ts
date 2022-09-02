@@ -10,3 +10,7 @@ export interface IStyledButton {
 export interface IStyledInput extends SelectHTMLAttributes<HTMLSelectElement> {
   border: () => string;
 }
+
+export interface IPhoneBG {
+  aSettings: string;
+}
