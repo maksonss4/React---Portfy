@@ -39,6 +39,7 @@ export const Global = createGlobalStyle`
     border: 0;
     font-size: 100%;
     vertical-align: baseline;
+    box-sizing: border-box;
   }
 
   article, aside, details, figcaption, figure, 
