@@ -23,3 +23,8 @@ export interface IPhoneBox {
   display?: string;
   animation?: string;
 }
+
+export interface IGeneralAnimations {
+  form?: string;
+  text?: string;
+}

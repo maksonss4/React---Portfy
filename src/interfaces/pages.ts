@@ -18,8 +18,9 @@ export interface IRegisterRequest {
   errors?: FieldErrorsImpl<DeepRequired<FieldValues>>
 }
 
-export interface ITextContent {
-  aFade?: string; 
+export interface IAnimationContent {
+  display?: string;
+  aType?: string; 
 }
 
 export interface ISwitcher {

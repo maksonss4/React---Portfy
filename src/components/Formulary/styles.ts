@@ -3,34 +3,38 @@ import styled from "styled-components";
 const Form = styled.form`
   display: flex;
   background-color: var(--whitesmoke);
-  max-height: 100%;
   flex-direction: column;
   width: 100%;
   max-width: 95%;
   gap: 1rem;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 1rem 1rem;
   border-radius: 4px;
   box-sizing: border-box;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-
-  h3,
-  span {
-    text-align: center;
-  }
+  margin: 1rem 0 ;
+  text-align: center;
 
   h3 {
-    font-size: 0.9rem;
+    text-align: center;
+    font-size: 1.2rem;
   }
 
   label {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
+    text-align: start;
   }
 
-  span {
-    color: var(--color-grey-1);
-    font-size: 0.7rem;
-    font-weight: 600;
+  p {
+    font-size: 0.9rem;
+    margin: 1rem 0;
+
+    span {
+      color: var(--medium-blue);
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 `;
 
