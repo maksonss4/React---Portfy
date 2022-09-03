@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IPhoneBG } from "../../interfaces/styles";
+import { IPhoneBG, IPhoneBox } from "../../interfaces/styles";
 
 export const PhoneBox = styled.div`
   width: 55rem;
@@ -10,9 +10,10 @@ export const PhoneBox = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  position: relative;
 
   div {
-    display: flex;
+    display: ${({display}:IPhoneBox) => display};
     flex-direction: column;
     gap: 1.5rem;
   }

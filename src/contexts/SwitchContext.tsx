@@ -6,15 +6,13 @@ import { ISwitcher } from "../interfaces/pages";
 export const SwitchContext = createContext<ISwitcherContext>({} as ISwitcherContext);
 
 const SwitchProvider = ({ children }: IGeneralProps) => {
-  const [switcher, setSwitcher] = useState<ISwitcher>({
+  const [screenSwitcher, setScreenSwitcher] = useState<ISwitcher>({
     login: false,
     register: false,
   });
 
-  
-
   return (
-    <SwitchContext.Provider value={{switcher, setSwitcher}}>{children}</SwitchContext.Provider>
+    <SwitchContext.Provider value={{screenSwitcher, setScreenSwitcher}}>{children}</SwitchContext.Provider>
   );
 };
 
