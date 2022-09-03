@@ -7,7 +7,7 @@ import { FaUserAlt } from "react-icons/fa";
 const FooterMobile = () => {
   return (
     <ContainerFooterMobile>
-      <div className="container-icons">
+      <div className="FooterIcons">
         <AiFillHome size={30} />
         <AiOutlineSearch size={30} />
         <BsChatDots size={30} />

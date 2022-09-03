@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 const PostContainer = styled.li`
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+
   background-color: white;
   border-radius: 8px;
-  width: 100%;
+  width: 95%;
+  max-width: 343px;
+  height: 137px;
   min-height: 137px;
   -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -38,6 +42,9 @@ const PostContainer = styled.li`
     margin: 0 10px 0 0;
     white-space: normal;
     color: var(--dark-grey);
+  }
+  .userName {
+    width: 80%;
   }
 `;
 

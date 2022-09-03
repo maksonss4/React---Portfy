@@ -1,4 +1,4 @@
-import React, {
+import {
   ButtonHTMLAttributes,
   FormHTMLAttributes,
   HTMLAttributes,
@@ -86,4 +86,9 @@ export interface ICardUserProps {
   iconPaper?: JSX.Element;
   iconPencil?: JSX.Element;
   buttonIcon?: "none";
+}
+
+export interface IHeader {
+  src?: string;
+  h2?: string;
 }
