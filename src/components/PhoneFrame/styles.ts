@@ -19,7 +19,7 @@ export const Phone = styled.div`
     position: absolute;
     top: 0;
     background-color: var(--white);
-    margin: -1px;
+    margin: -2px;
     width: 50%;
     height: 3%;
     border-radius: 0 0 4px 4px;

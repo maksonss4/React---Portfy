@@ -1,13 +1,16 @@
 import styled from "styled-components";
-import { ITextContent } from "../../interfaces/pages";
+import { IAnimationContent } from "../../interfaces/pages";
 
 export const LandingPageBackground = styled.div`
   background: var(--gradient);
   width: 100vw;
   height: 100vh;
   display: flex;
+  padding-right: 10rem;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  overflow: hidden;
 
   .allContent {
     width: 100vw;
@@ -130,7 +133,7 @@ export const ParagraphText = styled.p`
   font-size: 28px;
   line-height: 42px;
   color: var(--green-black);
-  animation: ${({ aFade }: ITextContent) => aFade};
+  animation: ${({ aType }: IAnimationContent) => aType};
 
   @keyframes fade-in {
     from {opacity: 0}
@@ -169,5 +172,77 @@ export const CircleBG = styled.div`
     from {
       transform: rotate(360deg);
     }
+  }
+`;
+
+export const FormScreen = styled.div`
+  width: 24rem;
+  height: 40rem;
+  max-width: 57vh;
+  max-height: 95vh;
+  background-color: var(--whitesmoke);
+  z-index: 1;
+  border: 1rem solid var(--white);
+  border-radius: 1rem;
+  position: relative;
+  display: ${({display}) => display};
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  animation: ${({aType}: IAnimationContent) => `${aType} 1 800ms linear`};
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--ligth-grey);
+    border-radius: 20px;
+  }
+
+  .smartphone__detail {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 1.3rem;
+    background-color: white;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  button {
+    margin: 1.2rem 0;
+  }
+
+  h5 {
+    font-weight: 500;
+    color: var(--dark-grey);
+    line-height: 1.2rem;
+    font-size: 1rem;
+    margin-top: 10%;
+  }
+
+  a {
+    align-self: center;
+    color: var(--black);
+    transition: ease 400ms;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--medium-blue);
+    }
+  }
+
+  @keyframes slide-in {
+    0% {transform: translateX(50rem)}
+    85% {transform: translateX(0rem)}
+    90% {transform: translateX(-1rem)}
+    100% {transform: translateX(0rem)}
+  }
+  
+  @keyframes slide-out {
+    0% {transform: translateX(0rem)}
+    10% {transform: translateX(-1rem)}
+    15% {transform: translateX(0rem)}
+    100% {transform: translateX(50rem)}
   }
 `;
