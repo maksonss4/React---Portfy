@@ -32,6 +32,7 @@ const LandingPage = () => {
       ? setScreenSwitcher({ login: false, register: true })
       : setScreenSwitcher({ login: false, register: false });
 
+    setAnimation({ ...animation, text: "fade-out 1 250ms linear" });
     setTimeout(() => {
       setAnimation({ ...animation, text: "fade-in 1 250ms linear" });
       setText(str);
@@ -50,8 +51,8 @@ const LandingPage = () => {
       setDisplay("flex");
       setAnimation({ ...animation, form: "slide-in" });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text]);
 
   return (
     <LandingPageBackground>
@@ -120,12 +121,10 @@ const LandingPage = () => {
       <div className="landingPagePhones">
         <PhoneContainer />
       </div>
-      <div className="lp__formulary">
-        <FormScreen aType={animation.form} display={display}>
-          <span className="smartphone__detail"></span>
-          {delay.register ? <Register /> : <Login />}
-        </FormScreen>
-      </div>
+      <FormScreen aType={animation.form} display={display}>
+        <span className="smartphone__detail"></span>
+        {delay.register ? <Register /> : <Login />}
+      </FormScreen>
     </LandingPageBackground>
   );
 };
