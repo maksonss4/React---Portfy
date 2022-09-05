@@ -1,13 +1,17 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Button2 from "../../../components/Button";
+import Button from "../../../components/Button";
 import Form from "../../../components/Formulary/styles";
 import CustomInput from "../../../components/Input";
 import { roleOptions } from "../../../components/Input/options";
 import { IRegisterRequest } from "../../../interfaces/pages";
+import { registerSchema } from "../../../validations/register";
 
 const Register = () => {
   // prettier-ignore
-  const { register, handleSubmit, formState: { errors } } = useForm<IRegisterRequest>({});
+  const { register, handleSubmit, formState: { errors } } = useForm<IRegisterRequest>({
+    resolver: yupResolver(registerSchema),
+  });
 
   const registerApply: SubmitHandler<IRegisterRequest> = async (data) => {
     console.log(data);
@@ -41,6 +45,7 @@ const Register = () => {
         error={errors?.cpf?.message}
       />
       <CustomInput
+        cep
         id="adress"
         label="CEP"
         type="text"
@@ -77,18 +82,19 @@ const Register = () => {
         id="role"
         label="Perfil"
         type="text"
-        placeholder="11 dígitos do CPF"
         register={register}
         options={roleOptions}
       />
-      <Button2
+      <Button
         buttonStyle="primary"
         bg="var(--ligth-blue)"
         color="var(--white)"
+        disColor="var(--disabled-blue)"
         hover="var(--medium-blue)"
+        type="submit"
       >
         Cadastrar
-      </Button2>
+      </Button>
     </Form>
   );
 };

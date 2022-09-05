@@ -166,6 +166,7 @@ export const FormScreen = styled.div`
     top: 0;
     right: 0;
     padding: 1rem;
+    cursor: pointer;
   }
 
   .smartphone__detail {
