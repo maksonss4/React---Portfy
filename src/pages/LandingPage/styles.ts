@@ -87,7 +87,7 @@ export const ParagraphText = styled.p`
   color: var(--green-black);
   animation: ${({ animation }: IAnimationContent) => animation};
 
-  @media (min-width: 769px) {
+  @media (min-width: 1024px) {
     display: block;
   }
 
@@ -124,7 +124,7 @@ export const CircleBG = styled.div`
   border-color: var(--medium-green);
   animation: spin infinite 20s linear;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1024px) {
     top: -15rem;
     left: -10rem;
 
@@ -202,7 +202,7 @@ export const FormScreen = styled.div`
     }
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1024px) {
     position: relative;
     width: 24rem;
     height: 40rem;

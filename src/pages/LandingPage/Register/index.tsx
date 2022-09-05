@@ -42,9 +42,9 @@ const Register = () => {
       />
       <CustomInput
         id="adress"
-        label="Endereço"
+        label="CEP"
         type="text"
-        placeholder="Endereço de sua residência ou empresa"
+        placeholder="Digite seu CEP"
         register={register}
         error={errors?.adress?.message}
       />
@@ -75,7 +75,7 @@ const Register = () => {
       <CustomInput
         select
         id="role"
-        label="CPF"
+        label="Perfil"
         type="text"
         placeholder="11 dígitos do CPF"
         register={register}

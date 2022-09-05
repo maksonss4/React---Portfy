@@ -8,7 +8,7 @@ const App = () => {
     <div className="App">
       <Global />
       <SwitchProvider>
-        <AppRoutes />{" "}
+        <AppRoutes />
       </SwitchProvider>
     </div>
   );
