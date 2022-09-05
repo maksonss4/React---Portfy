@@ -5,17 +5,19 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import { CircleBG, LandingPageBackground, ParagraphText } from "./styles";
 
 const LandingPage = () => {
-  const [textAnimation, setTextAnimation] = useState("");
+  const [textAnimation, setTextAnimation] = useState("fade-in 1 250ms linear");
   const [text, setText] = useState(
     "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva."
   );
 
-  const {setSwitcher} = useContext(SwitchContext);
+  const { switcher, setSwitcher } = useContext(SwitchContext);
 
   const textFade = (str: string, btn: string) => {
     btn === "login"
       ? setSwitcher({ login: true, register: false })
-      : setSwitcher({ login: false, register: true });
+      : btn === "register"
+      ? setSwitcher({ login: false, register: true })
+      : setSwitcher({ login: false, register: false });
 
     setTextAnimation("fade-out 1 250ms linear");
     setTimeout(() => {
@@ -42,32 +44,50 @@ const LandingPage = () => {
         </div>
 
         <div className="containerBottonContent">
-          <Button
-            id="login"
-            hover="var(--whitesmoke-2)"
-            className="landingPageButton"
-            onClick={() =>
-              textFade(
-                "Bem vindo de volta! Preencha os dados para realizar o login.",
-                "login"
-              )
-            }
-          >
-            Fazer o login
-          </Button>
-          <Button
-            id="register"
-            hover="var(--whitesmoke-2)"
-            className="landingPageButton"
-            onClick={() =>
-              textFade(
-                "Antes de começar precisamos te conhecer melhor. Preencha o seu cadastro.",
-                "register"
-              )
-            }
-          >
-            Registre-se grátis
-          </Button>
+          {Object.values(switcher).some((idx) => idx) ? (
+            <Button
+              id="back"
+              hover="var(--whitesmoke-2)"
+              className="landingPageButton"
+              onClick={() =>
+                textFade(
+                  "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva.",
+                  "landing"
+                )
+              }
+            >
+              Voltar
+            </Button>
+          ) : (
+            <>
+              <Button
+                id="login"
+                hover="var(--whitesmoke-2)"
+                className="landingPageButton"
+                onClick={() =>
+                  textFade(
+                    "Bem vindo de volta! Preencha os dados para realizar o login.",
+                    "login"
+                  )
+                }
+              >
+                Fazer o login
+              </Button>
+              <Button
+                id="register"
+                hover="var(--whitesmoke-2)"
+                className="landingPageButton"
+                onClick={() =>
+                  textFade(
+                    "Antes de começar precisamos te conhecer melhor. Preencha o seu cadastro.",
+                    "register"
+                  )
+                }
+              >
+                Registre-se grátis
+              </Button>
+            </>
+          )}
         </div>
       </div>
       <div className="landingPagePhones">

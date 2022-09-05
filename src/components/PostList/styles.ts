@@ -5,10 +5,10 @@ export const List = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  width: 90%;
+  width: 100%;
   height: 90%;
   overflow-y: auto;
-
+  padding-top: 10px;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -20,8 +20,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 45vw;
-  background-color: var(--ligth-grey);
-  @media screen and (min-width: 20px) and (max-width: 600px) {
+  background-color: var(--white);
+  @media screen and (min-width: 200px) and (max-width: 600px) {
     width: 100vw;
   }
 `;
@@ -47,7 +47,7 @@ export const TextareaContainer = styled.div`
   width: 90%;
   height: 130px;
   border-radius: 10px;
-  box-shadow: 0px 5px 34px -17px rgba(0, 0, 0, 0.58);
+  box-shadow: var(--boxshadow);
   margin: 10px;
   button {
     background-color: var(--ligth-blue);
