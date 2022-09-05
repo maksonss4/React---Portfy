@@ -1,4 +1,4 @@
-import { SelectHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, SelectHTMLAttributes } from "react";
 
 export interface IStyledButton {
   color?: string;
@@ -15,8 +15,8 @@ export interface IPhoneBG {
   aSettings: string;
 }
 
-export interface IButtonIconProp {
-  display?: string;
+export interface IButtonIconProp extends ButtonHTMLAttributes<HTMLButtonElement> {
+  display?: string
 }
 
 export interface IPhoneBox {

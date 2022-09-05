@@ -3,6 +3,7 @@ import { IGeneralProps } from "../interfaces/components";
 import { ISwitcherContext } from "../interfaces/contexts";
 import { ISwitcher } from "../interfaces/pages";
 
+
 export const SwitchContext = createContext<ISwitcherContext>({} as ISwitcherContext);
 
 const SwitchProvider = ({ children }: IGeneralProps) => {
@@ -10,9 +11,10 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
     login: false,
     register: false,
   });
+  const [condicionModal, setCondicionlModal] = useState<boolean>(false);
 
   return (
-    <SwitchContext.Provider value={{screenSwitcher, setScreenSwitcher}}>{children}</SwitchContext.Provider>
+    <SwitchContext.Provider value={{switcher, setSwitcher, condicionModal, setCondicionlModal}}>{children}</SwitchContext.Provider>
   );
 };
 

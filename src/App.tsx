@@ -1,7 +1,7 @@
 import AuthProvider from "./contexts/AuthContext";
 import SwitchProvider from "./contexts/SwitchContext";
 import AppRoutes from "./routes/routes";
-import { Global } from "./styles/index";
+import { Global } from "./styles";
 
 const App = () => {
   return (
