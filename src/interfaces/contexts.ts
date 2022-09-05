@@ -34,4 +34,6 @@ export interface IAdress {
 export interface IAuth {
   user: IUser;
   loading: boolean;
+  cepError: boolean;
+  cepRequest: (e: React.FocusEvent<HTMLInputElement, Element>) => Promise<void>;
 }

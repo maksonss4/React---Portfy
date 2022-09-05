@@ -15,7 +15,7 @@ export const StyledInput = styled.div`
   position: relative;
 
   input {
-    width: 85%;
+    width: 90%;
     height: 95%;
     border: none;
     outline: unset;

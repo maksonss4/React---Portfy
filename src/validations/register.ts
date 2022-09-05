@@ -9,13 +9,14 @@ export const registerSchema = yup.object().shape({
   cpf: yup
     .string()
     .required("Insira os 11 caracteres de seu CPF")
-    .min(11)
-    .max(11),
-  cep: yup.object().required("Endereço inválido"),  // isValid
+    .min(11),
+  cep: yup
+    .string()
+    .required("CEP inválido"),
   email: yup.string().required("Email obrigatório"),
   password: yup
     .string()
-    .required("Senha obrigatória*")
+    .required("Senha obrigatória")
     .matches(/[A-Z]/, "deve conter ao menos 1 letra maiúscula")
     .matches(/([a-z])/, "deve conter ao menos 1 letra minúscula")
     .matches(/(\d)/, "deve conter ao menos 1 número")

@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import { IInputProps2 } from "../../interfaces/components";
 import Tooltip from "../Tooltip";
 
 import { StyledInput, StyledSelect } from "./styles";
 
-const CustomInput = ({ id, label, register, error, select, options, ...rest }: IInputProps2) => {
+const CustomInput = ({ id, label, register, error, select, options, cep, ...rest }: IInputProps2) => {
   const [blur, setBlur] = useState(false);
+  const { cepError, cepRequest} =  useContext(AuthContext);
 
   const setBorder = () => {
-    return error
+    return error || (cep && cepError)
       ? "1px solid var(--color-negative)"
       : blur
       ? "1px solid var(--black)"
@@ -27,7 +29,11 @@ const CustomInput = ({ id, label, register, error, select, options, ...rest }: I
           defaultValue={options && options[0].value}
         >
           {options?.map((option) => {
-            return <option value={option.value} key={option.id}>{option.value}</option>
+            return (
+              <option value={option.value} key={option.id}>
+                {option.value}
+              </option>
+            );
           })}
         </StyledSelect>
       ) : (
@@ -37,9 +43,18 @@ const CustomInput = ({ id, label, register, error, select, options, ...rest }: I
               {...rest}
               {...register(id as string)}
               onClick={() => setBlur(true)}
-              onBlur={() => setBlur(false)}
+              onBlur={(e) => {
+                if (cep) {
+                  setBlur(false);
+                  cepRequest(e);
+                } else {
+                  setBlur(false);
+                }
+              }}
             />
-            {error && <Tooltip>{error}</Tooltip>}
+            {(error || cepError) && (
+              <Tooltip>{cepError ? "CEP inválido" : error}</Tooltip>
+            )}
           </StyledInput>
         </>
       )}
