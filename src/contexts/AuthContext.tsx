@@ -18,10 +18,8 @@ const AuthProvider = ({ children }: IGeneralProps) => {
         `https://viacep.com.br/ws/${e.target.value}/json/`
       );
       if (data.erro) {
-        console.log("if")
         setCepError(true);
       } else {
-        console.log("else")
         setCep(data);
         setCepError(false);
       }
@@ -29,7 +27,11 @@ const AuthProvider = ({ children }: IGeneralProps) => {
       console.error(error);
     }
   };
-  
+
+  useEffect(()=> {
+    console.log(cep)
+  }, [cep])
+
   return (
     <AuthContext.Provider value={{ user, loading, cepError, cepRequest }}>
       {children}
