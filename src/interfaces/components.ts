@@ -71,7 +71,7 @@ export interface IpostResponse {
 }
 
 export interface IPostList {
-  postList?: IpostResponse[];
+  postList?: IpostResponse[] | [];
 }
 
 export interface IPostProps {

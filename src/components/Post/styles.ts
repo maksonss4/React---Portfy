@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const PostContainer = styled.li`
   display: flex;
-  align-items: center;
   margin-bottom: 10px;
 
   background-color: white;
@@ -22,7 +21,6 @@ const PostContainer = styled.li`
   .userDetails {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   .PostText {
