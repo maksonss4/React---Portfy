@@ -7,12 +7,7 @@ import { ISwitcher } from "../../interfaces/pages";
 import { IGeneralAnimations } from "../../interfaces/styles";
 import Login from "./Login";
 import Register from "./Register";
-import {
-  CircleBG,
-  FormScreen,
-  LandingPageBackground,
-  ParagraphText,
-} from "./styles";
+import { CircleBG, FormScreen, LandingPageBackground, ParagraphText } from "./styles";
 
 const LandingPage = () => {
   const [display, setDisplay] = useState("none");

@@ -11,7 +11,7 @@ export const registerSchema = yup.object().shape({
     .required("Insira os 11 caracteres de seu CPF")
     .min(11)
     .max(11),
-  adress: yup.string().required("Endereço necessário"),
+  cep: yup.object().required("Endereço inválido"),  // isValid
   email: yup.string().required("Email obrigatório"),
   password: yup
     .string()
