@@ -14,7 +14,7 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
   const [condicionModal, setCondicionlModal] = useState<boolean>(false);
 
   return (
-    <SwitchContext.Provider value={{switcher, setSwitcher, condicionModal, setCondicionlModal}}>{children}</SwitchContext.Provider>
+    <SwitchContext.Provider value={{screenSwitcher, setScreenSwitcher, condicionModal, setCondicionlModal}}>{children}</SwitchContext.Provider>
   );
 };
 

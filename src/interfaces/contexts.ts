@@ -2,8 +2,8 @@ import React from "react";
 import { ISwitcher } from "./pages";
 
 export interface ISwitcherContext {
-  switcher: ISwitcher;
-  setSwitcher: React.Dispatch<React.SetStateAction<ISwitcher>>;
+  screenSwitcher: ISwitcher;
+  setScreenSwitcher: React.Dispatch<React.SetStateAction<ISwitcher>>;
   condicionModal: boolean;
   setCondicionlModal: React.Dispatch<React.SetStateAction<boolean>>
 }
