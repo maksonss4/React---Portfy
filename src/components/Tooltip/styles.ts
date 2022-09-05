@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const ErrorTooltip = styled.div`
+export const ErrorTooltip = styled.section`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
   cursor: help;
 
   svg {
