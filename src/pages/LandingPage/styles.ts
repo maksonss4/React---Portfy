@@ -1,80 +1,41 @@
 import styled from "styled-components";
-import { IAnimationContent } from "../../interfaces/pages";
+import { IAnimationContent } from "../../interfaces/styles";
 
 export const LandingPageBackground = styled.div`
+  min-height: 100vh;
   background: var(--gradient);
-  width: 100vw;
-  height: 100vh;
   display: flex;
-  padding-right: 10rem;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   overflow: hidden;
 
   .allContent {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     z-index: 1;
-  }
-
-  .containerTopContent {
-    width: 100%;
-    margin-top: 82px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-around;
     align-items: center;
-    pointer-events: none;
-  }
-
-  .portfyName {
-    font-family: "Goldman";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.5rem;
-    line-height: 3rem;
-    text-align: center;
-    color: var(--green-black);
-  }
-
-  .logoPortfy {
-    width: 50%;
-    height: 100%;
-    max-width: 167px;
-    max-height: 158px;
   }
 
   .portfyContents {
-    width: 100%;
-    margin-top: 82px;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     align-items: center;
+
+    .portfyName {
+      color: var(--green-black);
+      font-size: 1.5rem;
+      font-family: "Goldman";
+    }
   }
 
   .containerBottonContent {
-    width: 100%;
+    flex-direction: column-reverse;
+    min-height: 5.4rem;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 70px;
-  }
-
-  .landingPageButton {
-    height: 43px;
-    width: 58%;
-    max-width: 225px;
-    border-radius: 6px;
-    border: none;
-    margin-top: 6px;
-
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
+    gap: 0.5rem;
   }
 
   .landingPagePhones {
@@ -82,43 +43,34 @@ export const LandingPageBackground = styled.div`
   }
 
   @media (min-width: 1024px) {
-    .containerTopContentText {
-      display: inline;
+    justify-content: space-between;
+    padding: 0 5%;
 
-    }
     .allContent {
-      width: 600px;
-    }
-    .containerTopContent {
       align-items: flex-start;
-      width: 600px;
-      margin-left: 111px;
-      margin-top: 38px;
+      max-width: 50%;
     }
-    .logoPortfy {
-      width: 85px;
-      height: 78px;
-    }
-    .portfyContents {
-      width: 15%;
+
+    .containerTopContent {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-top: 0;
-      margin-bottom: 13px;
+      flex-direction: column;
+      gap: 2rem;
+      min-height: 18rem;
     }
-    .containerBottonContent {
-      margin-left: -75px;
+
+    .portfyContents {
+      flex-direction: row;
     }
 
     .landingPagePhones {
       display: flex;
-      width: 70rem;
-      max-width: 100vw;
-      height: 100vh;
       justify-content: flex-end;
       align-items: center;
       box-sizing: border-box;
+
+      width: 70rem;
+      max-width: 100vw;
+      height: 100vh;
 
       position: fixed;
       right: 0;
@@ -133,16 +85,28 @@ export const ParagraphText = styled.p`
   font-size: 28px;
   line-height: 42px;
   color: var(--green-black);
-  animation: ${({ aType }: IAnimationContent) => aType};
+  animation: ${({ animation }: IAnimationContent) => animation};
+
+  @media (min-width: 769px) {
+    display: block;
+  }
 
   @keyframes fade-in {
-    from {opacity: 0}
-    to {opacity: 1}
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  
+
   @keyframes fade-out {
-    from {opacity: 1}
-    to {opacity: 0}
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 `;
 
@@ -160,7 +124,7 @@ export const CircleBG = styled.div`
   border-color: var(--medium-green);
   animation: spin infinite 20s linear;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 769px) {
     top: -15rem;
     left: -10rem;
 
@@ -176,20 +140,17 @@ export const CircleBG = styled.div`
 `;
 
 export const FormScreen = styled.div`
-  width: 24rem;
-  height: 40rem;
-  max-width: 57vh;
-  max-height: 95vh;
+  animation: ${({ animation }: IAnimationContent) =>
+    `${animation} 1 800ms linear`};
+  display: ${({ display }) => display};
   background-color: var(--whitesmoke);
-  z-index: 1;
-  border: 1rem solid var(--white);
-  border-radius: 1rem;
-  position: relative;
-  display: ${({display}) => display};
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-  animation: ${({aType}: IAnimationContent) => `${aType} 1 800ms linear`};
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
 
   &::-webkit-scrollbar {
     width: 7px;
@@ -200,13 +161,22 @@ export const FormScreen = styled.div`
     border-radius: 20px;
   }
 
-  .smartphone__detail {
+  .form__exit-button {
     position: absolute;
     top: 0;
-    width: 50%;
-    height: 1.3rem;
-    background-color: white;
-    border-radius: 0 0 0.5rem 0.5rem;
+    right: 0;
+    padding: 1rem;
+  }
+
+  .smartphone__detail {
+    display: none;
+  }
+
+  label,
+  div,
+  button,
+  select {
+    max-width: 30rem;
   }
 
   button {
@@ -216,9 +186,9 @@ export const FormScreen = styled.div`
   h5 {
     font-weight: 500;
     color: var(--dark-grey);
-    line-height: 1.2rem;
-    font-size: 1rem;
-    margin-top: 10%;
+    line-height: 1rem;
+    font-size: 0.9rem;
+    margin-top: 5%;
   }
 
   a {
@@ -232,17 +202,76 @@ export const FormScreen = styled.div`
     }
   }
 
-  @keyframes slide-in {
-    0% {transform: translateX(50rem)}
-    85% {transform: translateX(0rem)}
-    90% {transform: translateX(-1rem)}
-    100% {transform: translateX(0rem)}
+  @media (min-width: 769px) {
+    position: relative;
+    width: 24rem;
+    height: 40rem;
+    max-width: 57vh;
+    max-height: 95vh;
+    border: 1rem solid var(--white);
+    border-radius: 1rem;
+    position: relative;
+
+    .form__exit-button {
+      display: none;
+    }
+
+    .smartphone__detail {
+      display: unset;
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 1.3rem;
+      background-color: white;
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
   }
-  
+
+  @keyframes slide-in {
+    0% {
+      transform: translateX(50rem);
+    }
+    85% {
+      transform: translateX(0rem);
+    }
+    90% {
+      transform: translateX(-1rem);
+    }
+    100% {
+      transform: translateX(0rem);
+    }
+  }
+
   @keyframes slide-out {
-    0% {transform: translateX(0rem)}
-    10% {transform: translateX(-1rem)}
-    15% {transform: translateX(0rem)}
-    100% {transform: translateX(50rem)}
+    0% {
+      transform: translateX(0rem);
+    }
+    10% {
+      transform: translateX(-1rem);
+    }
+    15% {
+      transform: translateX(0rem);
+    }
+    100% {
+      transform: translateX(50rem);
+    }
+  }
+
+  @keyframes drop-down {
+    from {
+      transform: translateY(-101rem);
+    }
+    to {
+      transform: translateY(0rem);
+    }
+  }
+
+  @keyframes ride-up {
+    from {
+      transform: translateY(0rem);
+    }
+    to {
+      transform: translateY(-101rem);
+    }
   }
 `;

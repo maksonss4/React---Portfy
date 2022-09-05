@@ -12,6 +12,7 @@ const Form = styled.form`
   box-sizing: border-box;
   margin: 1rem 0 ;
   text-align: center;
+  align-items: center;
 
   h3 {
     text-align: center;
@@ -21,6 +22,11 @@ const Form = styled.form`
   label {
     font-size: 0.85rem;
     text-align: start;
+    width: 95%;
+  }
+
+  div, button, select {
+    width: 100%;
   }
 
   p {

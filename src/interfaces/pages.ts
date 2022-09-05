@@ -18,11 +18,6 @@ export interface IRegisterRequest {
   errors?: FieldErrorsImpl<DeepRequired<FieldValues>>
 }
 
-export interface IAnimationContent {
-  display?: string;
-  aType?: string; 
-}
-
 export interface ISwitcher {
   login?: boolean;
   register?: boolean;

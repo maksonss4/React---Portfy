@@ -28,3 +28,9 @@ export interface IGeneralAnimations {
   form?: string;
   text?: string;
 }
+
+export interface IAnimationContent {
+  display?: string;
+  animation?: string;
+  mobile?: boolean;
+}

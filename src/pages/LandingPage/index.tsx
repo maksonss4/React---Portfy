@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import Button from "../../components/Button";
 import PhoneContainer from "../../components/PhoneContainer";
 import { SwitchContext } from "../../contexts/SwitchContext";
@@ -41,7 +42,10 @@ const LandingPage = () => {
 
   useEffect(() => {
     if (!Object.values(screenSwitcher).some((idx) => idx)) {
-      setAnimation({ ...animation, form: "slide-out" });
+      setAnimation({
+        ...animation,
+        form: "slide-out",
+      });
       setTimeout(() => {
         setDelay(screenSwitcher);
         setDisplay("none");
@@ -49,7 +53,10 @@ const LandingPage = () => {
     } else {
       setDelay(screenSwitcher);
       setDisplay("flex");
-      setAnimation({ ...animation, form: "slide-in" });
+      setAnimation({
+        ...animation,
+        form: "slide-in",
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
@@ -65,7 +72,7 @@ const LandingPage = () => {
           </div>
           <ParagraphText
             className="containerTopContentText"
-            aType={animation.text}
+            animation={animation.text}
           >
             {text}
           </ParagraphText>
@@ -89,19 +96,6 @@ const LandingPage = () => {
           ) : (
             <>
               <Button
-                id="login"
-                hover="var(--whitesmoke-2)"
-                className="landingPageButton"
-                onClick={() =>
-                  textFade(
-                    "Bem vindo de volta! Preencha os dados para realizar o login.",
-                    "login"
-                  )
-                }
-              >
-                Fazer o login
-              </Button>
-              <Button
                 id="register"
                 hover="var(--whitesmoke-2)"
                 className="landingPageButton"
@@ -114,6 +108,19 @@ const LandingPage = () => {
               >
                 Registre-se grátis
               </Button>
+              <Button
+                id="login"
+                hover="var(--whitesmoke-2)"
+                className="landingPageButton"
+                onClick={() =>
+                  textFade(
+                    "Bem vindo de volta! Preencha os dados para realizar o login.",
+                    "login"
+                  )
+                }
+              >
+                Fazer o login
+              </Button>
             </>
           )}
         </div>
@@ -121,7 +128,17 @@ const LandingPage = () => {
       <div className="landingPagePhones">
         <PhoneContainer />
       </div>
-      <FormScreen aType={animation.form} display={display}>
+      <FormScreen animation={animation.form} display={display}>
+        <AiOutlineClose
+          className="form__exit-button"
+          size={20}
+          onClick={() => {
+            textFade(
+              "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva.",
+              "landing"
+            );
+          }}
+        />
         <span className="smartphone__detail"></span>
         {delay.register ? <Register /> : <Login />}
       </FormScreen>
