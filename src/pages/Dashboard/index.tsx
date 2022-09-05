@@ -14,7 +14,7 @@ import { SwitchContext } from "../../contexts/SwitchContext"
 
 
 export const Dashboard = () => {
-  const {condicionModal} = useContext(SwitchContext);
+  const {condicionModal,setCondicionlModal} = useContext(SwitchContext);
   
   return(
     <>
@@ -24,10 +24,10 @@ export const Dashboard = () => {
       <Post />
       <CardsNews/>
       {condicionModal && <Modal>
+        <button>X</button>
         <Form >
           <div className="divHeader">
             <h2>Atualizar Perfil</h2>
-            <button>X</button>
           </div>
           <label htmlFor="email">Email</label>
           <input type="email" name="email" id="email" />
@@ -39,7 +39,7 @@ export const Dashboard = () => {
           <Form >
           <div className="divHeader">
             <h2>Adicionar tecnologia</h2>
-            <button>X</button>
+            <button type={"button"} onClick={()=>setCondicionlModal(!condicionModal)}>X</button>
           </div>
           <label htmlFor="name">Nome</label>
           <input type="text" name="name" id="name" />
