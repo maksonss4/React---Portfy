@@ -22,9 +22,11 @@ const PostList = ({ postList }: IPostList) => {
         </button>
       </TextareaContainer>
       <List>
-        {postList?.map(({ content, id, userAvatar, userID, userName }: IPostProps) => (
-          <Post key={userID} src={userAvatar} h2={userName} p={content} />
-        ))}
+        {postList?.map(
+          ({ content, id, userAvatar, userID, userName }: IPostProps) => (
+            <Post key={userID} src={userAvatar} h2={userName} p={content} />
+          )
+        )}
       </List>
     </Container>
   );
