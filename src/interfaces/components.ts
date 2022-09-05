@@ -36,6 +36,7 @@ export interface IInputProps2 extends InputHTMLAttributes<HTMLInputElement> {
 export interface IPhoneFrameProps extends HTMLAttributes<HTMLDivElement> {
   slide: "top" | "bottom";
   delay: number;
+  animation: string;
   frame?: string[];
   children?: ReactNode;
 }
@@ -46,9 +47,45 @@ export interface IInputProps extends React.HTMLProps<HTMLImageElement> {
 }
 
 export interface IPostContent {
-  src: string;
-  h2: string;
-  p: string;
+  src?: string;
+  h2?: string;
+  p?: string;
+}
+
+export interface INews {
+  id: number;
+  tipo: string;
+  titulo: string;
+  introducao: string;
+  link: string;
+  imagens: string;
+  editorias: string;
+}
+
+export interface IpostResponse {
+  id: string;
+  userAvatar: string;
+  userID: string;
+  userName: string;
+  content: string;
+}
+
+export interface IPostList {
+  postList?: IpostResponse[];
+}
+
+export interface IPostProps {
+  id: string;
+  userID: string;
+  userAvatar: string;
+  content: string;
+  userName: string;
+}
+export interface ICardUserProps {
+  iconMore?: JSX.Element;
+  iconPaper?: JSX.Element;
+  iconPencil?: JSX.Element;
+  buttonIcon?: "none";
 }
 
 export interface IHeader {

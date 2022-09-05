@@ -18,10 +18,8 @@ dados()
       <ul>
         {news?.map((element)=>
         <Card key={element.id}>
-          <h3>{element.titulo}</h3>
-          <span>{element.editorias}</span>
+          <a href={element.link}>{element.titulo}</a>
           <p>{element.introducao}</p>
-          <a href={element.link} target="_blanck">Veja  a notícia</a>
         </Card>)}
       </ul> 
     </Container>

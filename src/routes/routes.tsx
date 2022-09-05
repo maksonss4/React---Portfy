@@ -4,7 +4,7 @@ import LandingPage from "../pages/LandingPage";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/welcome" element={<LandingPage />} />
+      <Route path="/welcome" element={<LandingPage/>} />
       <Route path="*" element={<Navigate replace to="/welcome" />} />
     </Routes>
   );

@@ -9,6 +9,7 @@ export const ContainerFooterMobile = styled.div`
   background: linear-gradient(91.66deg, #47dac5 9.15%, #4a90e2 90.02%);
   color: var(--white);
   position: fixed;
+
   .FooterIcons {
     width: 100%;
     display: flex;

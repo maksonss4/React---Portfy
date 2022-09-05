@@ -1,16 +1,7 @@
-import { Post } from "./Post";
+import { Post } from "../Post";
 import { List, Container, Textarea, TextareaContainer } from "./styles";
 import { useState } from "react";
-export interface IpostResponse {
-  id: string;
-  userAvatar: string;
-  userID: string;
-  userName: string;
-  content: string;
-}
-export interface IPostList {
-  postList?: IpostResponse[];
-}
+import { IPostList, IPostProps } from "../../interfaces/components";
 
 const PostList = ({ postList }: IPostList) => {
   const [post, setPost] = useState("");
@@ -31,8 +22,8 @@ const PostList = ({ postList }: IPostList) => {
         </button>
       </TextareaContainer>
       <List>
-        {postList?.map(({ userId, userAvatar, userName, content }: any) => (
-          <Post key={userId} src={userAvatar} h2={userName} p={content} />
+        {postList?.map(({ content, id, userAvatar, userID, userName }: IPostProps) => (
+          <Post key={userID} src={userAvatar} h2={userName} p={content} />
         ))}
       </List>
     </Container>

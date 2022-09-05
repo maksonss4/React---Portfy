@@ -1,4 +1,4 @@
-import { IPostContent } from "../../../interfaces/components";
+import { IPostContent } from "../../interfaces/components";
 import PostContainer from "./styles";
 import { HiUserCircle } from "react-icons/hi";
 
