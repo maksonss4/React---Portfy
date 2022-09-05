@@ -12,7 +12,7 @@ export const PrimaryButton = styled.button`
   transition: 200ms ease-in-out;
 
   &:hover {
-    background-color: ${({bg}: IStyledButton) => bg};
+    background-color: ${({hover}: IStyledButton) => hover};
   }
 
   &:disabled {

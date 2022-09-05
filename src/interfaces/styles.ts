@@ -23,3 +23,22 @@ export interface IPhoneBox {
   display?: string;
   animation?: string;
 }
+
+export interface IGeneralAnimations {
+  form?: string;
+  text?: string;
+}
+
+export interface IAnimationContent {
+  display?: string;
+  animation?: string;
+  mobile?: boolean;
+}
+
+export interface ILoadStyleProps {
+  origin: number;
+  size: number;
+  color: string;
+  duration: number;
+  reverse?: string | boolean;
+}

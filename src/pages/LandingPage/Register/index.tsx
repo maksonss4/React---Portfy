@@ -1,13 +1,17 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Button2 from "../../components/Button";
-import Form from "../../components/Formulary/styles";
-import CustomInput from "../../components/Input";
-import { roleOptions } from "../../components/Input/options";
-import { IRegisterRequest } from "../../interfaces/pages";
+import Button from "../../../components/Button";
+import Form from "../../../components/Formulary/styles";
+import CustomInput from "../../../components/Input";
+import { roleOptions } from "../../../components/Input/options";
+import { IRegisterRequest } from "../../../interfaces/pages";
+import { registerSchema } from "../../../validations/register";
 
 const Register = () => {
   // prettier-ignore
-  const { register, handleSubmit, formState: { errors } } = useForm<IRegisterRequest>({});
+  const { register, handleSubmit, formState: { errors } } = useForm<IRegisterRequest>({
+    resolver: yupResolver(registerSchema),
+  });
 
   const registerApply: SubmitHandler<IRegisterRequest> = async (data) => {
     console.log(data);
@@ -15,8 +19,7 @@ const Register = () => {
 
   return (
     <Form onSubmit={handleSubmit(registerApply)}>
-      <div className="divBigode" />
-      <h2>Cadastro</h2>
+      <h3>Cadastro</h3>
       <CustomInput
         id="username"
         label="Nome de usuário"
@@ -42,10 +45,11 @@ const Register = () => {
         error={errors?.cpf?.message}
       />
       <CustomInput
+        cep
         id="adress"
-        label="Endereço"
+        label="CEP"
         type="text"
-        placeholder="Endereço de sua residência ou empresa"
+        placeholder="Digite seu CEP"
         register={register}
         error={errors?.adress?.message}
       />
@@ -76,20 +80,21 @@ const Register = () => {
       <CustomInput
         select
         id="role"
-        label="CPF"
+        label="Perfil"
         type="text"
-        placeholder="11 dígitos do CPF"
         register={register}
         options={roleOptions}
       />
-      <Button2
+      <Button
         buttonStyle="primary"
         bg="var(--ligth-blue)"
         color="var(--white)"
+        disColor="var(--disabled-blue)"
         hover="var(--medium-blue)"
+        type="submit"
       >
         Cadastrar
-      </Button2>
+      </Button>
     </Form>
   );
 };

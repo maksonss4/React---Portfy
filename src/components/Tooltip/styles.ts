@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const ErrorTooltip = styled.div`
+export const ErrorTooltip = styled.section`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
   cursor: help;
 
   svg {
@@ -22,8 +24,8 @@ export const ErrorTooltip = styled.div`
     top: 90%;
     right: 0.2rem;
     position: absolute;
-    font-size: 0.6rem;
-    width: 7rem;
+    font-size: 0.7rem;
+    max-width: 25ch;
     padding: 0.5rem;
     background-color: var(--ligth-grey);
     border-radius: 4px;
@@ -42,20 +44,6 @@ export const ErrorTooltip = styled.div`
       top: -0.4rem;
       transform: rotate(180deg);
       z-index: 5;
-    }
-  }
-
-  .tooltip {
-    @media (min-width: 769px) {
-      right: -7.7rem;
-      top: 20%;
-
-      &::before {
-        transform: rotate(90deg);
-        right: unset;
-        top: unset;
-        left: -0.5rem;
-      }
     }
   }
 `;

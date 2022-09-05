@@ -1,12 +1,7 @@
-import React, {
-  ButtonHTMLAttributes,
-  FormHTMLAttributes,
-  HTMLAttributes,
-  InputHTMLAttributes,
-  ReactNode,
-} from "react";
+import { ButtonHTMLAttributes, FormHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ISelectOptions } from "../components/Input/options";
+import { IAdress } from "./contexts";
 
 export interface IGeneralProps {
   children: ReactNode;
@@ -31,6 +26,8 @@ export interface IInputProps2 extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   select?: boolean;
   options?: ISelectOptions[];
+  address?: IAdress;
+  cep?: boolean;
 }
 
 export interface IPhoneFrameProps extends HTMLAttributes<HTMLDivElement> {
@@ -86,4 +83,9 @@ export interface ICardUserProps {
   iconPaper?: JSX.Element;
   iconPencil?: JSX.Element;
   buttonIcon?: "none";
+}
+
+export interface IHeader {
+  src?: string;
+  h2?: string;
 }

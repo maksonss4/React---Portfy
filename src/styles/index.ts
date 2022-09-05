@@ -14,13 +14,13 @@ export const Global = createGlobalStyle`
     --medium-blue:    #09AAC5;
     --disabled-blue:  #A9CAE5;
     --success:        #6FD551;
-    --color-negative: #EA5345;
+    --color-negative: #DD5C60;
     --ligth-grey:     #D9DADE;
     --medium-grey:    #91959A;
     --dark-grey:      #5A5A5A;
 
     --gradient: linear-gradient(115.77deg, #47DAC5 10.59%, #19CAE5 87.7%);
-    --boxshadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.1);
+    --boxshadow: 0px 0px 10px 4px #0000001A;
   }
 
   html, body, div, span, applet, object, iframe,
@@ -54,7 +54,7 @@ export const Global = createGlobalStyle`
     font-family: 'Poppins';
   }
 
-  input , button, textarea {
+  input , button, textarea, select {
     font-family: inherit ;
   }
 
@@ -75,5 +75,6 @@ export const Global = createGlobalStyle`
 
   button {
     cursor: pointer;
+    outline: none;
   }
 `;

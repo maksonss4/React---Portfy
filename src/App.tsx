@@ -1,4 +1,4 @@
-import CardUser from "./components/CardUser";
+import AuthProvider from "./contexts/AuthContext";
 import SwitchProvider from "./contexts/SwitchContext";
 import AppRoutes from "./routes/routes";
 import { Global } from "./styles";
@@ -7,9 +7,11 @@ const App = () => {
   return (
     <div className="App">
       <Global />
-      <SwitchProvider>
-        <AppRoutes />
-      </SwitchProvider>
+      <AuthProvider>
+        <SwitchProvider>
+          <AppRoutes />
+        </SwitchProvider>
+      </AuthProvider>
     </div>
   );
 };

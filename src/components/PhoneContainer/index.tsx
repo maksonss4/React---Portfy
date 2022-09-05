@@ -6,10 +6,10 @@ import { PhoneBox, PhoneContent } from "./styles";
 const PhoneContainer = () => {
   const [aName, setAName] = useState("slide-from");
   const [display, setDisplay] = useState("flex");
-  const { switcher } = useContext(SwitchContext);
+  const { screenSwitcher } = useContext(SwitchContext);
 
   useEffect(() => {
-    if (Object.values(switcher).some((idx) => idx)) {
+    if (Object.values(screenSwitcher).some((idx) => idx)) {
       setAName("slide-back");
       setTimeout(() => {
         setDisplay("none")
@@ -18,7 +18,7 @@ const PhoneContainer = () => {
       setDisplay("flex")
       setAName("slide-from");
     }
-  }, [switcher]);
+  }, [screenSwitcher]);
 
   return (
     <PhoneBox display={display}>
