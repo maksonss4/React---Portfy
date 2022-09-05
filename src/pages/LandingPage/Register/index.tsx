@@ -1,10 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../../components/Button";
 import Form from "../../../components/Formulary/styles";
 import CustomInput from "../../../components/Input";
 import { roleOptions } from "../../../components/Input/options";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { ICoreResponse } from "../../../interfaces/contexts";
 import { IRegisterRequest } from "../../../interfaces/pages";
+import api from "../../../services/api";
 import { registerSchema } from "../../../validations/register";
 
 const Register = () => {
@@ -13,8 +17,28 @@ const Register = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const registerApply: SubmitHandler<IRegisterRequest> = async (data) => {
-    console.log(data);
+  const { cep, setUser } = useContext(AuthContext);
+  //  prettier-ignore
+  const registerApply: SubmitHandler<IRegisterRequest> = async ({ username, name, cpf, email, password, role }) => {
+    const options = {
+      username: username,
+      email: email,
+      password: password,
+      name: name,
+      cpf: cpf,
+      address: cep,
+      role: role,
+    };
+
+    console.log(options)
+
+    try {
+      const { data } = await api.post<ICoreResponse>("/signup", options);
+      setUser(data.user);
+      console.log(data.user);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -45,15 +69,6 @@ const Register = () => {
         error={errors?.cpf?.message}
       />
       <CustomInput
-        cep
-        id="adress"
-        label="CEP"
-        type="text"
-        placeholder="Digite seu CEP"
-        register={register}
-        error={errors?.adress?.message}
-      />
-      <CustomInput
         id="email"
         label="Email"
         type="email"
@@ -76,6 +91,15 @@ const Register = () => {
         placeholder="Insira novamente a senha"
         register={register}
         error={errors?.password_confirm?.message}
+      />
+      <CustomInput
+        cep
+        id="adress"
+        label="CEP"
+        type="text"
+        placeholder="Digite seu CEP"
+        register={register}
+        error={errors?.adress?.message}
       />
       <CustomInput
         select

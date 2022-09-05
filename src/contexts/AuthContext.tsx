@@ -28,12 +28,8 @@ const AuthProvider = ({ children }: IGeneralProps) => {
     }
   };
 
-  useEffect(()=> {
-    console.log(cep)
-  }, [cep])
-
   return (
-    <AuthContext.Provider value={{ user, loading, cepError, cepRequest }}>
+    <AuthContext.Provider value={{ user, loading, cep, cepError, setUser, cepRequest }}>
       {children}
     </AuthContext.Provider>
   );

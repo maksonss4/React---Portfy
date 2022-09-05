@@ -6,14 +6,12 @@ export const registerSchema = yup.object().shape({
     .min(4, "Deve conter ao menos 4 caracteres")
     .required("Insira seu nome de usuário"),
   name: yup.string().required("Insira seu nome completo"),
-  cpf: yup
+  cpf: yup.string().required("Insira os 11 caracteres de seu CPF").min(11),
+  cep: yup.string(),
+  email: yup
     .string()
-    .required("Insira os 11 caracteres de seu CPF")
-    .min(11),
-  cep: yup
-    .string()
-    .required("CEP inválido"),
-  email: yup.string().required("Email obrigatório"),
+    .email("Formato de email inválido")
+    .required("Email obrigatório"),
   password: yup
     .string()
     .required("Senha obrigatória")
