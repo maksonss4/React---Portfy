@@ -6,16 +6,12 @@ import Form from "../../../components/Formulary/styles";
 import CustomInput from "../../../components/Input";
 import Button from "../../../components/Button";
 import { AiFillGithub } from "react-icons/ai";
-import { useContext } from "react";
-import { SwitchContext } from "../../../contexts/SwitchContext";
 
 const Login = () => {
   // prettier-ignore
   const { register, handleSubmit, formState: { errors } } = useForm<ILoginRequest>({
     resolver: yupResolver(loginSchema),
   });
-
-  const { setScreenSwitcher } = useContext(SwitchContext);
 
   const loginApply: SubmitHandler<ILoginRequest> = async (data) => {
     console.log(data);

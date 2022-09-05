@@ -16,7 +16,7 @@ export interface IPhoneBG {
 }
 
 export interface IButtonIconProp {
-  display?: string
+  display?: string;
 }
 
 export interface IPhoneBox {
@@ -33,4 +33,12 @@ export interface IAnimationContent {
   display?: string;
   animation?: string;
   mobile?: boolean;
+}
+
+export interface ILoadStyleProps {
+  origin: number;
+  size: number;
+  color: string;
+  duration: number;
+  reverse?: string | boolean;
 }
