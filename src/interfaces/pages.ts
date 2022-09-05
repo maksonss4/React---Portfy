@@ -18,10 +18,6 @@ export interface IRegisterRequest {
   errors?: FieldErrorsImpl<DeepRequired<FieldValues>>
 }
 
-export interface ITextContent {
-  aFade?: string; 
-}
-
 export interface ISwitcher {
   login?: boolean;
   register?: boolean;

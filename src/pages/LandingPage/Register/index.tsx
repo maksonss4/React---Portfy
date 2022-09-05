@@ -1,9 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import Button2 from "../../components/Button";
-import Form from "../../components/Formulary/styles";
-import CustomInput from "../../components/Input";
-import { roleOptions } from "../../components/Input/options";
-import { IRegisterRequest } from "../../interfaces/pages";
+import Button2 from "../../../components/Button";
+import Form from "../../../components/Formulary/styles";
+import CustomInput from "../../../components/Input";
+import { roleOptions } from "../../../components/Input/options";
+import { IRegisterRequest } from "../../../interfaces/pages";
 
 const Register = () => {
   // prettier-ignore
@@ -15,8 +15,7 @@ const Register = () => {
 
   return (
     <Form onSubmit={handleSubmit(registerApply)}>
-      <div className="divBigode" />
-      <h2>Cadastro</h2>
+      <h3>Cadastro</h3>
       <CustomInput
         id="username"
         label="Nome de usuário"

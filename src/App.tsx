@@ -1,6 +1,6 @@
 import SwitchProvider from "./contexts/SwitchContext";
 import AppRoutes from "./routes/routes";
-import { Global } from "./styles";
+import { Global } from "./styles/index";
 
 const App = () => {
   return (
