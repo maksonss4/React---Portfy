@@ -5,7 +5,7 @@ export const List = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  width: 90%;
+  width: 100%;
   height: 90%;
   overflow-y: auto;
 
@@ -20,8 +20,9 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 45vw;
+  
   background-color: var(--white);
-  @media screen and (min-width: 20px) and (max-width: 600px) {
+  @media screen and (min-width: 200px) and (max-width: 1000px) {
     width: 100vw;
   }
 `;

@@ -7,7 +7,8 @@ export const ContainerFeed = styled.div`
   gap: 20px;
   flex-direction: column;
   align-items: center;
-
+  @media (min-width: 1000px) {
+  }
   .container-post {
     display: flex;
     flex-direction: column;
@@ -29,7 +30,6 @@ export const MainFeed = styled.main`
   gap: 20px;
 
   @media (min-width: 1000px) {
-    padding: 0 50px;
   }
 `;
 
