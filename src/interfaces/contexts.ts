@@ -37,6 +37,13 @@ export interface IAdress {
 export interface IAuth {
   user: IUser;
   loading: boolean;
+  cep: IAdress;
   cepError: boolean;
   cepRequest: (e: React.FocusEvent<HTMLInputElement, Element>) => Promise<void>;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
+}
+
+export interface ICoreResponse {
+  accessToken: string;
+  user: IUser;
 }
