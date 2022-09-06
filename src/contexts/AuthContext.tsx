@@ -24,12 +24,14 @@ const AuthProvider = ({ children }: IGeneralProps) => {
         setCepError(false);
       }
     } catch (error) {
-      console.error(error);
+      setCepError(true);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, cep, cepError, setUser, cepRequest }}>
+    <AuthContext.Provider
+      value={{ user, loading, cep, cepError, setUser, cepRequest }}
+    >
       {children}
     </AuthContext.Provider>
   );

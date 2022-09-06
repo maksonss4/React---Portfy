@@ -1,11 +1,12 @@
 import React from "react";
 import { ISwitcher } from "./pages";
+import { Id, ToastContent, ToastOptions } from "react-toastify";
 
 export interface ISwitcherContext {
   screenSwitcher: ISwitcher;
   setScreenSwitcher: React.Dispatch<React.SetStateAction<ISwitcher>>;
   condicionModal: boolean;
-  setCondicionlModal: React.Dispatch<React.SetStateAction<boolean>>
+  setCondicionlModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface IUser {
@@ -46,4 +47,14 @@ export interface IAuth {
 export interface ICoreResponse {
   accessToken: string;
   user: IUser;
+}
+
+export interface INotification {
+  updateToast: (toastRef: Id, message: string, type: string) => void;
+  baseTemplate: [ToastContent, ToastOptions];
+  base: ToastOptions;
+}
+
+export interface IStateType {
+  from: { pathname: string };
 }
