@@ -47,6 +47,8 @@ export interface IPostContent {
   src?: string;
   h2?: string;
   p?: string;
+  id?: string;
+  token?: string
 }
 
 export interface INews {
@@ -72,11 +74,11 @@ export interface IPostList {
 }
 
 export interface IPostProps {
-  id: string;
-  userID: string;
-  userAvatar: string;
-  content: string;
-  userName: string;
+  id?: string;
+  userID?: string;
+  userAvatar?: string;
+  content?: string;
+  userName?: string;
 }
 export interface ICardUserProps {
   iconMore?: JSX.Element;
