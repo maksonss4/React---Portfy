@@ -1,10 +1,42 @@
 import { ICardUserProps } from "../../interfaces/components";
 import { ButtonIcon, ContainerCardUser } from "./style";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
+import api from "../../services/api";
 
-const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps) => {
-  const { condicionModal, setCondicionlModal} = useContext(SwitchContext);
+const TechAPI = () => {
+  const TechSearch = () => {
+    const token = localStorage.getItem("@portfy(token)");
+    try {
+      const getTech = api.get("/tech/1");
+      console.log(getTech);
+      // prettier-ignore
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      //  "@portfy(token)"
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+const CardUser = ({
+  iconMore,
+  iconPaper,
+  iconPencil,
+  buttonIcon,
+}: ICardUserProps) => {
+  const { condicionModal, setCondicionlModal } = useContext(SwitchContext);
+  const [techs, setTechs] = useState<any>([]);
+  api
+    .get("/techs")
+    .then((response) => setTechs(response.data))
+    .catch((err) => console.log(err));
+
+  api
+    .post("/techs", { name: "Tech", status: "finalizada", userId: "1" })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+  console.log(techs);
   return (
     <ContainerCardUser>
       <figure>
@@ -14,9 +46,7 @@ const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps)
             alt="Capa do perfil do usuário"
             className="cover-photo"
           />
-          <ButtonIcon display={buttonIcon}>
-            {iconPencil}
-          </ButtonIcon>
+          <ButtonIcon display={buttonIcon}>{iconPencil}</ButtonIcon>
         </>
       </figure>
 
@@ -30,23 +60,26 @@ const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps)
         <div className="description-icon">
           <div className="userName">
             <h2>User name</h2>
-            <p>UI | UX Design</p>
+            {techs.map((elem: any) => {
+              <h1>{elem.name}</h1>;
+            })}
           </div>
           <div className="icon">
-            <ButtonIcon display={buttonIcon} onClick={()=>setCondicionlModal(!condicionModal)}>
+            <ButtonIcon
+              display={buttonIcon}
+              onClick={() => setCondicionlModal(!condicionModal)}
+            >
               {iconPencil}
             </ButtonIcon>
-            <ButtonIcon display={buttonIcon} onClick={()=> setCondicionlModal(!condicionModal)}>
+            <ButtonIcon
+              display={buttonIcon}
+              onClick={() => setCondicionlModal(!condicionModal)}
+            >
               {iconMore}
             </ButtonIcon>
-            <ButtonIcon display={buttonIcon}>
-              {iconPaper}
-            </ButtonIcon>
+            <ButtonIcon display={buttonIcon}>{iconPaper}</ButtonIcon>
           </div>
         </div>
-          
-            
-        
       </div>
       <div className="followers-following">
         <div className="followers-following-children">

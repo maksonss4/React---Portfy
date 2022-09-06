@@ -1,7 +1,7 @@
-import UsersAPI from "./backup/users";
 import AuthProvider from "./contexts/AuthContext";
 import NotificationProvider from "./contexts/NotificationContext";
 import SwitchProvider from "./contexts/SwitchContext";
+import { Dashboard } from "./pages/Dashboard";
 import AppRoutes from "./routes/routes";
 import { Global } from "./styles";
 
@@ -12,8 +12,7 @@ const App = () => {
       <NotificationProvider>
         <AuthProvider>
           <SwitchProvider>
-            {/* <AppRoutes /> */}
-            <UsersAPI />
+            <AppRoutes />
           </SwitchProvider>
         </AuthProvider>
       </NotificationProvider>
