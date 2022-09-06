@@ -2,9 +2,15 @@ import { HeaderContainer } from "./styles";
 import { VscHome } from "react-icons/vsc";
 import { BsChatRightText } from "react-icons/bs";
 import { AiOutlineSearch } from "react-icons/ai";
+import { MdDynamicFeed } from "react-icons/md";
 import { IHeader } from "../../interfaces/components";
+import Button from "../Button";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
-export const Header = ({ src, h2 }: IHeader) => {
+export const Header = ({ src, h2, location }: IHeader) => {
+  const { logout } = useContext(AuthContext);
+
   return (
     <HeaderContainer>
       <div className="HeaderContent">
@@ -20,7 +26,11 @@ export const Header = ({ src, h2 }: IHeader) => {
 
         <h2 className="HeaderPortfyLogo">Portfy</h2>
         <button className="HeaderButtons">
-          <VscHome className="HeaderHomeButton" />
+          {location === "feed" ? (
+            <VscHome className="HeaderHomeButton" />
+          ) : (
+            <MdDynamicFeed className="HeaderHomeButton" />
+          )}
         </button>
         <button className="HeaderButtons">
           <BsChatRightText className="HeaderChatButton" />
@@ -55,6 +65,9 @@ export const Header = ({ src, h2 }: IHeader) => {
           <h2 className="HeaderUserName">Você não está logado</h2>
         )}
       </div>
+      <Button buttonStyle="primary" onClick={logout}>
+        Logout
+      </Button>
     </HeaderContainer>
   );
 };
