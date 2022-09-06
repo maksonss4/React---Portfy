@@ -6,10 +6,12 @@ import Form from "../../../components/Formulary/styles";
 import CustomInput from "../../../components/Input";
 import { roleOptions } from "../../../components/Input/options";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { NotificationContext } from "../../../contexts/NotificationContext";
 import { ICoreResponse } from "../../../interfaces/contexts";
 import { IRegisterRequest } from "../../../interfaces/pages";
 import api from "../../../services/api";
 import { registerSchema } from "../../../validations/register";
+import { toast } from "react-toastify";
 
 const Register = () => {
   // prettier-ignore
@@ -18,26 +20,30 @@ const Register = () => {
   });
 
   const { cep, setUser } = useContext(AuthContext);
+  const { updateToast, baseTemplate } = useContext(NotificationContext);
   //  prettier-ignore
   const registerApply: SubmitHandler<IRegisterRequest> = async ({ username, name, cpf, email, password, role }) => {
-    const options = {
-      username: username,
-      email: email,
-      password: password,
-      name: name,
-      cpf: cpf,
-      address: cep,
-      role: role,
-    };
-
-    console.log(options)
-
-    try {
-      const { data } = await api.post<ICoreResponse>("/signup", options);
-      setUser(data.user);
-      console.log(data.user);
-    } catch (error) {
-      console.error(error);
+    const load = toast.loading(...baseTemplate)
+    if (cep || "") {
+      const options = {
+        username: username,
+        email: email,
+        password: password,
+        name: name,
+        cpf: cpf,
+        address: cep,
+        role: role,
+      };
+  
+      try {
+        const { data } = await api.post<ICoreResponse>("/signup", options);
+        setUser(data.user);
+        updateToast(load, "Usuário cadastrado", "success");
+      } catch (error) {
+        updateToast(load, "Email atualmente em uso", "error");
+      }
+    } else {
+      updateToast(load, "Insira seu CEP", "error");
     }
   };
 

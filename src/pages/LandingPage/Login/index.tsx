@@ -2,10 +2,17 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../../validations/login";
 import { ILoginRequest } from "../../../interfaces/pages";
+import { ICoreResponse, IStateType } from "../../../interfaces/contexts";
 import Form from "../../../components/Formulary/styles";
 import CustomInput from "../../../components/Input";
 import Button from "../../../components/Button";
 import { AiFillGithub } from "react-icons/ai";
+import api from "../../../services/api";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { useContext } from "react";
+import { NotificationContext } from "../../../contexts/NotificationContext";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   // prettier-ignore
@@ -13,8 +20,29 @@ const Login = () => {
     resolver: yupResolver(loginSchema),
   });
 
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const stateType = state as IStateType;
+
+  const { setUser } = useContext(AuthContext);
+  const { updateToast, baseTemplate } = useContext(NotificationContext);
+
   const loginApply: SubmitHandler<ILoginRequest> = async (data) => {
-    console.log(data);
+    const load = toast.loading(...baseTemplate);
+    try {
+      const response = await api.post<ICoreResponse>("/login", data);
+      // prettier-ignore
+      api.defaults.headers.common["Authorization"] = `Bearer ${response.data.accessToken}`;
+      localStorage.setItem("@portfy(token)", response.data.accessToken);
+
+      setUser(response.data.user);
+      updateToast(load, `Bem vindo ${response.data.user.username}`, "successs");
+
+      const navPath = stateType?.from?.pathname || "/dashboard";
+      navigate(navPath, { replace: true });
+    } catch (error) {
+      updateToast(load, "Email ou senha inválidos", "error");
+    }
   };
 
   return (
