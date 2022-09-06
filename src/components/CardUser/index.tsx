@@ -2,9 +2,19 @@ import { ICardUserProps } from "../../interfaces/components";
 import { ButtonIcon, ContainerCardUser } from "./style";
 import { useContext } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
-const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps) => {
-  const { condicionModal, setCondicionlModal} = useContext(SwitchContext);
+const CardUser = ({
+  iconMore,
+  iconPaper,
+  iconPencil,
+  buttonIcon,
+}: ICardUserProps) => {
+  const { setAddTechs, setUpdateUser, addTechs, updateUser } =
+    useContext(SwitchContext);
+
+  const { user } = useContext(AuthContext);
+
   return (
     <ContainerCardUser>
       <figure>
@@ -14,9 +24,7 @@ const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps)
             alt="Capa do perfil do usuário"
             className="cover-photo"
           />
-          <ButtonIcon display={buttonIcon}>
-            {iconPencil}
-          </ButtonIcon>
+          <ButtonIcon display={buttonIcon}>{iconPencil}</ButtonIcon>
         </>
       </figure>
 
@@ -29,24 +37,25 @@ const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps)
         </figure>
         <div className="description-icon">
           <div className="userName">
-            <h2>User name</h2>
+            <h2>{user.username}</h2>
             <p>UI | UX Design</p>
           </div>
           <div className="icon">
-            <ButtonIcon display={buttonIcon} onClick={()=>setCondicionlModal(!condicionModal)}>
+            <ButtonIcon
+              display={buttonIcon}
+              onClick={() => setUpdateUser(!updateUser)}
+            >
               {iconPencil}
             </ButtonIcon>
-            <ButtonIcon display={buttonIcon} onClick={()=> setCondicionlModal(!condicionModal)}>
+            <ButtonIcon
+              display={buttonIcon}
+              onClick={() => setAddTechs(!addTechs)}
+            >
               {iconMore}
             </ButtonIcon>
-            <ButtonIcon display={buttonIcon}>
-              {iconPaper}
-            </ButtonIcon>
+            <ButtonIcon display={buttonIcon}>{iconPaper}</ButtonIcon>
           </div>
         </div>
-          
-            
-        
       </div>
       <div className="followers-following">
         <div className="followers-following-children">

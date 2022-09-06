@@ -5,8 +5,10 @@ import { Id, ToastContent, ToastOptions } from "react-toastify";
 export interface ISwitcherContext {
   screenSwitcher: ISwitcher;
   setScreenSwitcher: React.Dispatch<React.SetStateAction<ISwitcher>>;
-  condicionModal: boolean;
-  setCondicionlModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setAddTechs: React.Dispatch<React.SetStateAction<boolean>>;
+  setUpdateUser: React.Dispatch<React.SetStateAction<boolean>>;
+  updateUser: boolean;
+  addTechs: boolean;
 }
 
 export interface IUser {
@@ -18,7 +20,7 @@ export interface IUser {
   password?: string;
   password_confirm?: string;
   role?: string;
-  id: number;
+  id: string;
 }
 
 export interface IAdress {
@@ -42,6 +44,7 @@ export interface IAuth {
   cepError: boolean;
   cepRequest: (e: React.FocusEvent<HTMLInputElement, Element>) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  logout: () => void;
 }
 
 export interface ICoreResponse {
