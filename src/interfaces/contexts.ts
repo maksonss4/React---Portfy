@@ -13,7 +13,7 @@ export interface IUser {
   username?: string;
   name: string;
   cpf?: string;
-  cep?: IAdress;
+  adress?: IAdress;
   email?: string;
   password?: string;
   password_confirm?: string;

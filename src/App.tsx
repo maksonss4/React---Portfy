@@ -1,9 +1,7 @@
-import CardUser from "./components/CardUser";
-import Toast from "./components/Toast";
+import UsersAPI from "./backup/users";
 import AuthProvider from "./contexts/AuthContext";
 import NotificationProvider from "./contexts/NotificationContext";
 import SwitchProvider from "./contexts/SwitchContext";
-import { Dashboard } from "./pages/Dashboard";
 import AppRoutes from "./routes/routes";
 import { Global } from "./styles";
 
@@ -15,7 +13,7 @@ const App = () => {
         <AuthProvider>
           <SwitchProvider>
             {/* <AppRoutes /> */}
-            <Dashboard/>
+            <UsersAPI />
           </SwitchProvider>
         </AuthProvider>
       </NotificationProvider>
