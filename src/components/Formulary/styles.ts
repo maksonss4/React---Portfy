@@ -10,7 +10,6 @@ const Form = styled.form`
   padding: 2rem 1rem 1rem 1rem;
   border-radius: 4px;
   box-sizing: border-box;
-  margin: 1rem 0 ;
   text-align: center;
   align-items: center;
 

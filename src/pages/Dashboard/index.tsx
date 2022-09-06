@@ -18,13 +18,17 @@ export const Dashboard = () => {
     <>
       <Header />
       <Container>
-        <CardUser
-          iconMore={<MdAdd />}
-          iconPencil={<HiPencil />}
-          iconPaper={<BsFilePdf />}
-        />
-        <Post />
-        <CardsNews />
+        <div className="main">
+          <CardUser
+            iconMore={<MdAdd />}
+            iconPencil={<HiPencil />}
+            iconPaper={<BsFilePdf />}
+          />
+          <Post />
+        </div>
+        <section>
+          <CardsNews/>
+        </section>
         {condicionModal && (
           <Modal>
             <button>X</button>
