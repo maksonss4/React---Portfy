@@ -29,9 +29,8 @@ export const Header = ({ src, h2, location }: IHeader) => {
         )}
 
         <h2 className="HeaderPortfyLogo">Portfy</h2>
-        <button className="HeaderButtons">
           { location === "feed" ? (
-            <ButtonIcon
+            <ButtonIcon className="HeaderButtons"
               onClick={() => navigate("/dashboard", { replace: true })}
             >
               <VscHome
@@ -41,11 +40,10 @@ export const Header = ({ src, h2, location }: IHeader) => {
               />
             </ButtonIcon>
           ) : (
-            <ButtonIcon onClick={() => navigate("/feed", { replace: true })}>
+            <ButtonIcon className="HeaderButtons" onClick={() => navigate("/feed", { replace: true })}>
               <MdDynamicFeed className="HeaderHomeButton" />
             </ButtonIcon>
           )}
-        </button>
         <button className="HeaderButtons">
           <BsChatRightText
             size={25}
