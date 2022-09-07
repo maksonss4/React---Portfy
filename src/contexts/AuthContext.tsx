@@ -25,20 +25,22 @@ const AuthProvider = ({ children }: IGeneralProps) => {
   };
 
   useEffect(() => {
-    async function loadUser() {
+    const loadUser = async () => {
       const token = localStorage.getItem("@portfy(token)");
       const idUser = localStorage.getItem("@portfy(id)");
+
       if (token) {
         try {
           api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           const { data } = await api.get(`/users/${idUser}`);
           setUser(data);
-          navigate("/dashboard", { replace: true });
         } catch (err) {
           console.log(err);
         }
       }
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
     loadUser();
   }, []);

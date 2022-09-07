@@ -9,10 +9,6 @@ export const List = styled.ul`
   height: 90%;
   overflow-y: auto;
   padding: 1rem;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const Container = styled.div`
@@ -62,7 +58,7 @@ export const TextareaContainer = styled.form`
   align-items: flex-end;
   padding: 1rem;
   gap: 0.5rem;
-
+  
   button {
     height: 2rem;
   }

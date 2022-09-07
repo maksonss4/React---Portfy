@@ -104,5 +104,12 @@ export interface IPageBulb {
   feed: boolean;
   search: boolean;
   dashboard: boolean;
-  chat: boolean
+  chat: boolean;
+}
+
+export interface ITechData {
+  name: string;
+  status: string;
+  userId: any;
+  id: any
 }

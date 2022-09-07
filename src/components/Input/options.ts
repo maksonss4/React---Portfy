@@ -11,5 +11,20 @@ export const roleOptions = [
   {
     id: "role2",
     value: "Recrutador",
-  }
+  },
 ] as ISelectOptions[];
+
+export const statusOptions = [
+  {
+    id: "stat1",
+    value: "Iniciante",
+  },
+  {
+    id: "stat2",
+    value: "Intermediário",
+  },
+  {
+    id: "stat3",
+    value: "Avançado",
+  },
+];
