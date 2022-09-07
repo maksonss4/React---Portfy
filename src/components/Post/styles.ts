@@ -20,6 +20,7 @@ const PostContainer = styled.li`
     justify-content: center;
     gap: 10px;
     margin: 5px;
+    width: 100%;
   }
   .userDetails {
     display: flex;
@@ -32,17 +33,41 @@ const PostContainer = styled.li`
 
   .contentPost {
     max-width: 90%;
+    height: auto;
+    text-justify: initial;
     font-style: normal;
     font-weight: 400;
     font-size: 0.938rem;
 
-    text-overflow: ellipsis;
     margin: 0 10px 0 0;
-    white-space: normal;
     color: var(--dark-grey);
   }
-  .userName {
+  .user-name-and-techs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
     width: 80%;
+    h2 {
+      font: bold 1.2rem "Poppins";
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      max-width: 50%;
+      overflow: hidden;
+
+      li {
+        padding: 2px 6px 2px;
+        font: bold 0.8rem "Poppins";
+        color: var(--medium-green);
+        border-left: 2px solid var(--medium-green);
+      }
+    }
+  }
+
+  button {
+    background-color: transparent;
   }
 `;
 

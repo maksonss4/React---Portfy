@@ -5,7 +5,7 @@ import { HiPencil } from "react-icons/hi";
 import { BsFilePdf } from "react-icons/bs";
 import { CardsNews } from "../../components/CardsNews";
 import { Container } from "./style";
-import { Post } from "../../components/Post";
+import PostList from "../../components/PostList";
 import { Modal } from "../../components/Modal";
 import Form from "../../components/Formulary/styles";
 import { useContext } from "react";
@@ -13,7 +13,7 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const Dashboard = () => {
-  const { user } = useContext(AuthContext);
+  const { user, posts } = useContext(AuthContext);
 
   const { updateUser, addTechs, setAddTechs, setUpdateUser } =
     useContext(SwitchContext);
@@ -28,7 +28,7 @@ export const Dashboard = () => {
             iconPencil={<HiPencil />}
             iconPaper={<BsFilePdf />}
           />
-          <Post h2={user.username} p="alterar" src="" />
+          <PostList postList={posts} />
         </div>
         <section>
           <CardsNews />

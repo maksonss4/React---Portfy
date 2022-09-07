@@ -56,6 +56,7 @@ export interface IPostContent {
   id?: string;
   token?: string;
   userId?: string;
+  techs?: ITechData[] | [];
 }
 
 export interface INews {
@@ -104,5 +105,7 @@ export interface IPageBulb {
   feed: boolean;
   search: boolean;
   dashboard: boolean;
-  chat: boolean
+  chat: boolean;
 }
+
+export interface ITechData {}

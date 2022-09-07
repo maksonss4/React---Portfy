@@ -6,9 +6,9 @@ import { Request } from "../../backup/post";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
-export const Post = ({ src, h2, p, id }: IPostContent) => {
+export const Post = ({ src, h2, techs, p, id }: IPostContent) => {
   const token = localStorage.getItem("@portfy(token)");
-  const { setPosts } = useContext(AuthContext);
+  const { user, setPosts } = useContext(AuthContext);
 
   const DeletePost = (id: string | undefined) => {
     Request.delete(`/posts/${id}`, {
@@ -30,14 +30,21 @@ export const Post = ({ src, h2, p, id }: IPostContent) => {
         )}
       </div>
       <div className="PostContent">
-        <h2 className="UserName">{h2}</h2>
-
+        <div className="user-name-and-techs">
+          <h2>{h2}</h2>
+          <ul>
+            {techs &&
+              techs?.length > 0 &&
+              techs.map((tech) => <li>{tech.name}</li>)}
+          </ul>
+        </div>
+        <p>{user.role}</p>
         <div className="PostText">
           <p className="contentPost">{p}</p>
         </div>
       </div>
       <button onClick={() => DeletePost(id)}>
-        <IoMdTrash />
+        <IoMdTrash size={30} />
       </button>
     </PostContainer>
   );
