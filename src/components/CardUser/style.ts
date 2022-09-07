@@ -2,121 +2,124 @@ import styled from "styled-components";
 import { IButtonIconProp } from "../../interfaces/styles";
 
 export const ContainerCardUser = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
-  max-width: 279px;
-  border-radius: 10px;
+  display: flex;
+  height: 20rem;
+  flex-direction: column;
+  justify-content: space-around;
   box-shadow: var(--boxshadow);
+  padding-top: 8.5rem;
 
   .cover-photo {
+    position: absolute;
+    z-index: -1;
+    top: 0;
     width: 100%;
-    border-radius: 10px 10px 0 0;
+    height: 9rem;
+    background-image: url("https://media-exp1.licdn.com/dms/image/C4D1BAQHRw_NPXrneWg/company-background_10000/0/1552918569507?e=2159024400&v=beta&t=OmbTm6RZ9TGYGKfPSOrTE0DKoAbdukyzk8jKHdkZY30");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
 
   .user-description {
-    position: absolute;
-    width: 100%;
-    top: 90px;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
-    figure {
-      width: 50%;
-    }
+    gap: 1rem;
+    height: 5rem;
+    align-items: center;
+    margin: 0 1rem;
+    box-sizing: border-box;
+
     img {
-      width: 80%;
-      height: 100%;
+      top: -100%;
+      width: 5rem;
       border-radius: 50%;
-      margin-left: 20px;
     }
-    .description-icon {
-      display: flex;
-      gap: 5px;
-    }
-    .icon {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      margin-top: 25px;
-      gap: 5px;
-    }
+
     .userName {
       display: flex;
       flex-direction: column;
-      margin-top: 30px;
-      gap: 8px;
+      gap: 0.2rem;
+
+      p {
+        font-size: 0.7rem;
+        color: var(--medium-grey);
+      }
+
+      h3 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .description-icon {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .icon {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
   }
 
   .followers-following {
+    text-align: center;
     display: flex;
-    gap: 45px;
-    padding: 10px;
-  }
-
-  .followers-following-children {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 100px 0 40px 0;
+    padding: 0 1rem;
+    gap: 2rem;
+    height: 4rem;
+
+    .followers-following-children {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
     p {
-      font-weight: 600;
-      font-size: 32px;
+      font-weight: 800;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 426px) {
+    padding-bottom: 2rem;
+
+    .user-description {
+      height: 8rem;
     }
 
-    span {
-      font-size: 16px;
-      color: var(--medium-grey);
+    .followers-following {
+      height: 8rem;
     }
   }
-  @media (min-width: 1000px) {
-    max-width: 700px;
-    max-height: 500px;
-    display: block;
-    .cover-photo {
+
+  @media (min-width: 769px) {
     width: 100%;
-    border-radius: 10px 10px 0 0;
-    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
   }
-  .user-description{
-    width: 100%;
-    justify-content: flex-start;
-    top: 40px;
-    figure {
-      width: 40%;
-    }
-    img {
-      width: 80%;
-      height: 100%;
-    }
-    .userName {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-top: 80px;
-      width: 350px;
-    }
-    .icon {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 80px;
-    }
-    .description-icon {
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
-      margin-top: 40px;
-    }
-  }
-  } 
-`
+`;
 
 export const ButtonIcon = styled.button<IButtonIconProp>`
-display: ${({display})=> display};
-border: none;
-background: none;
-`
+  display: flex;
+  border: none;
+  background-color: var(--ligth-grey);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    opacity: 0.7;
+    transition: 200ms ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+`;

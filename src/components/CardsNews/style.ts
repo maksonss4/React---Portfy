@@ -2,19 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 85vh;
-  width: 18.75rem;
+  width: 100%;
   background: var(--white);
   border-radius: 8px;
   box-shadow: var(--boxshadow);
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2rem;
 
   h2 {
     margin-top: 20px;
     font-size: 20px;
   }
+  
   ul {
     width: 100%;
     max-height: 85vh;
@@ -24,7 +25,11 @@ export const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    
+
+    li {
+      height: fit-content;
+    }
+
     &::-webkit-scrollbar {
       width: 7px;
     }
@@ -33,15 +38,16 @@ export const Container = styled.div`
       background-color: var(--ligth-grey);
       border-radius: 20px;
     }
-    
   }
-  @media (max-width:1000px){
-      width: 150px;
-        h2 {
-          font-size: 16px;
-        }
+  @media (max-width: 768px) {
+    width: 100%;
+
+    h2 {
+      font-size: 16px;
     }
+  }
 `;
+
 export const Card = styled.li`
   width: 100%;
   border-bottom: 1px solid var(--ligth-grey);
@@ -65,17 +71,18 @@ export const Card = styled.li`
   span {
     font-size: 14px;
   }
-  
+
   p {
     font-size: 10px;
     color: var(--medium-grey);
   }
-  
+
   a {
     font-size: 14px;
     text-decoration: none;
   }
-  @media (max-width:1000px){
+
+  @media (max-width: 1024px) {
     padding: 0.5rem;
     a {
       font-size: 12px;

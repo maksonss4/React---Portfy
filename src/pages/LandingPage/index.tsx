@@ -4,21 +4,16 @@ import Button from "../../components/Button";
 import PhoneContainer from "../../components/PhoneContainer";
 import { SwitchContext } from "../../contexts/SwitchContext";
 import { ISwitcher } from "../../interfaces/pages";
-import { IGeneralAnimations } from "../../interfaces/styles";
 import Login from "./Login";
 import Register from "./Register";
 import { CircleBG, FormScreen, LandingPageBackground, ParagraphText } from "./styles";
 
 const LandingPage = () => {
   const [display, setDisplay] = useState("none");
-  const [animation, setAnimation] = useState<IGeneralAnimations>({
-    form: "",
-    text: "fade-in 1 250ms linear",
-  });
   const [text, setText] = useState(
     "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva."
   );
-  const { screenSwitcher, setScreenSwitcher } = useContext(SwitchContext);
+  const { animation, setAnimation, screenSwitcher, setScreenSwitcher } = useContext(SwitchContext);
   const [delay, setDelay] = useState<ISwitcher>(screenSwitcher);
 
   const textFade = (str: string, btn: string) => {

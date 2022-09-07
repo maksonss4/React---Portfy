@@ -33,6 +33,8 @@ const Register = () => {
         cpf: cpf,
         address: cep,
         role: role,
+        following: [],
+        urlPhoto: ""
       };
   
       try {

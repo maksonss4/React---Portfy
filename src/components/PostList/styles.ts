@@ -8,10 +8,7 @@ export const List = styled.ul`
   width: 100%;
   height: 90%;
   overflow-y: auto;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
+  padding: 1rem;
 `;
 
 export const Container = styled.div`
@@ -19,10 +16,17 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 45vw;
-  
+  width: 100%;
+  gap: 1rem;
+
+  .list__title {
+    width: 100%;
+    height: 2rem;
+    text-align: start;
+  }
+
   background-color: var(--white);
-  @media screen and (min-width: 200px) and (max-width: 1000px) {
+  @media screen and (min-width: 200px) and (max-width: 769px) {
     width: 100vw;
   }
 `;
@@ -33,31 +37,29 @@ export const Textarea = styled.textarea`
   height: 100px;
   border: none;
   outline: none;
-  overflow: auto;
-  margin: 10px;
-  ::-webkit-scrollbar {
-    display: none;
+  resize: none;
+  
+  &::placeholder {
+    transition: 400ms ease;
+    color: var(--medium-grey);
+  }
+  
+  &:focus::placeholder {
+    color: transparent;
   }
 `;
-export const TextareaContainer = styled.div`
-  background-color: var(--white);
+export const TextareaContainer = styled.form`
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  background-color: var(--white);
+  box-shadow: var(--boxshadow);
+  border-radius: 8px;
+  overflow: hidden;
   align-items: flex-end;
-  gap: 10px;
-  width: 90%;
-  height: 130px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 34px -17px rgba(0, 0, 0, 0.58);
-  margin: 10px;
+  padding: 1rem;
+  gap: 0.5rem;
+  
   button {
-    background-color: var(--ligth-blue);
-    color: var(--white);
-    border-radius: 10px;
-    border: none;
-    margin: 0 10px 10px;
-    :hover {
-      background-color: var(--ligth-green);
-    }
+    height: 2rem;
   }
 `;
