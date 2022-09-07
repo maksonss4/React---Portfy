@@ -10,7 +10,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--faded-black);
+  backdrop-filter: blur(2px);
   margin: 0px;
 
   form {
