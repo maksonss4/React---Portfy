@@ -20,10 +20,10 @@ const Register = () => {
   });
 
   const { cep, setUser } = useContext(AuthContext);
-  const { updateToast, baseTemplate } = useContext(NotificationContext);
+  const { updateToast, base } = useContext(NotificationContext);
   //  prettier-ignore
   const registerApply: SubmitHandler<IRegisterRequest> = async ({ username, name, cpf, email, password, role }) => {
-    const load = toast.loading(...baseTemplate)
+    const load = toast.loading("Solicitação em andamento...", {...base, position: "top-center"})
     if (cep || "") {
       const options = {
         username: username,
@@ -40,12 +40,12 @@ const Register = () => {
       try {
         const { data } = await api.post<ICoreResponse>("/signup", options);
         setUser(data.user);
-        updateToast(load, "Usuário cadastrado", "success");
+        updateToast(load, "Usuário cadastrado", "top-center", "success");
       } catch (error) {
-        updateToast(load, "Email atualmente em uso", "error");
+        updateToast(load, "Email atualmente em uso", "top-center", "error");
       }
     } else {
-      updateToast(load, "Insira seu CEP", "error");
+      updateToast(load, "Insira seu CEP", "top-center", "error");
     }
   };
 
