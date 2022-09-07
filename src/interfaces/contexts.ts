@@ -28,6 +28,8 @@ export interface IUser {
   password_confirm?: string;
   role?: string;
   id: string;
+  following: [] | string[];
+  urlPhoto?: string | "";
 }
 
 export interface IAdress {
@@ -54,6 +56,8 @@ export interface IAuth {
   logout: () => void;
   posts: any;
   setPosts: any;
+  users: IUser[];
+  setUsers: any;
 }
 
 export interface ICoreResponse {
