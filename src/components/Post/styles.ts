@@ -2,15 +2,17 @@ import styled from "styled-components";
 
 const PostContainer = styled.li`
   display: flex;
+  flex-direction: row;
   margin-bottom: 10px;
-
   background-color: white;
   border-radius: 8px;
-  width: 90%;
 
+  width: 90%;
   min-height: 137px;
   box-shadow: var(--boxshadow);
+  max-width: 100%;
 
+  box-shadow: var(--boxshadow);
   .PostContent {
     display: flex;
     flex-direction: column;

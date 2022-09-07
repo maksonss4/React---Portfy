@@ -1,7 +1,10 @@
 import { ICardUserProps } from "../../interfaces/components";
 import { ButtonIcon, ContainerCardUser } from "./style";
+import { useContext } from "react";
+import { SwitchContext } from "../../contexts/SwitchContext";
 
 const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps) => {
+  const { condicionModal, setCondicionlModal} = useContext(SwitchContext);
   return (
     <ContainerCardUser>
       <figure>
@@ -30,10 +33,10 @@ const CardUser = ( {iconMore, iconPaper, iconPencil, buttonIcon}:ICardUserProps)
             <p>UI | UX Design</p>
           </div>
           <div className="icon">
-            <ButtonIcon display={buttonIcon}>
+            <ButtonIcon display={buttonIcon} onClick={()=>setCondicionlModal(!condicionModal)}>
               {iconPencil}
             </ButtonIcon>
-            <ButtonIcon display={buttonIcon}>
+            <ButtonIcon display={buttonIcon} onClick={()=> setCondicionlModal(!condicionModal)}>
               {iconMore}
             </ButtonIcon>
             <ButtonIcon display={buttonIcon}>

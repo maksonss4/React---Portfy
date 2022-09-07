@@ -29,7 +29,7 @@ const PhoneContainer = () => {
       <div>
         <Phone slide="top" delay={1200} animation={aName}>
           <span></span>
-          <PhoneContent aSettings="picture-transition-2 infinite 28s linear" />
+          <PhoneContent aSettings="picture-transition-4 infinite 32s linear" />
         </Phone>
         <Phone slide="bottom" delay={1200} animation={aName}>
           <span></span>
@@ -38,7 +38,7 @@ const PhoneContainer = () => {
       </div>
       <Phone slide="bottom" delay={1500} animation={aName}>
         <span></span>
-        <PhoneContent aSettings="picture-transition-4 infinite 32s linear" />
+        <PhoneContent aSettings="picture-transition-2 infinite 28s linear" />
       </Phone>
     </PhoneBox>
   );

@@ -33,7 +33,14 @@ export const Container = styled.div`
       background-color: var(--ligth-grey);
       border-radius: 20px;
     }
+    
   }
+  @media (max-width:1000px){
+      width: 150px;
+        h2 {
+          font-size: 16px;
+        }
+    }
 `;
 export const Card = styled.li`
   width: 100%;
@@ -67,5 +74,14 @@ export const Card = styled.li`
   a {
     font-size: 14px;
     text-decoration: none;
+  }
+  @media (max-width:1000px){
+    padding: 0.5rem;
+    a {
+      font-size: 12px;
+    }
+    p {
+      display: none;
+    }
   }
 `;

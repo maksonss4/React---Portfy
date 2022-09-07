@@ -6,7 +6,7 @@ export const ContainerCardUser = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  max-width: 310px;
+  max-width: 279px;
   border-radius: 10px;
   box-shadow: var(--boxshadow);
 

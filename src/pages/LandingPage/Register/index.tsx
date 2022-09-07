@@ -1,16 +1,50 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Button2 from "../../../components/Button";
+import Button from "../../../components/Button";
 import Form from "../../../components/Formulary/styles";
 import CustomInput from "../../../components/Input";
 import { roleOptions } from "../../../components/Input/options";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { NotificationContext } from "../../../contexts/NotificationContext";
+import { ICoreResponse } from "../../../interfaces/contexts";
 import { IRegisterRequest } from "../../../interfaces/pages";
+import api from "../../../services/api";
+import { registerSchema } from "../../../validations/register";
+import { toast } from "react-toastify";
 
 const Register = () => {
   // prettier-ignore
-  const { register, handleSubmit, formState: { errors } } = useForm<IRegisterRequest>({});
+  const { register, handleSubmit, formState: { errors } } = useForm<IRegisterRequest>({
+    resolver: yupResolver(registerSchema),
+  });
 
-  const registerApply: SubmitHandler<IRegisterRequest> = async (data) => {
-    console.log(data);
+  const { cep, setUser } = useContext(AuthContext);
+  const { updateToast, baseTemplate } = useContext(NotificationContext);
+  //  prettier-ignore
+  const registerApply: SubmitHandler<IRegisterRequest> = async ({ username, name, cpf, email, password, role }) => {
+    const load = toast.loading(...baseTemplate)
+    if (cep || "") {
+      const options = {
+        username: username,
+        email: email,
+        password: password,
+        name: name,
+        cpf: cpf,
+        address: cep,
+        role: role,
+      };
+  
+      try {
+        const { data } = await api.post<ICoreResponse>("/signup", options);
+        setUser(data.user);
+        updateToast(load, "Usuário cadastrado", "success");
+      } catch (error) {
+        updateToast(load, "Email atualmente em uso", "error");
+      }
+    } else {
+      updateToast(load, "Insira seu CEP", "error");
+    }
   };
 
   return (
@@ -41,14 +75,6 @@ const Register = () => {
         error={errors?.cpf?.message}
       />
       <CustomInput
-        id="adress"
-        label="CEP"
-        type="text"
-        placeholder="Digite seu CEP"
-        register={register}
-        error={errors?.adress?.message}
-      />
-      <CustomInput
         id="email"
         label="Email"
         type="email"
@@ -73,22 +99,32 @@ const Register = () => {
         error={errors?.password_confirm?.message}
       />
       <CustomInput
+        cep
+        id="adress"
+        label="CEP"
+        type="text"
+        placeholder="Digite seu CEP"
+        register={register}
+        error={errors?.adress?.message}
+      />
+      <CustomInput
         select
         id="role"
         label="Perfil"
         type="text"
-        placeholder="11 dígitos do CPF"
         register={register}
         options={roleOptions}
       />
-      <Button2
+      <Button
         buttonStyle="primary"
         bg="var(--ligth-blue)"
         color="var(--white)"
+        disColor="var(--disabled-blue)"
         hover="var(--medium-blue)"
+        type="submit"
       >
         Cadastrar
-      </Button2>
+      </Button>
     </Form>
   );
 };
