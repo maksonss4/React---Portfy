@@ -1,53 +1,77 @@
-import { useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {
+  useContext,
+  useState,
+  useEffect,
+  createContext,
+  ReactNode,
+} from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import { ICoreResponse, IStateType } from "../interfaces/contexts";
-import { SubmitHandler, useForm } from "react-hook-form";
 import api from "../services/api";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../validations/login";
+import { toast } from "react-toastify";
+import { IUser } from "../interfaces/contexts";
 
-interface ILogin {
-  email?: string
-  password?: string;
+export interface IUserContext {
+  arrayUsers: IUser[] | [];
+  updateUser: (data: IUser) => Promise<void>;
+  deleteUser: () => Promise<void>;
+}
+export interface IUserProviderProps {
+  children: ReactNode;
 }
 
-const UsersAPI = () => {
-  const { state } = useLocation();
-  const stateType = state as IStateType;
+export const UserContext = createContext<IUserContext>({} as IUserContext);
 
-  // prettier-ignore
-  const { register, handleSubmit, formState: { errors } } = useForm<ILogin>({
-    resolver: yupResolver(loginSchema),
-  });
-
+const UserProvider = ({ children }: IUserProviderProps) => {
   const navigate = useNavigate();
-  const { setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
+  const [userId, setUserId] = useState<string | number>("");
+  const [arrayUsers, setArrayUsers] = useState<IUser[] | []>([]);
 
-  const loginApply: SubmitHandler<ILogin> = async (data) => {
+  useEffect(() => {
+    setUserId(user.id);
+    const getUsersList = async () => {
+      try {
+        const { data } = await api.get<IUser[] | []>(`/users`);
+        setArrayUsers(data);
+        const filteredUser = arrayUsers.filter(
+          ({ id }: IUser) => id === userId
+        );
+        setUser(filteredUser[0]);
+      } catch (errors) {
+        console.error(errors);
+      }
+    };
+
+    getUsersList();
+  }, []);
+
+  const updateUser = async (data: IUser) => {
     try {
-      const response = await api.post<ICoreResponse>("/login", data);
-      // prettier-ignore
-      api.defaults.headers.common["Authorization"] = `Bearer ${response.data.accessToken}`;
-      localStorage.setItem("@portfy(token)", response.data.accessToken);
+      const updatedData = await api.put<IUser>(`users/${userId}`, data);
+      setUser(updatedData.data);
+      toast.success("Dados atualizados");
+    } catch (errors) {
+      console.error(errors);
+      toast.error("Erro ao atualizar os dados");
+    }
+  };
 
-      setUser(response.data.user);
-
-      const navPath = stateType?.from?.pathname || "/dashboard";
-      navigate(navPath, { replace: true });
-    } catch (error) {
-      console.error(error);
+  const deleteUser = async () => {
+    try {
+      await api.delete(`users/${userId}`);
+      localStorage.removeItem("@portfy(token)");
+      toast.success(`Sua conta foi excluída!`);
+      navigate(`/`, { replace: true });
+    } catch (errors) {
+      console.error(errors);
     }
   };
   return (
-    <form onSubmit={handleSubmit(loginApply)}>
-      <input type="email" placeholder="email" {...register("email")} />
-      {<p>{errors?.email?.message}</p>}
-      <input type="password" placeholder="senha" {...register("password")} />
-      {<p>{errors?.password?.message}</p>}
-      <button type="submit">Logar</button>
-    </form>
+    <UserContext.Provider value={{ arrayUsers, updateUser, deleteUser }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
-export default UsersAPI;
+export default UserProvider;

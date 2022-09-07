@@ -33,6 +33,7 @@ const PostList = ({ postList }: IPostList) => {
     <Container>
       <TextareaContainer>
         <Textarea
+          cols={10}
           onChange={(event) => setPost(event.target.value)}
           name="post-writer"
           placeholder="Descreva a vaga que você está anunciando"
