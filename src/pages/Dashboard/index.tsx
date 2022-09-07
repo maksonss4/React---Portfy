@@ -10,13 +10,17 @@ import { Modal } from "../../components/Modal";
 import Form from "../../components/Formulary/styles";
 import { useContext } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const Dashboard = () => {
-  const { condicionModal, setCondicionlModal } = useContext(SwitchContext);
+  const { user } = useContext(AuthContext);
+
+  const { updateUser, addTechs, setAddTechs, setUpdateUser } =
+    useContext(SwitchContext);
 
   return (
     <>
-      <Header />
+      <Header h2={user.username} location="dashboard" />
       <Container>
         <div className="main">
           <CardUser
@@ -24,41 +28,56 @@ export const Dashboard = () => {
             iconPencil={<HiPencil />}
             iconPaper={<BsFilePdf />}
           />
-          <Post />
+          <Post h2={user.username} p="alterar" src="" />
         </div>
         <section>
-          <CardsNews/>
+          <CardsNews />
         </section>
-        {condicionModal && (
+        {updateUser && (
           <Modal>
-            <button>X</button>
+            <button type="button" onClick={() => setUpdateUser(!updateUser)}>
+              X
+            </button>
             <Form>
               <div className="divHeader">
                 <h2>Atualizar Perfil</h2>
               </div>
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="email" />
-              <label htmlFor="password">Senha</label>
-              <input type="password" name="password" id="password" />
+              <label htmlFor="username">Username</label>
+              <input type="text" name="username" id="username" />
+              <label htmlFor="avatar">Avatar</label>
+              <input type="url" name="avatar" id="avatar" />
+              <div>
+                <button type="submit">Salvar</button>
+                <button type="button" onClick={() => console.log("deletar")}>
+                  Deletar
+                </button>
+              </div>
             </Form>
           </Modal>
         )}
-        {condicionModal && (
+        {addTechs && (
           <Modal>
             <Form>
               <div className="divHeader">
                 <h2>Adicionar tecnologia</h2>
-                <button
-                  type={"button"}
-                  onClick={() => setCondicionlModal(!condicionModal)}
-                >
+                <button type={"button"} onClick={() => setAddTechs(!addTechs)}>
                   X
                 </button>
               </div>
               <label htmlFor="name">Nome</label>
-              <input type="text" name="name" id="name" />
-              <label htmlFor="password">Senha</label>
-              <input type="password" name="password" id="password" />
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nome da tecnologia"
+              />
+              <label htmlFor="password">Status</label>
+              <select name="" id="">
+                <option value="iniciante">Iniciante</option>
+                <option value="intermediario">Intermediário</option>
+                <option value="avancado">Avançado</option>
+              </select>
+              <button type="submit">Salvar</button>
             </Form>
           </Modal>
         )}

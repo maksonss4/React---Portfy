@@ -1,17 +1,21 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { INews } from "../../interfaces/components";
 import { Card, Container } from "./style";
 
 export const CardsNews = () => {
   const [news, setnews] = useState<INews[]>([]);
-  async function dados() {
-    await axios
-      .get("http://servicodados.ibge.gov.br/api/v3/noticias/?qtd=10")
-      .then((response) => setnews(response.data.items))
-      .catch((error) => console.log(error));
-  }
-  dados();
+  
+  useEffect(() => {
+    async function dados() {
+      await axios
+        .get("http://servicodados.ibge.gov.br/api/v3/noticias/?qtd=10")
+        .then((response) => setnews(response.data.items))
+        .catch((error) => console.log(error));
+    }
+    dados();
+  }, []);
+
   return (
     <Container>
       <h2>Últimas notícias</h2>

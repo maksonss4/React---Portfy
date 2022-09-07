@@ -1,9 +1,20 @@
 import { HeaderContainer } from "./styles";
 import { BsChatRightText } from "react-icons/bs";
-import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import { MdDynamicFeed } from "react-icons/md";
+import { VscHome } from "react-icons/vsc";
 import { IHeader } from "../../interfaces/components";
+import Button from "../Button";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { ButtonIcon } from "../CardUser/style";
 
-export const Header = ({ src, h2 }: IHeader) => {
+export const Header = ({ src, h2, location }: IHeader) => {
+  const { logout } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
   return (
     <HeaderContainer>
       <div className="HeaderContent">
@@ -19,11 +30,21 @@ export const Header = ({ src, h2 }: IHeader) => {
 
         <h2 className="HeaderPortfyLogo">Portfy</h2>
         <button className="HeaderButtons">
-          <AiOutlineHome
-            size={25}
-            color="var(--white)"
-            className="HeaderHomeButton"
-          />
+          { location === "feed" ? (
+            <ButtonIcon
+              onClick={() => navigate("/dashboard", { replace: true })}
+            >
+              <VscHome
+                size={30}
+                color="var(--white)"
+                className="HeaderHomeButton"
+              />
+            </ButtonIcon>
+          ) : (
+            <ButtonIcon onClick={() => navigate("/feed", { replace: true })}>
+              <MdDynamicFeed className="HeaderHomeButton" />
+            </ButtonIcon>
+          )}
         </button>
         <button className="HeaderButtons">
           <BsChatRightText
@@ -63,6 +84,9 @@ export const Header = ({ src, h2 }: IHeader) => {
           <h2 className="HeaderUserName">Francisco Stenico</h2>
         )}
       </div>
+      <Button buttonStyle="primary" onClick={logout}>
+        Logout
+      </Button>
     </HeaderContainer>
   );
 };

@@ -1,15 +1,32 @@
-import { Post } from "../Post";
 import { List, Container, Textarea, TextareaContainer } from "./styles";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IPostList, IPostProps } from "../../interfaces/components";
 import Button from "../Button";
+import { Request } from "../../backup/post";
+import { Post } from "../Post";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const PostList = ({ postList }: IPostList) => {
   const [post, setPost] = useState("");
+  const { setPosts, posts } = useContext(AuthContext);
+
+  const userLogadoId = localStorage.getItem("@portfy(id)");
+  const token = localStorage.getItem("@portfy(token)");
 
   const createPost = () => {
-    console.log(post);
-    //call request function and pass post as args
+    if (post) {
+      const data = { content: post, userId: userLogadoId };
+
+      Request.post("/posts", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then(() => {
+          Request.get("/posts").then((res) => setPosts(res.data));
+        })
+        .catch((erro) => console.log(erro));
+    }
   };
 
   return (
@@ -32,13 +49,24 @@ const PostList = ({ postList }: IPostList) => {
         </Button>
       </TextareaContainer>
       <h2 className="list__title">Minhas Postagens</h2>
-      <List>
-        {postList?.map(
-          ({ content, id, userAvatar, userID, userName }: IPostProps) => (
-            <Post key={userID} src={userAvatar} h2={userName} p={content} />
-          )
-        )}
-      </List>
+      {postList.length > 0 ? (
+        <List>
+          { postList.map(
+            ({ content, id, userAvatar, userId, userName }: IPostProps) => (
+              <Post
+                key={id}
+                src={userAvatar}
+                h2={userName}
+                p={content}
+                id={id}
+                userId={userId}
+              />
+            )
+          )}
+        </List>
+      ) : (
+        <p>Não existem postagens</p>
+      )}
     </Container>
   );
 };

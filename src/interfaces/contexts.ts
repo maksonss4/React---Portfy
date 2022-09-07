@@ -12,6 +12,10 @@ export interface ISwitcherContext {
   setAnimation: React.Dispatch<React.SetStateAction<IGeneralAnimations>>;
   hideFL: boolean;
   setHideFL: React.Dispatch<React.SetStateAction<boolean>>
+  setAddTechs: React.Dispatch<React.SetStateAction<boolean>>;
+  setUpdateUser: React.Dispatch<React.SetStateAction<boolean>>;
+  updateUser: boolean;
+  addTechs: boolean;
 }
 
 export interface IUser {
@@ -23,7 +27,7 @@ export interface IUser {
   password?: string;
   password_confirm?: string;
   role?: string;
-  id: number;
+  id: string;
 }
 
 export interface IAdress {
@@ -47,6 +51,9 @@ export interface IAuth {
   cepError: boolean;
   cepRequest: (e: React.FocusEvent<HTMLInputElement, Element>) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  logout: () => void;
+  posts: any;
+  setPosts: any;
 }
 
 export interface ICoreResponse {

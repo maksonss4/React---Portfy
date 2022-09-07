@@ -13,6 +13,7 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
     login: false,
     register: false,
   });
+  
   const [condicionModal, setCondicionlModal] = useState<boolean>(false);
   const [hideFL, setHideFL] = useState(true);
   const [animation, setAnimation] = useState<IGeneralAnimations>({
@@ -20,6 +21,8 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
     friendList: "",
     text: "fade-in 1 250ms linear",
   });
+  const [updateUser, setUpdateUser] = useState<boolean>(false);
+  const [addTechs, setAddTechs] = useState<boolean>(false);
 
   return (
     <SwitchContext.Provider
@@ -32,6 +35,10 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
         setAnimation,
         hideFL,
         setHideFL,
+        setUpdateUser,
+        setAddTechs,
+        updateUser,
+        addTechs,
       }}
     >
       {children}
