@@ -21,8 +21,8 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
     friendList: "",
     text: "fade-in 1 250ms linear",
   });
-  const [updateUser, setUpdateUser] = useState<boolean>(false);
-  const [addTechs, setAddTechs] = useState<boolean>(false);
+  const [updateUser, setUpdateUser] = useState<boolean>(true);
+  const [addTechs, setAddTechs] = useState<boolean>(true);
 
   return (
     <SwitchContext.Provider

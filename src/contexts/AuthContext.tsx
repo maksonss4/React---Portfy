@@ -24,7 +24,7 @@ const AuthProvider = ({ children }: IGeneralProps) => {
   };
 
   useEffect(() => {
-    async function loadUser() {
+    const loadUser = async () => {
       const token = localStorage.getItem("@portfy(token)");
       const idUser = localStorage.getItem("@portfy(id)");
 

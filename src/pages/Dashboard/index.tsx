@@ -1,138 +1,49 @@
-import CardUser from "../../components/CardUser";
-import { Header } from "../../components/Header";
-import { MdAdd } from "react-icons/md";
-import { HiPencil } from "react-icons/hi";
-import { BsFilePdf } from "react-icons/bs";
-import { CardsNews } from "../../components/CardsNews";
-import { Container } from "./style";
-import { Post } from "../../components/Post";
-import { Modal } from "../../components/Modal";
-import Form from "../../components/Formulary/styles";
+import { useEffect, useState } from "react";
+import { Request } from "../../backup/post";
 import { useContext } from "react";
-import { SwitchContext } from "../../contexts/SwitchContext";
+import { CardsNews } from "../../components/CardsNews";
+import CardUser from "../../components/CardUser";
+import FooterMobile from "../../components/FooterMobile";
+import FriendList from "../../components/FriendList";
+import { Header } from "../../components/Header";
+import PostList from "../../components/PostList";
+import { VscFilePdf } from "react-icons/vsc";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useForm } from "react-hook-form";
-import api from "../../services/api";
-import { AiOutlineClose } from "react-icons/ai";
-import CustomInput from "../../components/Input";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { updateUserSchema } from "../../validations/updateUser";
-import { IUpdateUser } from "../../interfaces/pages";
-import { statusOptions } from "../../components/Input/options";
-import Button from "../../components/Button";
+import { ContainerFeed, DivLeft, DivMidle, DivRight, MainFeed } from "./style";
+import { AiFillEdit, AiOutlinePlus } from "react-icons/ai";
 
-export const Dashboard = () => {
-  const { user } = useContext(AuthContext);
-  // prettier-ignore
-  const { register, handleSubmit, formState: { errors } } = useForm<IUpdateUser>({
-    resolver: yupResolver(updateUserSchema)
-  });
+const Dashboard = () => {
+  const { user, posts, setPosts } = useContext(AuthContext);
 
-  const { updateUser, addTechs, setAddTechs, setUpdateUser } =
-    useContext(SwitchContext);
-  const token = localStorage.getItem("@portfy(token)");
+  useEffect(() => {
+    Request.get("/posts")
+      .then((response) => setPosts(response.data))
+      .catch((erro) => console.log(erro));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  const addTechUser = (data: any) => {
-    api
-      .post("/techs", { ...data, userId: user.id })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
   return (
-    <>
-      <Header h2={user.username} location="dashboard" />
-      <Container>
-        <div className="main">
+    <ContainerFeed>
+      <Header h2={user.username} location="feed" />
+      <MainFeed>
+        <DivLeft>
           <CardUser
-            iconMore={<MdAdd />}
-            iconPencil={<HiPencil />}
-            iconPaper={<BsFilePdf />}
+            iconMore={<AiOutlinePlus size={20} />}
+            iconPaper={<VscFilePdf size={20} />}
+            iconPencil={<AiFillEdit size={20} />}
           />
-          <Post h2={user.username} p="alterar" src="" />
-        </div>
-        <section>{<CardsNews />}</section>
-        {updateUser && (
-          <Modal>
-            <Form>
-              <header className="divHeader">
-                <h3>Atualizar Perfil</h3>
-                <AiOutlineClose onClick={() => setUpdateUser(!updateUser)} />
-              </header>
-              <CustomInput
-                id="username"
-                label="Nome de usuário"
-                placeholder="Insira o novo nome de usuário"
-                register={register}
-                error={errors?.username?.message}
-              />
-              <CustomInput
-                id="avatar_url"
-                label="URL"
-                placeholder="Insira a URL da imagem"
-                register={register}
-                error={errors?.avatar_url?.message}
-              />
-              <div className="doubled__buttons">
-                <Button
-                  buttonStyle="primary"
-                  bg="var(--ligth-blue)"
-                  color="var(--white)"
-                  disColor="var(--disabled-blue)"
-                  hover="var(--medium-blue)"
-                  type="submit"
-                >
-                  Salvar
-                </Button>
-                <Button
-                  buttonStyle="primary"
-                  bg="var(--ligth-blue)"
-                  color="var(--white)"
-                  disColor="var(--disabled-blue)"
-                  hover="var(--medium-blue)"
-                  type="submit"
-                >
-                  Apagar Conta
-                </Button>
-              </div>
-            </Form>
-          </Modal>
-        )}
-        {addTechs && (
-          <Modal>
-            <Form onSubmit={handleSubmit(addTechUser)}>
-              <header className="divHeader">
-                <h3>Nova Tecnologia</h3>
-                <AiOutlineClose onClick={() => setAddTechs(!addTechs)} />
-              </header>
-              <CustomInput
-                id="tech_name"
-                label="Tech"
-                placeholder="Nova Tecnologia"
-                register={register}
-                error={errors?.tech_name?.message}
-              />
-              <CustomInput
-                select
-                id="status"
-                label="Status"
-                register={register}
-                options={statusOptions}
-              />
-              <Button
-                buttonStyle="primary"
-                bg="var(--ligth-blue)"
-                color="var(--white)"
-                disColor="var(--disabled-blue)"
-                hover="var(--medium-blue)"
-                type="submit"
-              >
-                Salvar
-              </Button>
-            </Form>
-          </Modal>
-        )}
-      </Container>
-    </>
+        </DivLeft>
+        <DivMidle>
+          <FriendList />
+          <PostList postList={posts} />
+        </DivMidle>
+      </MainFeed>
+      <DivRight>
+        <CardsNews />
+      </DivRight>
+      <FooterMobile />
+    </ContainerFeed>
   );
 };
+
+export default Dashboard;
