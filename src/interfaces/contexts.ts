@@ -1,6 +1,6 @@
 import React from "react";
 import { ISwitcher } from "./pages";
-import { Id, ToastContent, ToastOptions } from "react-toastify";
+import { Id, ToastOptions, ToastPosition, UpdateOptions } from "react-toastify";
 import { IGeneralAnimations } from "./styles";
 
 export interface ISwitcherContext {
@@ -11,7 +11,7 @@ export interface ISwitcherContext {
   animation: IGeneralAnimations;
   setAnimation: React.Dispatch<React.SetStateAction<IGeneralAnimations>>;
   hideFL: boolean;
-  setHideFL: React.Dispatch<React.SetStateAction<boolean>>
+  setHideFL: React.Dispatch<React.SetStateAction<boolean>>;
   setAddTechs: React.Dispatch<React.SetStateAction<boolean>>;
   setUpdateUser: React.Dispatch<React.SetStateAction<boolean>>;
   updateUser: boolean;
@@ -62,8 +62,8 @@ export interface ICoreResponse {
 }
 
 export interface INotification {
-  updateToast: (toastRef: Id, message: string, type: string) => void;
-  baseTemplate: [ToastContent, ToastOptions];
+  // prettier-ignore
+  updateToast: (toastRef: Id, message: string, position: ToastPosition, type: UpdateOptions["type"]) => void;
   base: ToastOptions;
 }
 
