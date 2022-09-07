@@ -111,4 +111,5 @@ export interface ITechData {
   name: string;
   status: string;
   userId: any;
+  id: any
 }

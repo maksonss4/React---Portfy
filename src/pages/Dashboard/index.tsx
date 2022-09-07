@@ -39,7 +39,7 @@ export const Dashboard = () => {
           />
           <Post h2={user.username} p="alterar" src="" />
         </div>
-        <section>{/* <CardsNews /> */}</section>
+        <section>{ <CardsNews /> }</section>
         {updateUser && (
           <Modal>
             <button type="button" onClick={() => setUpdateUser(!updateUser)}>
@@ -50,7 +50,7 @@ export const Dashboard = () => {
                 <h2>Atualizar Perfil</h2>
               </div>
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" id="username" />
+              <input type="text" name="username" id="username" defaultValue={user.name}/>
               <label htmlFor="avatar">Avatar</label>
               <input type="url" name="avatar" id="avatar" />
               <div>

@@ -5,29 +5,19 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import api from "../../services/api";
 
-const TechSearch = () => {
-  const token = localStorage.getItem("@portfy(token)");
-  try {
-    const getTech = api.get("/tech/1");
-    console.log(getTech);
-    // prettier-ignore
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    //  "@portfy(token)"
-  } catch (error) {
-    console.error(error);
-  }
-};
 const CardUser = ({
   iconMore,
   iconPaper,
   iconPencil,
   buttonIcon,
 }: ICardUserProps) => {
-  const { setAddTechs, setUpdateUser, addTechs, updateUser } =
-    useContext(SwitchContext);
+  const { setAddTechs, setUpdateUser, addTechs, updateUser, } =useContext(SwitchContext);
 
   const { user } = useContext(AuthContext);
   const [techs, setTechs] = useState<ITechData[]>([]);
+  const techsUser = techs.filter((elemen)=>{
+    return elemen.userId === user.id
+  })
 
   useEffect(() => {
     api
@@ -35,23 +25,7 @@ const CardUser = ({
       .then((response) => setTechs(response.data))
       .catch((err) => console.log(err));
   }, [techs]);
-  console.log(techs);
-  const doAPost = () => {
-    api
-      .post("/techs", {
-        name: "banana de pijama",
-        status: "finalizada",
-        userId: "1",
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
-  const deletePost = (id: number) => {
-    api
-      .delete("/techs/" + id)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+
 
   return (
     <ContainerCardUser>
@@ -74,9 +48,9 @@ const CardUser = ({
         <div className="description-icon">
           <div className="userName">
             <h2>{user.username}</h2>
-            {techs.filter((elem: any) => {
-              return <button>{elem.name}</button>;
-            })}
+            
+            <p>{techsUser.map((tech)=>tech.name).join(" | ")}</p>
+          
           </div>
           <div className="icon">
             <ButtonIcon
