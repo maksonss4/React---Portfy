@@ -5,16 +5,13 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import api from "../../services/api";
 
-const CardUser = ({
-  iconMore,
-  iconPaper,
-  iconPencil,
-  buttonIcon,
-}: ICardUserProps) => {
+// prettier-ignore
+const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProps) => {
   const { setAddTechs, setUpdateUser, addTechs, updateUser, } =useContext(SwitchContext);
 
   const { user } = useContext(AuthContext);
   const [techs, setTechs] = useState<ITechData[]>([]);
+  
   const techsUser = techs.filter((elemen)=>{
     return elemen.userId === user.id
   })

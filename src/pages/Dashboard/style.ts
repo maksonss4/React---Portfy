@@ -43,6 +43,7 @@ export const DivRight = styled.div`
   justify-content: center;
   width: 100%;
   padding: 0 1rem;
+  gap: 1rem;
 
   @media (min-width: 769px) {
     min-width: 30%;
