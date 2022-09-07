@@ -1,4 +1,5 @@
 import { DeepRequired, FieldErrorsImpl, FieldValues } from "react-hook-form";
+import { string } from "yup";
 
 export interface ILoginRequest {
   email?: string;
@@ -21,4 +22,12 @@ export interface IRegisterRequest {
 export interface ISwitcher {
   login?: boolean;
   register?: boolean;
+}
+
+export interface IUpdateUser {
+  username?: string;
+  avatar_url?: string;
+  tech_name?: string;
+  status?: string;
+  errors?: FieldErrorsImpl<DeepRequired<FieldValues>>;
 }

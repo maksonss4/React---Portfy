@@ -13,13 +13,25 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
+import { AiOutlineClose } from "react-icons/ai";
+import CustomInput from "../../components/Input";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { updateUserSchema } from "../../validations/updateUser";
+import { IUpdateUser } from "../../interfaces/pages";
+import { statusOptions } from "../../components/Input/options";
+import Button from "../../components/Button";
 
 export const Dashboard = () => {
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
+  // prettier-ignore
+  const { register, handleSubmit, formState: { errors } } = useForm<IUpdateUser>({
+    resolver: yupResolver(updateUserSchema)
+  });
+
   const { updateUser, addTechs, setAddTechs, setUpdateUser } =
     useContext(SwitchContext);
   const token = localStorage.getItem("@portfy(token)");
+
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   const addTechUser = (data: any) => {
     api
@@ -39,25 +51,49 @@ export const Dashboard = () => {
           />
           <Post h2={user.username} p="alterar" src="" />
         </div>
-        <section>{ <CardsNews /> }</section>
+        <section>{<CardsNews />}</section>
         {updateUser && (
           <Modal>
-            <button type="button" onClick={() => setUpdateUser(!updateUser)}>
-              X
-            </button>
             <Form>
-              <div className="divHeader">
-                <h2>Atualizar Perfil</h2>
-              </div>
-              <label htmlFor="username">Username</label>
-              <input type="text" name="username" id="username" defaultValue={user.name}/>
-              <label htmlFor="avatar">Avatar</label>
-              <input type="url" name="avatar" id="avatar" />
-              <div>
-                <button type="submit">Salvar</button>
-                <button type="button" onClick={() => console.log("deletar")}>
-                  Deletar
-                </button>
+              <header className="divHeader">
+                <h3>Atualizar Perfil</h3>
+                <AiOutlineClose onClick={() => setUpdateUser(!updateUser)} />
+              </header>
+              <CustomInput
+                id="username"
+                label="Nome de usuário"
+                placeholder="Insira o novo nome de usuário"
+                register={register}
+                error={errors?.username?.message}
+              />
+              <CustomInput
+                id="avatar_url"
+                label="URL"
+                placeholder="Insira a URL da imagem"
+                register={register}
+                error={errors?.avatar_url?.message}
+              />
+              <div className="doubled__buttons">
+                <Button
+                  buttonStyle="primary"
+                  bg="var(--ligth-blue)"
+                  color="var(--white)"
+                  disColor="var(--disabled-blue)"
+                  hover="var(--medium-blue)"
+                  type="submit"
+                >
+                  Salvar
+                </Button>
+                <Button
+                  buttonStyle="primary"
+                  bg="var(--ligth-blue)"
+                  color="var(--white)"
+                  disColor="var(--disabled-blue)"
+                  hover="var(--medium-blue)"
+                  type="submit"
+                >
+                  Apagar Conta
+                </Button>
               </div>
             </Form>
           </Modal>
@@ -65,26 +101,34 @@ export const Dashboard = () => {
         {addTechs && (
           <Modal>
             <Form onSubmit={handleSubmit(addTechUser)}>
-              <div className="divHeader">
-                <h2>Adicionar tecnologia</h2>
-                <button type={"button"} onClick={() => setAddTechs(!addTechs)}>
-                  X
-                </button>
-              </div>
-              <label htmlFor="name">Nome</label>
-              <input
-                type="text"
-                id="name"
-                placeholder="Nome da tecnologia"
-                {...register("name")}
+              <header className="divHeader">
+                <h3>Nova Tecnologia</h3>
+                <AiOutlineClose onClick={() => setAddTechs(!addTechs)} />
+              </header>
+              <CustomInput
+                id="tech_name"
+                label="Tech"
+                placeholder="Nova Tecnologia"
+                register={register}
+                error={errors?.tech_name?.message}
               />
-              <label htmlFor="password">Status</label>
-              <select id="" {...register("status")}>
-                <option value="iniciante">Iniciante</option>
-                <option value="intermediario">Intermediário</option>
-                <option value="avancado">Avançado</option>
-              </select>
-              <button type="submit">Salvar</button>
+              <CustomInput
+                select
+                id="status"
+                label="Status"
+                register={register}
+                options={statusOptions}
+              />
+              <Button
+                buttonStyle="primary"
+                bg="var(--ligth-blue)"
+                color="var(--white)"
+                disColor="var(--disabled-blue)"
+                hover="var(--medium-blue)"
+                type="submit"
+              >
+                Salvar
+              </Button>
             </Form>
           </Modal>
         )}
