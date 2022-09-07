@@ -1,17 +1,33 @@
-import { Post } from "../Post";
 import { List, Container, Textarea, TextareaContainer } from "./styles";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IPostList, IPostProps } from "../../interfaces/components";
 import { Request } from "../../backup/post";
+import { Post } from "../Post";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const PostList = ({ postList }: IPostList) => {
   const [post, setPost] = useState("");
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhYnJpZWxtYXJhbmhhbzQ4QGdtYWlsLmNvbSIsImlhdCI6MTY2MjQ3ODkzNywiZXhwIjoxNjYyNDgyNTM3LCJzdWIiOiIyIn0.H7WjYwbkhHZGVK5O8q1FwGTAtASe3pVaxkzvOi-9rPE"
+  const { setPosts, posts } = useContext(AuthContext);
+
+  const userLogadoId = localStorage.getItem("@portfy(id)");
+  const token = localStorage.getItem("@portfy(token)");
+
   const createPost = () => {
-    Request.post("/posts",({content: post, userId:2}))
-    .then((response)=>console.log(response))
-    .catch((erro)=>console.log(erro))
+    if (post) {
+      const data = { content: post, userId: userLogadoId };
+
+      Request.post("/posts", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then(() => {
+          Request.get("/posts").then((res) => setPosts(res.data));
+        })
+        .catch((erro) => console.log(erro));
+    }
   };
+
   return (
     <Container>
       <TextareaContainer>
@@ -24,13 +40,24 @@ const PostList = ({ postList }: IPostList) => {
           Publicar
         </button>
       </TextareaContainer>
-      <List>
-        {postList?.map(
-          ({ content, id, userAvatar, userID, userName }: IPostProps) => (
-            <Post key={id} src={userAvatar} h2={userName} p={content} id={id} token={token}/>
-          )
-        )}
-      </List>
+      {postList.length > 0 ? (
+        <List>
+          {postList.map(
+            ({ content, id, userAvatar, userId, userName }: IPostProps) => (
+              <Post
+                key={id}
+                src={userAvatar}
+                h2={userName}
+                p={content}
+                id={id}
+                userId={userId}
+              />
+            )
+          )}
+        </List>
+      ) : (
+        <p>Não existem postagens</p>
+      )}
     </Container>
   );
 };

@@ -45,6 +45,8 @@ export interface IAuth {
   cepRequest: (e: React.FocusEvent<HTMLInputElement, Element>) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
   logout: () => void;
+  posts: any;
+  setPosts: any;
 }
 
 export interface ICoreResponse {
