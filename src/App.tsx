@@ -1,7 +1,7 @@
 import AuthProvider from "./contexts/AuthContext";
 import NotificationProvider from "./contexts/NotificationContext";
 import SwitchProvider from "./contexts/SwitchContext";
-import { Dashboard } from "./pages/Dashboard";
+import Feed from "./pages/Feed";
 import AppRoutes from "./routes/routes";
 import { Global } from "./styles";
 

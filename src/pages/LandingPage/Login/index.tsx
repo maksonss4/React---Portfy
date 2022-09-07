@@ -21,27 +21,28 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const stateType = state as IStateType;
+  // const { state } = useLocation();
+  // const stateType = state as IStateType;
 
   const { setUser } = useContext(AuthContext);
-  const { updateToast, baseTemplate } = useContext(NotificationContext);
+  // const { updateToast, baseTemplate } = useContext(NotificationContext);
 
   const loginApply: SubmitHandler<ILoginRequest> = async (data) => {
-    const load = toast.loading(...baseTemplate);
+    // const load = toast.loading(...baseTemplate);
     try {
       const response = await api.post<ICoreResponse>("/login", data);
       // prettier-ignore
       api.defaults.headers.common["Authorization"] = `Bearer ${response.data.accessToken}`;
       localStorage.setItem("@portfy(token)", response.data.accessToken);
+      localStorage.setItem("@portfy(id)", response.data.user.id);
 
       setUser(response.data.user);
-      updateToast(load, `Bem vindo ${response.data.user.username}`, "successs");
+      // updateToast(load, `Bem vindo ${response.data.user.username}`, "successs");
 
-      const navPath = stateType?.from?.pathname || "/dashboard";
-      navigate(navPath, { replace: true });
+      // const navPath = stateType?.from?.pathname || "/dashboard";
+      navigate("/feed", { replace: true });
     } catch (error) {
-      updateToast(load, "Email ou senha inválidos", "error");
+      // updateToast(load, "Email ou senha inválidos", "error");
     }
   };
 

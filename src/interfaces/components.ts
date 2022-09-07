@@ -1,4 +1,10 @@
-import { ButtonHTMLAttributes, FormHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  FormHTMLAttributes,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+} from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { ISelectOptions } from "../components/Input/options";
 import { IAdress } from "./contexts";
@@ -47,6 +53,8 @@ export interface IPostContent {
   src?: string;
   h2?: string;
   p?: string;
+  id?: string;
+  token?: string
 }
 
 export interface INews {
@@ -72,11 +80,11 @@ export interface IPostList {
 }
 
 export interface IPostProps {
-  id: string;
-  userID: string;
-  userAvatar: string;
-  content: string;
-  userName: string;
+  id?: string;
+  userID?: string;
+  userAvatar?: string;
+  content?: string;
+  userName?: string;
 }
 export interface ICardUserProps {
   iconMore?: JSX.Element;
@@ -88,4 +96,5 @@ export interface ICardUserProps {
 export interface IHeader {
   src?: string;
   h2?: string;
+  location?: string;
 }
