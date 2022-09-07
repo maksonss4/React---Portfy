@@ -27,6 +27,7 @@ export interface IPhoneBox {
 export interface IGeneralAnimations {
   form?: string;
   text?: string;
+  friendList?: string;
 }
 
 export interface IAnimationContent {
@@ -41,4 +42,9 @@ export interface ILoadStyleProps {
   color: string;
   duration: number;
   reverse?: string | boolean;
+}
+
+export interface IFriendListSlide {
+  yPos?: string;
+  animationName?: string;
 }

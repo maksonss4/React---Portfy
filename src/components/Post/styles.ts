@@ -6,13 +6,14 @@ const PostContainer = styled.li`
   margin-bottom: 10px;
   background-color: white;
   border-radius: 8px;
-
-  width: 90%;
-  min-height: 137px;
   box-shadow: var(--boxshadow);
+  width: 100%;
   max-width: 100%;
+  min-height: 137px;
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 8px;
 
-  box-shadow: var(--boxshadow);
   .PostContent {
     display: flex;
     flex-direction: column;

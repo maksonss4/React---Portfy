@@ -10,6 +10,8 @@ export const ContainerFooterMobile = styled.div`
   color: var(--white);
   position: fixed;
   bottom: 0;
+  left: 0;
+  z-index: 3;
 
   .FooterIcons {
     width: 100%;

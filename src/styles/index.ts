@@ -10,6 +10,7 @@ export const Global = createGlobalStyle`
     --dark-blue:      #114B5F;
     --ligth-green:    #47DAC5;
     --medium-green:   #0CBABA;
+    --faded-green:    #47DAC53A;
     --ligth-blue:     #19CAE5;
     --medium-blue:    #09AAC5;
     --disabled-blue:  #A9CAE5;
@@ -52,6 +53,15 @@ export const Global = createGlobalStyle`
   body {
     line-height: 1;
     font-family: 'Poppins';
+
+    &::-webkit-scrollbar {
+    width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--ligth-grey);
+      border-radius: 20px;
+    }
   }
 
   input , button, textarea, select {

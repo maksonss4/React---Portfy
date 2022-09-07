@@ -1,12 +1,21 @@
 import React from "react";
 import { ISwitcher } from "./pages";
 import { Id, ToastContent, ToastOptions } from "react-toastify";
+import { IGeneralAnimations } from "./styles";
 
 export interface ISwitcherContext {
   screenSwitcher: ISwitcher;
   setScreenSwitcher: React.Dispatch<React.SetStateAction<ISwitcher>>;
   condicionModal: boolean;
   setCondicionlModal: React.Dispatch<React.SetStateAction<boolean>>;
+  animation: IGeneralAnimations;
+  setAnimation: React.Dispatch<React.SetStateAction<IGeneralAnimations>>;
+  hideFL: boolean;
+  setHideFL: React.Dispatch<React.SetStateAction<boolean>>
+  setAddTechs: React.Dispatch<React.SetStateAction<boolean>>;
+  setUpdateUser: React.Dispatch<React.SetStateAction<boolean>>;
+  updateUser: boolean;
+  addTechs: boolean;
 }
 
 export interface IUser {
@@ -18,7 +27,7 @@ export interface IUser {
   password?: string;
   password_confirm?: string;
   role?: string;
-  id: number;
+  id: string;
 }
 
 export interface IAdress {
@@ -42,6 +51,9 @@ export interface IAuth {
   cepError: boolean;
   cepRequest: (e: React.FocusEvent<HTMLInputElement, Element>) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  logout: () => void;
+  posts: any;
+  setPosts: any;
 }
 
 export interface ICoreResponse {
