@@ -9,7 +9,7 @@ export const Post = ({ src, h2, p }: IPostContent) => {
         {src ? (
           <img className="userLogo" src={src} alt="" />
         ) : (
-          <HiUserCircle size={80} />
+          <HiUserCircle color="var(--medium-grey)" size={80} />
         )}
       </div>
       <div className="PostContent">

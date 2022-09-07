@@ -89,3 +89,10 @@ export interface IHeader {
   src?: string;
   h2?: string;
 }
+
+export interface IPageBulb {
+  feed: boolean;
+  search: boolean;
+  dashboard: boolean;
+  chat: boolean
+}

@@ -1,7 +1,6 @@
 import { HeaderContainer } from "./styles";
-import { VscHome } from "react-icons/vsc";
 import { BsChatRightText } from "react-icons/bs";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
 import { IHeader } from "../../interfaces/components";
 
 export const Header = ({ src, h2 }: IHeader) => {
@@ -13,17 +12,25 @@ export const Header = ({ src, h2 }: IHeader) => {
         ) : (
           <img
             className="userLogoMobile"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy4Vvlzhz_mY0fDFrSllG43WpRRoi6JUKNZg&usqp=CAU"
+            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
             alt=""
           />
         )}
 
         <h2 className="HeaderPortfyLogo">Portfy</h2>
         <button className="HeaderButtons">
-          <VscHome className="HeaderHomeButton" />
+          <AiOutlineHome
+            size={25}
+            color="var(--white)"
+            className="HeaderHomeButton"
+          />
         </button>
         <button className="HeaderButtons">
-          <BsChatRightText className="HeaderChatButton" />
+          <BsChatRightText
+            size={25}
+            color="var(--white)"
+            className="HeaderChatButton"
+          />
         </button>
       </div>
       <div className="SearchInputContainer">
@@ -34,6 +41,7 @@ export const Header = ({ src, h2 }: IHeader) => {
         />
         <button className="HeaderButtons">
           <AiOutlineSearch
+            size={25}
             color="var(--medium-grey)"
             className="SearchButton"
           />
@@ -45,14 +53,14 @@ export const Header = ({ src, h2 }: IHeader) => {
         ) : (
           <img
             className="userLogoDesktop"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy4Vvlzhz_mY0fDFrSllG43WpRRoi6JUKNZg&usqp=CAU"
+            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
             alt=""
           />
         )}
         {h2 ? (
           <h2 className="HeaderUserName">{h2}</h2>
         ) : (
-          <h2 className="HeaderUserName">Você não está logado</h2>
+          <h2 className="HeaderUserName">Francisco Stenico</h2>
         )}
       </div>
     </HeaderContainer>

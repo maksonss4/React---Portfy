@@ -4,7 +4,9 @@ import FooterMobile from "../../components/FooterMobile";
 import FriendList from "../../components/FriendList";
 import { Header } from "../../components/Header";
 import PostList from "../../components/PostList";
+import { VscFilePdf } from "react-icons/vsc";
 import { ContainerFeed, DivLeft, DivMidle, DivRight, MainFeed } from "./style";
+import { AiFillEdit, AiOutlinePlus } from "react-icons/ai";
 
 const Feed = () => {
   const postList1 = [
@@ -63,16 +65,20 @@ const Feed = () => {
       <Header />
       <MainFeed>
         <DivLeft>
-          <CardUser />
-          <FriendList />
+          <CardUser
+            iconMore={<AiOutlinePlus size={20} />}
+            iconPaper={<VscFilePdf size={20} />}
+            iconPencil={<AiFillEdit size={20} />}
+          />
         </DivLeft>
         <DivMidle>
+          <FriendList />
           <PostList postList={postList1} />
         </DivMidle>
-        <DivRight>
-          <CardsNews />
-        </DivRight>
       </MainFeed>
+      <DivRight>
+        <CardsNews />
+      </DivRight>
       <FooterMobile />
     </ContainerFeed>
   );

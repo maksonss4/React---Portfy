@@ -1,12 +1,17 @@
 import React from "react";
 import { ISwitcher } from "./pages";
 import { Id, ToastContent, ToastOptions } from "react-toastify";
+import { IGeneralAnimations } from "./styles";
 
 export interface ISwitcherContext {
   screenSwitcher: ISwitcher;
   setScreenSwitcher: React.Dispatch<React.SetStateAction<ISwitcher>>;
   condicionModal: boolean;
   setCondicionlModal: React.Dispatch<React.SetStateAction<boolean>>;
+  animation: IGeneralAnimations;
+  setAnimation: React.Dispatch<React.SetStateAction<IGeneralAnimations>>;
+  hideFL: boolean;
+  setHideFL: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface IUser {
