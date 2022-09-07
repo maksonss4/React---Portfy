@@ -19,19 +19,11 @@ export const Dashboard = () => {
   const { register, handleSubmit } = useForm();
   const { updateUser, addTechs, setAddTechs, setUpdateUser } =
     useContext(SwitchContext);
-  const doAPost = () => {
-    api
-      .post("/techs", {
-        name: "banana de pijama",
-        status: "finalizada",
-        userId: "1",
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+  const token = localStorage.getItem("@portfy(token)");
+  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   const addTechUser = (data: any) => {
     api
-      .post("/techs", data)
+      .post("/techs", { ...data, userId: user.id })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };

@@ -1,6 +1,6 @@
-import { ICardUserProps } from "../../interfaces/components";
+import { ICardUserProps, ITechData } from "../../interfaces/components";
 import { ButtonIcon, ContainerCardUser } from "./style";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import api from "../../services/api";
@@ -27,14 +27,15 @@ const CardUser = ({
     useContext(SwitchContext);
 
   const { user } = useContext(AuthContext);
-  const [techs, setTechs] = useState<any>([]);
-  const showAllTechs = () => {
+  const [techs, setTechs] = useState<ITechData[]>([]);
+
+  useEffect(() => {
     api
       .get("/techs")
       .then((response) => setTechs(response.data))
       .catch((err) => console.log(err));
-    console.log(techs);
-  };
+  }, [techs]);
+  console.log(techs);
   const doAPost = () => {
     api
       .post("/techs", {
@@ -73,7 +74,7 @@ const CardUser = ({
         <div className="description-icon">
           <div className="userName">
             <h2>{user.username}</h2>
-            {techs.map((elem: any) => {
+            {techs.filter((elem: any) => {
               return <button>{elem.name}</button>;
             })}
           </div>
