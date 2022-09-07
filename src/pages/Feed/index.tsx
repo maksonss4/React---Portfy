@@ -11,6 +11,7 @@ import { VscFilePdf } from "react-icons/vsc";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ContainerFeed, DivLeft, DivMidle, DivRight, MainFeed } from "./style";
 import { AiFillEdit, AiOutlinePlus } from "react-icons/ai";
+import CardUsers from "../../components/Users";
 
 const Feed = () => {
   const { user, posts, setPosts } = useContext(AuthContext);
@@ -38,6 +39,7 @@ const Feed = () => {
         </DivMidle>
       </MainFeed>
       <DivRight>
+        <CardUsers />
         <CardsNews />
       </DivRight>
       <FooterMobile />

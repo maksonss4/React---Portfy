@@ -40,7 +40,9 @@ export const DivMidle = styled.div`
 
 export const DivRight = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 15px;
   width: 100%;
   padding: 0 1rem;
 

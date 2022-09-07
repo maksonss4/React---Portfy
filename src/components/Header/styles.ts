@@ -31,6 +31,10 @@ export const HeaderContainer = styled.div`
 
     .HeaderButtons {
       display: none;
+
+      button {
+        background-color: transparent;
+      }
     }
   }
 

@@ -1,16 +1,29 @@
 import { ICardUserProps } from "../../interfaces/components";
 import { ButtonIcon, ContainerCardUser } from "./style";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
 
 // prettier-ignore
 const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProps) => {
-  const { condicionModal, setCondicionlModal } = useContext(SwitchContext);
+  // const { condicionModal, setCondicionlModal } = useContext(SwitchContext);
+
+  const [totalSeguidores, setTotalSeguidores] = useState(0)
   
-  const { user } = useContext(AuthContext);
+  const { user, users} = useContext(AuthContext);
+
   const { setAddTechs, setUpdateUser, addTechs, updateUser } =
     useContext(SwitchContext);
+
+  useEffect(() => {
+
+    users.forEach(element => {
+      const ehSeguidor = element.following.some(idUser => idUser === user.id)
+      if(ehSeguidor){
+        setTotalSeguidores(totalSeguidores + 1)
+      }
+    });
+  }, [])
   
   return (
     <ContainerCardUser>
@@ -44,11 +57,11 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
       </div>
       <div className="followers-following">
         <div className="followers-following-children">
-          <p>11</p>
+          <p>{totalSeguidores}</p>
           <span>Seguidores</span>
         </div>
         <div className="followers-following-children">
-          <p>11</p>
+          <p>{user.following.length}</p>
           <span>Seguindo</span>
         </div>
       </div>

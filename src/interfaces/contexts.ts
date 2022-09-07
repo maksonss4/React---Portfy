@@ -11,7 +11,7 @@ export interface ISwitcherContext {
   animation: IGeneralAnimations;
   setAnimation: React.Dispatch<React.SetStateAction<IGeneralAnimations>>;
   hideFL: boolean;
-  setHideFL: React.Dispatch<React.SetStateAction<boolean>>
+  setHideFL: React.Dispatch<React.SetStateAction<boolean>>;
   setAddTechs: React.Dispatch<React.SetStateAction<boolean>>;
   setUpdateUser: React.Dispatch<React.SetStateAction<boolean>>;
   updateUser: boolean;
@@ -28,6 +28,8 @@ export interface IUser {
   password_confirm?: string;
   role?: string;
   id: string;
+  following: [] | string[];
+  urlPhoto?: string | "";
 }
 
 export interface IAdress {
@@ -54,6 +56,8 @@ export interface IAuth {
   logout: () => void;
   posts: any;
   setPosts: any;
+  users: IUser[];
+  setUsers: any;
 }
 
 export interface ICoreResponse {

@@ -30,7 +30,7 @@ export const Header = ({ src, h2, location }: IHeader) => {
 
         <h2 className="HeaderPortfyLogo">Portfy</h2>
         <button className="HeaderButtons">
-          { location === "feed" ? (
+          {location === "feed" ? (
             <ButtonIcon
               onClick={() => navigate("/dashboard", { replace: true })}
             >
