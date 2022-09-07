@@ -87,4 +87,10 @@ export const Global = createGlobalStyle`
     cursor: pointer;
     outline: none;
   }
+
+  input:-webkit-autofill {
+    box-shadow: 0 0 0 100px var(--white) inset;
+    transition: background-color infinite ease-in-out 0s;
+    -webkit-text-fill-color: var(--black);
+  }
 `;
