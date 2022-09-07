@@ -99,3 +99,10 @@ export interface IHeader {
   h2?: string;
   location?: string;
 }
+
+export interface IPageBulb {
+  feed: boolean;
+  search: boolean;
+  dashboard: boolean;
+  chat: boolean
+}

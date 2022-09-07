@@ -1,6 +1,7 @@
 import { List, Container, Textarea, TextareaContainer } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { IPostList, IPostProps } from "../../interfaces/components";
+import Button from "../Button";
 import { Request } from "../../backup/post";
 import { Post } from "../Post";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -34,15 +35,23 @@ const PostList = ({ postList }: IPostList) => {
         <Textarea
           onChange={(event) => setPost(event.target.value)}
           name="post-writer"
-          placeholder="          O que você está pensando?"
+          placeholder="Descreva a vaga que você está anunciando"
         />
-        <button type="button" onClick={createPost}>
+        <Button
+          buttonStyle="primary"
+          bg="var(--ligth-blue)"
+          color="var(--white)"
+          disColor="var(--disabled-blue)"
+          hover="var(--medium-blue)"
+          type="submit"
+        >
           Publicar
-        </button>
+        </Button>
       </TextareaContainer>
+      <h2 className="list__title">Minhas Postagens</h2>
       {postList.length > 0 ? (
         <List>
-          {postList.map(
+          { postList.map(
             ({ content, id, userAvatar, userId, userName }: IPostProps) => (
               <Post
                 key={id}

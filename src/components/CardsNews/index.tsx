@@ -5,7 +5,7 @@ import { Card, Container } from "./style";
 
 export const CardsNews = () => {
   const [news, setnews] = useState<INews[]>([]);
-
+  
   useEffect(() => {
     async function dados() {
       await axios
