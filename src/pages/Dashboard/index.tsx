@@ -11,13 +11,22 @@ import Form from "../../components/Formulary/styles";
 import { useContext } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
+import { useForm } from "react-hook-form";
+import api from "../../services/api";
 
 export const Dashboard = () => {
   const { user } = useContext(AuthContext);
-
+  const { register, handleSubmit } = useForm();
   const { updateUser, addTechs, setAddTechs, setUpdateUser } =
     useContext(SwitchContext);
-
+  const token = localStorage.getItem("@portfy(token)");
+  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  const addTechUser = (data: any) => {
+    api
+      .post("/techs", { ...data, userId: user.id })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <Header h2={user.username} location="dashboard" />
@@ -30,9 +39,7 @@ export const Dashboard = () => {
           />
           <Post h2={user.username} p="alterar" src="" />
         </div>
-        <section>
-          <CardsNews />
-        </section>
+        <section>{/* <CardsNews /> */}</section>
         {updateUser && (
           <Modal>
             <button type="button" onClick={() => setUpdateUser(!updateUser)}>
@@ -57,7 +64,7 @@ export const Dashboard = () => {
         )}
         {addTechs && (
           <Modal>
-            <Form>
+            <Form onSubmit={handleSubmit(addTechUser)}>
               <div className="divHeader">
                 <h2>Adicionar tecnologia</h2>
                 <button type={"button"} onClick={() => setAddTechs(!addTechs)}>
@@ -67,12 +74,12 @@ export const Dashboard = () => {
               <label htmlFor="name">Nome</label>
               <input
                 type="text"
-                name="name"
                 id="name"
                 placeholder="Nome da tecnologia"
+                {...register("name")}
               />
               <label htmlFor="password">Status</label>
-              <select name="" id="">
+              <select id="" {...register("status")}>
                 <option value="iniciante">Iniciante</option>
                 <option value="intermediario">Intermediário</option>
                 <option value="avancado">Avançado</option>
