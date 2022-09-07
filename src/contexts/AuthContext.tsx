@@ -10,6 +10,7 @@ export const AuthContext = createContext<IAuth>({} as IAuth);
 const AuthProvider = ({ children }: IGeneralProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
   const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
 
   const [cep, setCep] = useState<IAdress>({});
   const [cepError, setCepError] = useState(false);
@@ -26,13 +27,11 @@ const AuthProvider = ({ children }: IGeneralProps) => {
     async function loadUser() {
       const token = localStorage.getItem("@portfy(token)");
       const idUser = localStorage.getItem("@portfy(id)");
-
       if (token) {
         try {
           api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           const { data } = await api.get(`/users/${idUser}`);
           setUser(data);
-          // setTecs(data.techs);
           navigate("/dashboard", { replace: true });
         } catch (err) {
           console.log(err);
@@ -61,7 +60,17 @@ const AuthProvider = ({ children }: IGeneralProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, cep, cepError, setUser, logout, cepRequest }}
+      value={{
+        user,
+        loading,
+        cep,
+        cepError,
+        setUser,
+        logout,
+        cepRequest,
+        posts,
+        setPosts,
+      }}
     >
       {children}
     </AuthContext.Provider>

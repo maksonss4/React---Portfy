@@ -54,7 +54,8 @@ export interface IPostContent {
   h2?: string;
   p?: string;
   id?: string;
-  token?: string
+  token?: string;
+  userId?: string;
 }
 
 export interface INews {
@@ -76,12 +77,12 @@ export interface IpostResponse {
 }
 
 export interface IPostList {
-  postList?: IpostResponse[];
+  postList: IpostResponse[];
 }
 
 export interface IPostProps {
   id?: string;
-  userID?: string;
+  userId?: string;
   userAvatar?: string;
   content?: string;
   userName?: string;

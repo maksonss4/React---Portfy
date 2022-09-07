@@ -7,9 +7,13 @@ import { IHeader } from "../../interfaces/components";
 import Button from "../Button";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { ButtonIcon } from "../CardUser/style";
 
 export const Header = ({ src, h2, location }: IHeader) => {
   const { logout } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   return (
     <HeaderContainer>
@@ -27,9 +31,15 @@ export const Header = ({ src, h2, location }: IHeader) => {
         <h2 className="HeaderPortfyLogo">Portfy</h2>
         <button className="HeaderButtons">
           {location === "feed" ? (
-            <VscHome className="HeaderHomeButton" />
+            <ButtonIcon
+              onClick={() => navigate("/dashboard", { replace: true })}
+            >
+              <VscHome className="HeaderHomeButton" />
+            </ButtonIcon>
           ) : (
-            <MdDynamicFeed className="HeaderHomeButton" />
+            <ButtonIcon onClick={() => navigate("/feed", { replace: true })}>
+              <MdDynamicFeed className="HeaderHomeButton" />
+            </ButtonIcon>
           )}
         </button>
         <button className="HeaderButtons">
