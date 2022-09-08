@@ -63,6 +63,7 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
         textFade,
         text, 
         uploader
+
       }}
     >
       {children}

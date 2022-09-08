@@ -79,6 +79,8 @@ export interface IAuth {
   users: IUser[];
   setUsers: any;
   updateProfile: SubmitHandler<IUpdateUser>;
+  techs: any;
+  setTechs: any;
 }
 
 export interface ICoreResponse {

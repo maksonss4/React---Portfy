@@ -3,19 +3,16 @@ import { ButtonIcon, ContainerCardUser } from "./style";
 import { useContext, useEffect, useState } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
-
+import api from "../../services/api";
 // prettier-ignore
 const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProps) => {
-  const [techs, setTechs] = useState<ITechData[]>([]);
-  const [totalSeguidores, setTotalSeguidores] = useState(0)
   
-  const { user, users} = useContext(AuthContext);
+  const [totalSeguidores, setTotalSeguidores] = useState(0)
+ 
+  const { user, users, techs, setTechs} = useContext(AuthContext);
   const { setAddTechs, setUpdateUser, addTechs, updateUser } =
     useContext(SwitchContext);
-
-  const techsUser = techs.filter((elemen)=>{
-    return elemen.userId === user.id
-  });
+ 
   
   useEffect(() => {
     users.forEach(element => {
@@ -24,8 +21,14 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
         setTotalSeguidores(totalSeguidores + 1)
       }
     });
+    api
+    .get("/techs")
+    .then((res) => setTechs(res.data))
+    .catch((err) => console.log(err));
   }, [])
-
+  // const techsUser = techs.filter((elemen:any)=>{
+  //   return elemen.userId === user.id
+  // });
   return (
     <ContainerCardUser cover={user?.background_img}>
       <figure className="cover-photo" />
@@ -38,7 +41,7 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
           <div className="userName">
             <h2>{user.username}</h2>
             
-            <p>{techsUser.map((tech)=>tech.name).join(" | ")}</p>
+            <p>{techs.filter((elem:any)=>elem.userId===user.id).map((tech:any)=>tech.name).join(" | ")}</p>
           
           </div>
           <div className="icon">
