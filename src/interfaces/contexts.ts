@@ -16,6 +16,8 @@ export interface ISwitcherContext {
   setUpdateUser: React.Dispatch<React.SetStateAction<boolean>>;
   updateUser: boolean;
   addTechs: boolean;
+  textFade: (str: string, btn: string) => void;
+  text: string;
 }
 
 export interface IUser {
@@ -30,7 +32,7 @@ export interface IUser {
   id: string;
   following: [] | string[];
   avatar_url: string;
-  background_img: null | string;
+  background_img: string;
 }
 
 export interface IAdress {

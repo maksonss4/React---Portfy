@@ -110,6 +110,6 @@ export interface IPageBulb {
 export interface ITechData {
   name: string;
   status: string;
+  id: any;
   userId: any;
-  id: any
 }

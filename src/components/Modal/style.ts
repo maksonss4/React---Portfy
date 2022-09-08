@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
   top: 0;
   left: 0;
-  display: flex;
-  width: 100vw;
   position: fixed;
+  display: flex;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100%;
   background-color: var(--faded-black);
   backdrop-filter: blur(2px);
   margin: 0px;
