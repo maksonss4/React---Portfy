@@ -23,8 +23,8 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
     friendList: "",
     text: "fade-in 1 250ms linear",
   });
-  const [updateUser, setUpdateUser] = useState<boolean>(true);
-  const [addTechs, setAddTechs] = useState<boolean>(true);
+  const [updateUser, setUpdateUser] = useState<boolean>(false);
+  const [addTechs, setAddTechs] = useState<boolean>(false);
 
   const textFade = (str: string, btn: string) => {
     btn === "login"
@@ -56,7 +56,7 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
         updateUser,
         addTechs,
         textFade,
-        text
+        text,
       }}
     >
       {children}

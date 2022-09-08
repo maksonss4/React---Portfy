@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import styled from "styled-components";
 import { IButtonIconProp, IUserBG } from "../../interfaces/styles";
 
