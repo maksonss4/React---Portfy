@@ -39,7 +39,12 @@ const AuthProvider = ({ children }: IGeneralProps) => {
           "success"
         );
       })
-      .catch((error) => console.log(error) /* updateToast(load, "Ocorreu um erro", "top-right", "error") */);
+      .catch(
+        (error) =>
+          console.log(
+            error
+          ) /* updateToast(load, "Ocorreu um erro", "top-right", "error") */
+      );
   };
 
   const logout = () => {
@@ -54,14 +59,11 @@ const AuthProvider = ({ children }: IGeneralProps) => {
       const idUser = localStorage.getItem("@portfy(id)");
 
       if (token) {
-        try {
-          api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          const { data } = await api.get(`/users/${idUser}`);
-          setUser(data);
-        } catch (err) {
-          console.log(err);
-        }
+        api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        api.get(`/users/${idUser}`).then((res) => setUser(res.data));
+        navigate("/feed", { replace: true });
       }
+
       setTimeout(() => {
         setLoading(false);
       }, 1000);
@@ -101,7 +103,7 @@ const AuthProvider = ({ children }: IGeneralProps) => {
         setUsers,
         updateProfile,
         techs,
-        setTechs
+        setTechs,
       }}
     >
       {children}

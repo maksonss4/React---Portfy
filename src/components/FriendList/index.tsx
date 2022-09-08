@@ -30,7 +30,7 @@ const FriendList = () => {
   }, [hideFL]);
 
   return (
-    <DivContainer animationName={animation.friendList} yPos={position}>
+    <DivContainer className="container__friends" animationName={animation.friendList} yPos={position}>
       <div className="friendlist__header">
         <h2>Amigos</h2>
       </div>

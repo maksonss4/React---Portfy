@@ -15,12 +15,13 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
     useContext(SwitchContext);
     
   useEffect(() => {
-    users.forEach(element => {
-      const ehSeguidor = element.following.some(idUser => idUser === user.id)
-      if(ehSeguidor){
-        setTotalSeguidores(totalSeguidores + 1)
-      }
-    });
+    // users.forEach(element => {
+    //   const ehSeguidor = element.following.some(idUser => idUser === user.id)
+    //   if(ehSeguidor){
+    //     setTotalSeguidores(totalSeguidores + 1)
+    //   }
+    // });
+
     api
     .get("/techs")
     .then((res) => setTechs(res.data))
@@ -42,19 +43,23 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
             <p>{techs.filter((elem: any) => elem.userId === user.id).map((tech: any) => tech.name).join(" | ")}</p>
           </div>
           <div className="icon">
-            <ButtonIcon
-              display={buttonIcon}
-              onClick={() => setUpdateUser(!updateUser)}
-            >
-              {iconPencil}
-            </ButtonIcon>
-            <ButtonIcon
-              display={buttonIcon}
-              onClick={() => setAddTechs(!addTechs)}
-            >
-              {iconMore}
-            </ButtonIcon>
-            <ButtonIcon display={buttonIcon}>{iconPaper}</ButtonIcon>
+            {
+              iconPencil ? (
+                <ButtonIcon
+                  display={buttonIcon}
+                  onClick={() => setUpdateUser(!updateUser)}
+                >
+                  {iconPencil}
+                </ButtonIcon>
+
+              ) : (
+                <ButtonIcon
+                  display={buttonIcon}
+                  onClick={() => setAddTechs(!addTechs)}
+                >
+                  {iconMore}
+                </ButtonIcon>
+            )}
           </div>
         </div>
       </div>

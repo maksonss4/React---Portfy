@@ -107,7 +107,7 @@ export const ContainerCardUser = styled.div`
 export const ButtonIcon = styled.button<IButtonIconProp>`
   display: flex;
   border: none;
-  background-color: var(--ligth-grey);
+  background-color: var(--white);
   width: 2rem;
   height: 2rem;
   border-radius: 50%;

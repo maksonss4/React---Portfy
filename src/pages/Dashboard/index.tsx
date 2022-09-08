@@ -19,10 +19,18 @@ import CustomInput from "../../components/Input";
 import { useForm } from "react-hook-form";
 import { IUpdateUser } from "../../interfaces/pages";
 import { UploaderButton } from "../../components/Button/styles";
+import api from "../../services/api";
+import { toast } from "react-toastify";
+import { NotificationContext } from "../../contexts/NotificationContext";
+import { IUser } from "../../interfaces/contexts";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { user, setUser, setPosts, updateProfile } = useContext(AuthContext);
   const { updateUser, setUpdateUser, uploader } = useContext(SwitchContext);
+  const { updateToast, base } = useContext(NotificationContext);
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -34,9 +42,24 @@ const Dashboard = () => {
     Request.get("/posts")
       .then((response) => setPosts(response.data))
       .catch((erro) => console.log(erro));
-    setUpdateUser(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      setUpdateUser(false);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const deleteAccount = async () => {
+    const load = toast.loading("Solicitação em andamento...", {
+      ...base,
+      position: "top-left",
+    });
+    api.delete(`/users/${user.id}`).then(() => {
+      setUser({} as IUser);
+      updateToast(load, "Sua conta foi excluída", "top-left", "warning");
+
+      localStorage.removeItem("@portfy(token)");
+      localStorage.removeItem("@portfy(id)");
+      navigate("/welcome", { replace: true });
+    });
+  };
 
   return (
     <ContainerFeed>
@@ -44,16 +67,11 @@ const Dashboard = () => {
       <MainFeed>
         <DivLeft>
           <div>
-            <CardUser
-              iconMore={<AiOutlinePlus size={20} />}
-              iconPaper={<VscFilePdf size={20} />}
-              iconPencil={<AiFillEdit size={20} />}
-            />
+            <CardUser iconPencil={<AiFillEdit size={20} />} />
           </div>
         </DivLeft>
         <DivMidle>
           <FriendList />
-          <PostList />
         </DivMidle>
       </MainFeed>
       <DivRight>
@@ -128,6 +146,8 @@ const Dashboard = () => {
                 bg="var(--color-negative)"
                 color="var(--white)"
                 hover="var(--negative-hover)"
+                onClick={deleteAccount}
+                type="button"
               >
                 Apagar Conta
               </Button>

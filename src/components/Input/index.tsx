@@ -52,7 +52,7 @@ const CustomInput = ({ id, label, register, error, select, options, cep, ...rest
                 }
               }}
             />
-            {(error || cepError) && (
+            {(error || (cep && cepError)) && (
               <Tooltip>{cepError && cep ? "CEP inválido" : error}</Tooltip>
             )}
           </StyledInput>
