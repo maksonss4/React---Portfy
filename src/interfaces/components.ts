@@ -88,6 +88,7 @@ export interface IPostProps {
   content?: string;
   userName?: string;
 }
+
 export interface ICardUserProps {
   iconMore?: JSX.Element;
   iconPaper?: JSX.Element;
@@ -111,6 +112,6 @@ export interface IPageBulb {
 export interface ITechData {
   name: string;
   status: string;
-  id: any;
-  userId: any;
+  id: number | string;
+  userId: number | string;
 }

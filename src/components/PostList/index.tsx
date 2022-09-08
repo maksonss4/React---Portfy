@@ -1,14 +1,13 @@
-import { List, Container, Textarea, TextareaContainer } from "./styles";
+import { Container, Textarea, TextareaContainer } from "./styles";
 import { MouseEvent, useContext, useState } from "react";
-import { IPostList, IPostProps } from "../../interfaces/components";
+
 import Button from "../Button";
 import { Request } from "../../backup/post";
-import { Post } from "../Post";
 import { AuthContext } from "../../contexts/AuthContext";
 
-const PostList = ({ postList }: IPostList) => {
+const PostList = () => {
   const [post, setPost] = useState("");
-  const { setPosts, techs, users } = useContext(AuthContext);
+  const { setPosts } = useContext(AuthContext);
   const userLogadoId = localStorage.getItem("@portfy(id)");
   const token = localStorage.getItem("@portfy(token)");
 
@@ -31,7 +30,6 @@ const PostList = ({ postList }: IPostList) => {
     }
   };
 
-
   return (
     <Container>
       <TextareaContainer>
@@ -53,26 +51,25 @@ const PostList = ({ postList }: IPostList) => {
           Publicar
         </Button>
       </TextareaContainer>
-      {postList.length > 0 ? (
+      {/* {postList.length > 0 ? (
         <List>
-          {postList.reverse().map(
-            ({ content, id, userAvatar, userId, userName }: IPostProps) => (
-              
+          {postList
+            .reverse()
+            .map(({ content, id, userAvatar, userId }: IPostProps) => (
               <Post
                 key={id}
-                h2={userName}
+                h2={"Nome do usuário"}
                 src={userAvatar}
                 p={content}
                 id={id}
                 userId={userId}
                 techs={techs}
               />
-            )
-          )}
+            ))}
         </List>
       ) : (
         <p>Não existem postagens</p>
-      )}
+      )} */}
     </Container>
   );
 };

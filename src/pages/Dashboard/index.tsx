@@ -41,7 +41,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     setUpdateUser(false);
-  }, [user.username]);
+  }, []);
 
   return (
     <ContainerFeed>
@@ -54,14 +54,11 @@ const Dashboard = () => {
               iconPaper={<VscFilePdf size={20} />}
               iconPencil={<AiFillEdit size={20} />}
             />
-            <UserProvider>
-              <PostList postList={posts} />
-            </UserProvider>
           </div>
         </DivLeft>
         <DivMidle>
           <FriendList />
-          <PostList postList={posts} />
+          <PostList />
         </DivMidle>
       </MainFeed>
       <DivRight>

@@ -4,11 +4,10 @@ import CardUser from "../../components/CardUser";
 import { Header } from "../../components/Header";
 import { HiPencil } from "react-icons/hi";
 import { BsFilePdf } from "react-icons/bs";
-import { CardsNews } from "../../components/CardsNews";
-import { ContainerFeed, DivLeft, DivMidle, DivRight } from "./style";
+import { ContainerFeed, DivLeft, DivMidle, DivRight, UlPosts } from "./style";
 import { Modal } from "../../components/Modal";
 import Form from "../../components/Formulary/styles";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -25,7 +24,8 @@ import CardUsers from "../../components/Users";
 import FooterMobile from "../../components/FooterMobile";
 
 export const Feed = () => {
-  const { user, posts, setTechs } = useContext(AuthContext);
+  const { user, posts, setPosts, setTechs, users, techs } =
+    useContext(AuthContext);
   // prettier-ignore
   const { register, handleSubmit, formState: { errors } } = useForm<IUpdateUser>({
     resolver: yupResolver(updateUserSchema)
@@ -44,11 +44,20 @@ export const Feed = () => {
   const addTechUser: SubmitHandler<IAddTech> = (data) => {
     api
       .post("/techs", { ...data, userId: user.id })
-      .then(() =>  api.get("/techs").then((res)=> setTechs(res.data))
-      )
+      .then(() => api.get("/techs").then((res) => setTechs(res.data)))
       .catch((err) => console.log(err));
-      setAddTechs(!addTechs)
+    setAddTechs(!addTechs);
   };
+
+  useEffect(() => {
+    const getAllPosts = () => {
+      api.get("/posts").then((res) => {
+        console.log(res.data);
+        setPosts(res.data);
+      });
+    };
+    getAllPosts();
+  }, []);
 
   return (
     <>
@@ -68,7 +77,29 @@ export const Feed = () => {
         </DivLeft>
 
         <DivMidle>
-          <PostList postList={posts} />
+          <PostList />
+          {posts.length > 0 ? (
+            <UlPosts>
+              {posts.map(({ content, id, userId }) => {
+                const filtrado = users.find((us) => `${us.id}` === `${userId}`);
+
+                return (
+                  <li className="li-post" key={id}>
+                    <figure>
+                      <img src={filtrado?.avatar_url} alt={filtrado?.name} />
+                    </figure>
+                    <div className="div-description">
+                      <h2>{filtrado?.username}</h2>
+                      <span>{}</span>
+                      <p>{content}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </UlPosts>
+          ) : (
+            <p>sem posts</p>
+          )}
         </DivMidle>
 
         <DivRight>

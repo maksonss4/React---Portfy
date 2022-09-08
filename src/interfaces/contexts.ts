@@ -75,13 +75,19 @@ export interface IAuth {
   cepRequest: (e: React.FocusEvent<HTMLInputElement, Element>) => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
   logout: () => void;
-  posts: any;
+  posts: IPost[];
   setPosts: any;
   users: IUser[];
   setUsers: any;
   updateProfile: SubmitHandler<IUpdateUser>;
-  techs: any;
+  techs: ITechData[];
   setTechs: any;
+}
+
+interface IPost {
+  content: string;
+  id: number | string;
+  userId: number | string;
 }
 
 export interface ICoreResponse {

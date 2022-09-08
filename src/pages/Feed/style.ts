@@ -43,3 +43,29 @@ export const DivRight = styled.div`
     gap: 1rem;
   }
 `;
+
+export const UlPosts = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  li {
+    display: flex;
+    gap: 2rem;
+    background-color: var(--white);
+    box-shadow: var(--boxshadow);
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  img {
+    width: 5rem;
+    border-radius: 50%;
+  }
+
+  .div-description {
+    display: flex;
+    flex-direction: column;
+  }
+`;

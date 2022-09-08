@@ -33,13 +33,20 @@ export const Post = ({ src, h2, techs, p, id, userId }: IPostContent) => {
       <div className="PostContent">
         <div className="user-name-and-techs">
           <h2>{h2}</h2>
-          <p>{techs && techs.filter((e) => e.userId === user.id).map((tech) => tech.name).join(" | ")}</p>
+          <p>
+            {techs &&
+              techs
+                .filter((e) => e.userId === user.id)
+                .map((tech) => tech.name)
+                .join(" | ")}
+          </p>
         </div>
         <p>{user.role}</p>
         <div className="PostText">
           <p className="contentPost">{p}</p>
         </div>
       </div>
+
       <button title="button" onClick={() => DeletePost(id)}>
         <IoMdTrash color="var(--color-negative)" size={30} />
       </button>
