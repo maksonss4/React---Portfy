@@ -1,7 +1,7 @@
 import { IPostContent } from "../../interfaces/components";
 import PostContainer from "./styles";
 import { HiUserCircle } from "react-icons/hi";
-import { IoMdTrash } from "react-icons/io";
+
 import { Request } from "../../backup/post";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -47,9 +47,7 @@ export const Post = ({ src, h2, techs, p, id, userId }: IPostContent) => {
         </div>
       </div>
 
-      <button title="button" onClick={() => DeletePost(id)}>
-        <IoMdTrash color="var(--color-negative)" size={30} />
-      </button>
+      <button title="button" onClick={() => DeletePost(id)}></button>
     </PostContainer>
   );
 };

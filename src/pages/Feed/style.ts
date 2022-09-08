@@ -67,5 +67,6 @@ export const UlPosts = styled.ul`
   .div-description {
     display: flex;
     flex-direction: column;
+    gap: 10px;
   }
 `;
