@@ -9,6 +9,7 @@ export const AuthContext = createContext<IAuth>({} as IAuth);
 
 const AuthProvider = ({ children }: IGeneralProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
+  const [users, setUsers] = useState<IUser[]>([]);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
 
@@ -72,6 +73,8 @@ const AuthProvider = ({ children }: IGeneralProps) => {
         cepRequest,
         posts,
         setPosts,
+        users,
+        setUsers,
       }}
     >
       {children}

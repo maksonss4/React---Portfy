@@ -16,7 +16,7 @@ export const ContainerCardUser = styled.div`
     top: 0;
     width: 100%;
     height: 9rem;
-    background-image: url("https://media-exp1.licdn.com/dms/image/C4D1BAQHRw_NPXrneWg/company-background_10000/0/1552918569507?e=2159024400&v=beta&t=OmbTm6RZ9TGYGKfPSOrTE0DKoAbdukyzk8jKHdkZY30");
+    background-image: url("https://www.modulo.com.br/wp-content/uploads/2021/07/iStock-1224500457-1-1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
