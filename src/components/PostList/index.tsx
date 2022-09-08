@@ -1,5 +1,5 @@
 import { List, Container, Textarea, TextareaContainer } from "./styles";
-import { useContext, useEffect, useState } from "react";
+import { MouseEvent, useContext, useEffect, useState } from "react";
 import { IPostList, IPostProps } from "../../interfaces/components";
 import Button from "../Button";
 import { Request } from "../../backup/post";
@@ -8,12 +8,15 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 const PostList = ({ postList }: IPostList) => {
   const [post, setPost] = useState("");
-  const { setPosts, posts } = useContext(AuthContext);
-
+  const { setPosts, posts, techs } = useContext(AuthContext);
+  console.log(posts);
   const userLogadoId = localStorage.getItem("@portfy(id)");
   const token = localStorage.getItem("@portfy(token)");
 
-  const createPost = () => {
+  const createPost = (
+    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    event.preventDefault();
     if (post) {
       const data = { content: post, userId: userLogadoId };
 
@@ -45,6 +48,7 @@ const PostList = ({ postList }: IPostList) => {
           disColor="var(--disabled-blue)"
           hover="var(--medium-blue)"
           type="submit"
+          onClick={(event) => createPost(event)}
         >
           Publicar
         </Button>
@@ -56,11 +60,12 @@ const PostList = ({ postList }: IPostList) => {
             ({ content, id, userAvatar, userId, userName }: IPostProps) => (
               <Post
                 key={id}
-                src={userAvatar}
                 h2={userName}
+                src={userAvatar}
                 p={content}
                 id={id}
                 userId={userId}
+                techs={techs}
               />
             )
           )}

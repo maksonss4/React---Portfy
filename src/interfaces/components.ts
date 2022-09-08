@@ -108,4 +108,9 @@ export interface IPageBulb {
   chat: boolean;
 }
 
-export interface ITechData {}
+export interface ITechData {
+  name: string;
+  status: string;
+  userId: any;
+  id: any;
+}

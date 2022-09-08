@@ -5,11 +5,15 @@ import { IoMdTrash } from "react-icons/io";
 import { Request } from "../../backup/post";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { UserContext } from "../../backup/users";
 
-export const Post = ({ src, h2, techs, p, id }: IPostContent) => {
+export const Post = ({ src, h2, techs, p, id, userId }: IPostContent) => {
   const token = localStorage.getItem("@portfy(token)");
   const { user, setPosts } = useContext(AuthContext);
-
+  const { arrayUsers } = useContext(UserContext);
+  const postAuthor = arrayUsers.filter((e) => e.id === userId);
+  //console.log(arrayUsers);
+  console.log(postAuthor);
   const DeletePost = (id: string | undefined) => {
     Request.delete(`/posts/${id}`, {
       headers: {
@@ -26,7 +30,7 @@ export const Post = ({ src, h2, techs, p, id }: IPostContent) => {
         {src ? (
           <img className="userLogo" src={src} alt="" />
         ) : (
-          <HiUserCircle color="var(--medium-grey)" size={80} />
+          <HiUserCircle color="var(--medium-blue)" size={80} />
         )}
       </div>
       <div className="PostContent">
@@ -43,8 +47,8 @@ export const Post = ({ src, h2, techs, p, id }: IPostContent) => {
           <p className="contentPost">{p}</p>
         </div>
       </div>
-      <button onClick={() => DeletePost(id)}>
-        <IoMdTrash size={30} />
+      <button title="button" onClick={() => DeletePost(id)}>
+        <IoMdTrash color="var(--color-negative)" size={30} />
       </button>
     </PostContainer>
   );

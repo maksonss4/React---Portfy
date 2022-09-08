@@ -2,15 +2,23 @@ import styled from "styled-components";
 import { AiOutlineLoading3Quarters, AiOutlineLoading } from "react-icons/ai";
 import { ILoadStyleProps } from "../../interfaces/styles";
 
+export const BasePage = styled.div`
+  
+`;
+
 export const Loading = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  height: 100vh;
+  width: 100%;
 
   h1 {
-    position: absolute;
-    top: 7rem;
+    font-size: 2rem;
+    z-index: 2;
+    margin-top: 20rem;
+    color: var(--green-black);
   }
 
   @keyframes standart-spin {

@@ -68,6 +68,9 @@ const PostContainer = styled.li`
 
   button {
     background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
   }
 `;
 

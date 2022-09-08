@@ -4,7 +4,11 @@ import Toast from "../components/Toast";
 import { IGeneralProps } from "../interfaces/components";
 import { INotification } from "../interfaces/contexts";
 
-export const NotificationContext = createContext<INotification>({} as INotification);
+import "react-toastify/dist/ReactToastify.css";
+
+export const NotificationContext = createContext<INotification>(
+  {} as INotification
+);
 
 const NotificationProvider = ({ children }: IGeneralProps) => {
   const base = {
@@ -16,21 +20,27 @@ const NotificationProvider = ({ children }: IGeneralProps) => {
     draggable: true,
   } as ToastOptions;
 
-  const updateToast = (toastRef: Id, message: string, type: string) => {
+  const updateToast = (
+    toastRef: Id,
+    message: string,
+    position: ToastOptions["position"],
+    type: UpdateOptions["type"],
+  ) => {
     const settings = {
       ...base,
+      position: position,
       render: message,
       type: type,
       isLoading: false,
     } as UpdateOptions;
 
-    toast.update(toastRef, settings);
+    setTimeout(() => {
+      toast.update(toastRef, settings);
+    }, 500);
   };
 
-  const baseTemplate = ["Solicitação em andamento...", base] as INotification["baseTemplate"];
-
   return (
-    <NotificationContext.Provider value={{ updateToast, baseTemplate, base }}>
+    <NotificationContext.Provider value={{ updateToast, base }}>
       {children}
       <Toast />
     </NotificationContext.Provider>

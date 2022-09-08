@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { IGeneralProps } from "../interfaces/components";
 import { IAdress, IAuth, IUser } from "../interfaces/contexts";
 import api from "../services/api";
-
+import { ITechData } from "../interfaces/components";
 export const AuthContext = createContext<IAuth>({} as IAuth);
 
 const AuthProvider = ({ children }: IGeneralProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const [techs, setTechs] = useState<ITechData[]>([]);
 
   const [cep, setCep] = useState<IAdress>({});
   const [cepError, setCepError] = useState(false);
@@ -27,17 +28,19 @@ const AuthProvider = ({ children }: IGeneralProps) => {
     async function loadUser() {
       const token = localStorage.getItem("@portfy(token)");
       const idUser = localStorage.getItem("@portfy(id)");
+
       if (token) {
         try {
           api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           const { data } = await api.get(`/users/${idUser}`);
           setUser(data);
-          navigate("/dashboard", { replace: true });
         } catch (err) {
           console.log(err);
         }
       }
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
     loadUser();
   }, []);
@@ -70,6 +73,8 @@ const AuthProvider = ({ children }: IGeneralProps) => {
         cepRequest,
         posts,
         setPosts,
+        techs,
+        setTechs,
       }}
     >
       {children}
