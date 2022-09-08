@@ -66,6 +66,7 @@ export const DivContainer = styled.div`
     max-height: 50vh;
     border-radius: 8px;
     z-index: unset;
+    animation: unset;
 
     ul {
       flex-direction: row;

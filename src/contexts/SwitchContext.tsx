@@ -13,7 +13,9 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
     login: false,
     register: false,
   });
-  
+  const [text, setText] = useState(
+    "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva."
+  );
   const [condicionModal, setCondicionlModal] = useState<boolean>(false);
   const [hideFL, setHideFL] = useState(true);
   const [animation, setAnimation] = useState<IGeneralAnimations>({
@@ -23,6 +25,20 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
   });
   const [updateUser, setUpdateUser] = useState<boolean>(true);
   const [addTechs, setAddTechs] = useState<boolean>(true);
+
+  const textFade = (str: string, btn: string) => {
+    btn === "login"
+      ? setScreenSwitcher({ login: true, register: false })
+      : btn === "register"
+      ? setScreenSwitcher({ login: false, register: true })
+      : setScreenSwitcher({ login: false, register: false });
+
+    setAnimation({ ...animation, text: "fade-out 1 250ms linear" });
+    setTimeout(() => {
+      setAnimation({ ...animation, text: "fade-in 1 250ms linear" });
+      setText(str);
+    }, 240);
+  };
 
   return (
     <SwitchContext.Provider
@@ -39,6 +55,8 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
         setAddTechs,
         updateUser,
         addTechs,
+        textFade,
+        text
       }}
     >
       {children}

@@ -14,6 +14,7 @@ export const Global = createGlobalStyle`
     --faded-green:    #47DAC53A;
     --ligth-blue:     #19CAE5;
     --medium-blue:    #09AAC5;
+    --dark-blue:      #007A95;
     --disabled-blue:  #A9CAE5;
     --success:        #6FD551;
     --color-negative: #DD4C50;

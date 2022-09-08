@@ -45,7 +45,7 @@ export const Feed = () => {
 
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-  const addTechUser: SubmitHandler<IAddTech> = (data: any) => {
+  const addTechUser: SubmitHandler<IAddTech> = (data) => {
     api
       .post("/techs", { ...data, userId: user.id })
       .then((res) => console.log(res))
