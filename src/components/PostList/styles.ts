@@ -19,13 +19,13 @@ export const Container = styled.div`
   width: 100%;
   gap: 1rem;
 
+  background-color: var(--white);
   .list__title {
     width: 100%;
     height: 2rem;
     text-align: start;
   }
 
-  background-color: var(--white);
   @media screen and (min-width: 200px) and (max-width: 769px) {
     width: 100vw;
   }
@@ -38,12 +38,12 @@ export const Textarea = styled.textarea`
   border: none;
   outline: none;
   resize: none;
-  
+
   &::placeholder {
     transition: 400ms ease;
     color: var(--medium-grey);
   }
-  
+
   &:focus::placeholder {
     color: transparent;
   }
@@ -58,7 +58,7 @@ export const TextareaContainer = styled.form`
   align-items: flex-end;
   padding: 1rem;
   gap: 0.5rem;
-  
+
   button {
     height: 2rem;
   }

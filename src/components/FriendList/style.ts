@@ -6,7 +6,7 @@ export const DivContainer = styled.div`
   flex-direction: column;
   position: fixed;
   height: 70%;
-  width: 15rem;
+  width: 17rem;
   gap: 0.5rem;
   background-color: var(--whitesmoke);
   box-sizing: border-box;

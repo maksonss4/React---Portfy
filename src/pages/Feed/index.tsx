@@ -5,8 +5,7 @@ import { Header } from "../../components/Header";
 import { HiPencil } from "react-icons/hi";
 import { BsFilePdf } from "react-icons/bs";
 import { CardsNews } from "../../components/CardsNews";
-import { Container } from "./style";
-import { Post } from "../../components/Post";
+import { ContainerFeed, DivLeft, DivMidle, DivRight } from "./style";
 import { Modal } from "../../components/Modal";
 import Form from "../../components/Formulary/styles";
 import { useContext } from "react";
@@ -16,13 +15,20 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import api from "../../services/api";
 import CustomInput from "../../components/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { updateUserSchema, createTechSchema } from "../../validations/updateUser";
+import {
+  updateUserSchema,
+  createTechSchema,
+} from "../../validations/updateUser";
 import { IAddTech, IUpdateUser } from "../../interfaces/pages";
 import { statusOptions } from "../../components/Input/options";
 import Button from "../../components/Button";
+import PostList from "../../components/PostList";
+import FriendList from "../../components/FriendList";
+import CardUsers from "../../components/Users";
+import FooterMobile from "../../components/FooterMobile";
 
 export const Feed = () => {
-  const { user } = useContext(AuthContext);
+  const { user, posts } = useContext(AuthContext);
   // prettier-ignore
   const { register, handleSubmit, formState: { errors } } = useForm<IUpdateUser>({
     resolver: yupResolver(updateUserSchema)
@@ -49,16 +55,33 @@ export const Feed = () => {
   return (
     <>
       <Header h2={user.username} location="dashboard" />
-      <Container>
-        <div className="main">
-          <CardUser
-            iconMore={<MdAdd />}
-            iconPencil={<HiPencil />}
-            iconPaper={<BsFilePdf />}
-          />
-          <Post h2={user.username} p="alterar" src="" />
-        </div>
-        <section>{<CardsNews />}</section>
+      <ContainerFeed>
+        <DivLeft>
+          <div className="display-nome_mobile">
+            <CardUser
+              iconMore={<MdAdd />}
+              iconPencil={<HiPencil />}
+              iconPaper={<BsFilePdf />}
+            />
+          </div>
+          <div className="display-nome_mobile">
+            <FriendList />
+          </div>
+        </DivLeft>
+
+        <DivMidle>
+          <PostList postList={posts} />
+        </DivMidle>
+
+        <DivRight>
+          <div className="display-nome_mobile">
+            <CardUsers />
+          </div>
+          <div className="display-nome_mobile">
+            <CardsNews />
+          </div>
+        </DivRight>
+        <FooterMobile />
         {updateUser && (
           <Modal>
             <Form>
@@ -138,7 +161,7 @@ export const Feed = () => {
             </Form>
           </Modal>
         )}
-      </Container>
+      </ContainerFeed>
     </>
   );
 };

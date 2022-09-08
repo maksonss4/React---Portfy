@@ -23,7 +23,7 @@ const FriendList = () => {
     } else {
       setAnimation({ ...animation, friendList: "slide-in" });
       setTimeout(() => {
-        setPosition("9vh");
+        setPosition("0");
       }, 290);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

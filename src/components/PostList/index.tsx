@@ -49,10 +49,9 @@ const PostList = ({ postList }: IPostList) => {
           Publicar
         </Button>
       </TextareaContainer>
-      <h2 className="list__title">Minhas Postagens</h2>
       {postList.length > 0 ? (
         <List>
-          { postList.map(
+          {postList.map(
             ({ content, id, userAvatar, userId, userName }: IPostProps) => (
               <Post
                 key={id}
