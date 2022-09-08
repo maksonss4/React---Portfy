@@ -51,6 +51,7 @@ export const UlPosts = styled.ul`
   margin-top: 1rem;
 
   li {
+    position: relative;
     display: flex;
     gap: 2rem;
     background-color: var(--white);
@@ -68,5 +69,22 @@ export const UlPosts = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  span {
+    font-size: 0.9rem;
+  }
+
+  .button-delete {
+    position: absolute;
+    right: 20px;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    height: max-content;
   }
 `;

@@ -15,12 +15,13 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
     useContext(SwitchContext);
     
   useEffect(() => {
-    users.forEach(element => {
-      const ehSeguidor = element.following.some(idUser => idUser === user.id)
-      if(ehSeguidor){
-        setTotalSeguidores(totalSeguidores + 1)
-      }
-    });
+    // users.forEach(element => {
+    //   const ehSeguidor = element.following.some(idUser => idUser === user.id)
+    //   if(ehSeguidor){
+    //     setTotalSeguidores(totalSeguidores + 1)
+    //   }
+    // });
+
     api
     .get("/techs")
     .then((res) => setTechs(res.data))
