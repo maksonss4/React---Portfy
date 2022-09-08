@@ -6,6 +6,7 @@ export const Global = createGlobalStyle`
     --whitesmoke:     #F1F3F5;
     --whitesmoke-2:   #E1E3E5;
     --black:          #1A1A1A;
+    --faded-black:    #00000097;
     --green-black:    #005C57;
     --dark-blue:      #114B5F;
     --ligth-green:    #47DAC5;
@@ -13,9 +14,11 @@ export const Global = createGlobalStyle`
     --faded-green:    #47DAC53A;
     --ligth-blue:     #19CAE5;
     --medium-blue:    #09AAC5;
+    --dark-blue:      #007A95;
     --disabled-blue:  #A9CAE5;
     --success:        #6FD551;
     --color-negative: #DD4C50;
+    --negative-hover: #BD2C30;
     --ligth-grey:     #D9DADE;
     --medium-grey:    #91959A;
     --dark-grey:      #5A5A5A;

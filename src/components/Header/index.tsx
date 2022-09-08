@@ -1,56 +1,37 @@
 import { HeaderContainer } from "./styles";
-import { BsChatRightText } from "react-icons/bs";
-import { AiOutlineSearch } from "react-icons/ai";
-import { MdDynamicFeed } from "react-icons/md";
+import { AiOutlineSearch, AiOutlineUser } from "react-icons/ai";
 import { VscHome } from "react-icons/vsc";
 import { IHeader } from "../../interfaces/components";
 import Button from "../Button";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { ButtonIcon } from "../CardUser/style";
 
 export const Header = ({ src, h2, location }: IHeader) => {
-  const { logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   return (
     <HeaderContainer>
       <div className="HeaderContent">
-        {src ? (
-          <img className="userLogoMobile" src={src} alt="" />
-        ) : (
-          <img
-            className="userLogoMobile"
-            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-            alt=""
-          />
-        )}
+        <img className="userLogoMobile" src={user.avatar_url} alt="" />
 
         <h2 className="HeaderPortfyLogo">Portfy</h2>
-          { location === "feed" ? (
-            <ButtonIcon className="HeaderButtons"
-              onClick={() => navigate("/dashboard", { replace: true })}
-            >
-              <VscHome
-                size={30}
-                color="var(--white)"
-                className="HeaderHomeButton"
-              />
-            </ButtonIcon>
-          ) : (
-            <ButtonIcon className="HeaderButtons" onClick={() => navigate("/feed", { replace: true })}>
-              <MdDynamicFeed className="HeaderHomeButton" />
-            </ButtonIcon>
-          )}
-        <button className="HeaderButtons">
-          <BsChatRightText
-            size={25}
+        {location === "feed" ? (
+          <VscHome
+            size={30}
             color="var(--white)"
-            className="HeaderChatButton"
+            className="HeaderHomeButton"
+            onClick={() => navigate("/feed")}
           />
-        </button>
+        ) : (
+          <AiOutlineUser
+            size={30}
+            color="var(--white)"
+            onClick={() => navigate("/dashboard")}
+          />
+        )}
       </div>
       <div className="SearchInputContainer">
         <input
@@ -72,7 +53,7 @@ export const Header = ({ src, h2, location }: IHeader) => {
         ) : (
           <img
             className="userLogoDesktop"
-            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+            src={user.avatar_url}
             alt=""
           />
         )}
@@ -82,7 +63,13 @@ export const Header = ({ src, h2, location }: IHeader) => {
           <h2 className="HeaderUserName">Francisco Stenico</h2>
         )}
       </div>
-      <Button buttonStyle="primary" onClick={logout}>
+      <Button
+        buttonStyle="primary"
+        bg="var(--medium-blue)"
+        hover="var(--dark-blue)"
+        color="var(--white)"
+        onClick={logout}
+      >
         Logout
       </Button>
     </HeaderContainer>

@@ -5,50 +5,40 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import api from "../../services/api";
 
-const CardUser = ({
-  iconMore,
-  iconPaper,
-  iconPencil,
-  buttonIcon,
-}: ICardUserProps) => {
+// prettier-ignore
+const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProps) => {
+  
+  const [totalSeguidores, setTotalSeguidores] = useState(0);
+ 
+  const { user, users, techs, setTechs} = useContext(AuthContext);
   const { setAddTechs, setUpdateUser, addTechs, updateUser } =
     useContext(SwitchContext);
-
-  const { user, techs, setTechs } = useContext(AuthContext);
-  const techsUser = techs.filter((elemen) => {
-    return elemen.userId === user.id;
-  });
-
+    
   useEffect(() => {
+    users.forEach(element => {
+      const ehSeguidor = element.following.some(idUser => idUser === user.id)
+      if(ehSeguidor){
+        setTotalSeguidores(totalSeguidores + 1)
+      }
+    });
     api
-      .get("/techs")
-      .then((response) => setTechs(response.data))
-      .catch((err) => console.log(err));
-  }, [techs]);
+    .get("/techs")
+    .then((res) => setTechs(res.data))
+    .catch((err) => console.log(err));
+  }, [])
 
   return (
-    <ContainerCardUser>
-      <figure className="cover-photo">
-        <>
-          <img
-            src="https://media-exp1.licdn.com/dms/image/C4D1BAQHRw_NPXrneWg/company-background_10000/0/1552918569507?e=2159024400&v=beta&t=OmbTm6RZ9TGYGKfPSOrTE0DKoAbdukyzk8jKHdkZY30"
-            alt="Capa do perfil do usuário"
-            className="cover-photo"
-          />
-          <ButtonIcon display={buttonIcon}>{iconPencil}</ButtonIcon>
-        </>
-      </figure>
-
+    <ContainerCardUser cover={user?.background_img}>
+      <figure className="cover-photo" />
       <div className="user-description">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfw6SZzgtXqkNPOQH7p0nQxCPiTGOUnEpLmg&usqp=CAU"
+          src={user.avatar_url}
           alt="Foto do perfil do usuário"
         />
         <div className="description-icon">
           <div className="userName">
-            <h2>{user.username}</h2>
-
-            <p>{techsUser.map((tech) => tech.name).join(" | ")}</p>
+            <h2>{user.username}</h2> 
+            <p>{techs.filter((elem: any) => elem.userId === user.id).map((tech: any) => tech.name).join(" | ")}</p>
           </div>
           <div className="icon">
             <ButtonIcon
@@ -69,11 +59,11 @@ const CardUser = ({
       </div>
       <div className="followers-following">
         <div className="followers-following-children">
-          <p>11</p>
+          <p>{totalSeguidores}</p>
           <span>Seguidores</span>
         </div>
         <div className="followers-following-children">
-          <p>11</p>
+          <p>{user.following.length}</p>
           <span>Seguindo</span>
         </div>
       </div>

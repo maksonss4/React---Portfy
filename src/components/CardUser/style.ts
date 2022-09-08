@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IButtonIconProp } from "../../interfaces/styles";
+import { IButtonIconProp, IUserBG } from "../../interfaces/styles";
 
 export const ContainerCardUser = styled.div`
   position: relative;
@@ -16,7 +16,7 @@ export const ContainerCardUser = styled.div`
     top: 0;
     width: 100%;
     height: 9rem;
-    background-image: url("https://media-exp1.licdn.com/dms/image/C4D1BAQHRw_NPXrneWg/company-background_10000/0/1552918569507?e=2159024400&v=beta&t=OmbTm6RZ9TGYGKfPSOrTE0DKoAbdukyzk8jKHdkZY30");
+    background-image: ${({cover}: IUserBG) => `url(${cover})`};
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;

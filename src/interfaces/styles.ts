@@ -48,3 +48,7 @@ export interface IFriendListSlide {
   yPos?: string;
   animationName?: string;
 }
+
+export interface IUserBG {
+  cover: string;
+}

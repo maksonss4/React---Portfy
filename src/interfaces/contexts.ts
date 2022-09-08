@@ -1,8 +1,10 @@
 import React from "react";
-import { ISwitcher } from "./pages";
+import { ISwitcher, IUpdateUser } from "./pages";
 import { Id, ToastOptions, ToastPosition, UpdateOptions } from "react-toastify";
 import { IGeneralAnimations } from "./styles";
 import { ITechData } from "./components";
+import { Uploader } from "uploader";
+import { SubmitHandler } from "react-hook-form";
 
 export interface ISwitcherContext {
   screenSwitcher: ISwitcher;
@@ -17,6 +19,9 @@ export interface ISwitcherContext {
   setUpdateUser: React.Dispatch<React.SetStateAction<boolean>>;
   updateUser: boolean;
   addTechs: boolean;
+  textFade: (str: string, btn: string) => void;
+  text: string;
+  uploader: Uploader;
 }
 
 export interface IUser {
@@ -29,6 +34,23 @@ export interface IUser {
   password_confirm?: string;
   role?: string;
   id: string;
+  following: [] | string[];
+  avatar_url: string;
+  background_img: string;
+}
+
+export interface ILoggedUser {
+  username?: string;
+  name: string;
+  cpf?: string;
+  adress?: IAdress;
+  email?: string;
+  password?: string;
+  role?: string;
+  id: string;
+  following: [] | number[];
+  avatar_url: string;
+  background_img: string;
 }
 
 export interface IAdress {
@@ -55,8 +77,11 @@ export interface IAuth {
   logout: () => void;
   posts: any;
   setPosts: any;
-  techs: ITechData[];
-  setTechs: React.Dispatch<React.SetStateAction<ITechData[]>>;
+  users: IUser[];
+  setUsers: any;
+  updateProfile: SubmitHandler<IUpdateUser>;
+  techs: any;
+  setTechs: any;
 }
 
 export interface ICoreResponse {

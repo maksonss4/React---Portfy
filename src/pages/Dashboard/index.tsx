@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+import { Request } from "../../backup/post";
+import { useContext } from "react";
+import { CardsNews } from "../../components/CardsNews";
 import CardUser from "../../components/CardUser";
+import FooterMobile from "../../components/FooterMobile";
+import FriendList from "../../components/FriendList";
 import { Header } from "../../components/Header";
 import { MdAdd } from "react-icons/md";
 import { HiPencil } from "react-icons/hi";
@@ -6,96 +12,145 @@ import { BsFilePdf } from "react-icons/bs";
 import { CardsNews } from "../../components/CardsNews";
 import { Container } from "./style";
 import PostList from "../../components/PostList";
+import PostList from "../../components/PostList";
+import { VscFilePdf } from "react-icons/vsc";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ContainerFeed, DivLeft, DivMidle, DivRight, MainFeed } from "./style";
+import { AiFillEdit, AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 import { Modal } from "../../components/Modal";
 import Form from "../../components/Formulary/styles";
-import { useContext } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
-import { AuthContext } from "../../contexts/AuthContext";
+import Button from "../../components/Button";
+import CustomInput from "../../components/Input";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import UserProvider from "../../backup/users";
-export const Dashboard = () => {
-  const { user, posts } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
-  const { updateUser, addTechs, setAddTechs, setUpdateUser } =
-    useContext(SwitchContext);
-  const token = localStorage.getItem("@portfy(token)");
-  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  const addTechUser = (data: any) => {
-    api
-      .post("/techs", { ...data, userId: user.id })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+import { IUpdateUser } from "../../interfaces/pages";
+import { UploaderButton } from "../../components/Button/styles";
+
+const Dashboard = () => {
+  const { user, setUser, posts, setPosts, updateProfile } =
+    useContext(AuthContext);
+  const { updateUser, setUpdateUser, uploader } = useContext(SwitchContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IUpdateUser>();
+
+  useEffect(() => {
+    Request.get("/posts")
+      .then((response) => setPosts(response.data))
+      .catch((erro) => console.log(erro));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setUpdateUser(false);
+  }, [user.username])
+
   return (
-    <>
-      <Header h2={user.username} location="dashboard" />
-      <Container>
-        <div className="main">
+    <ContainerFeed>
+      <Header h2={user.username} location="feed" />
+      <MainFeed>
+        <DivLeft>
           <CardUser
-            iconMore={<MdAdd />}
-            iconPencil={<HiPencil />}
-            iconPaper={<BsFilePdf />}
+            iconMore={<AiOutlinePlus size={20} />}
+            iconPaper={<VscFilePdf size={20} />}
+            iconPencil={<AiFillEdit size={20} />}
           />
           <UserProvider>
             <PostList postList={posts} />
           </UserProvider>
         </div>
-        <section>{<CardsNews />}</section>
-        {updateUser && (
-          <Modal>
-            <button type="button" onClick={() => setUpdateUser(!updateUser)}>
-              X
-            </button>
-            <Form>
-              <div className="divHeader">
-                <h2>Atualizar Perfil</h2>
-              </div>
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                name="username"
-                id="username"
-                defaultValue={user.name}
-              />
-              <label htmlFor="avatar">Avatar</label>
-              <input type="url" name="avatar" id="avatar" />
-              <div>
-                <button type="submit">Salvar</button>
-                <button type="button" onClick={() => console.log("deletar")}>
-                  Deletar
-                </button>
-              </div>
-            </Form>
-          </Modal>
-        )}
-        {addTechs && (
-          <Modal>
-            <Form onSubmit={handleSubmit(addTechUser)}>
-              <div className="divHeader">
-                <h2>Adicionar tecnologia</h2>
-                <button type={"button"} onClick={() => setAddTechs(!addTechs)}>
-                  X
-                </button>
-              </div>
-              <label htmlFor="name">Nome</label>
-              <input
-                type="text"
-                id="name"
-                placeholder="Nome da tecnologia"
-                {...register("name")}
-              />
-              <label htmlFor="password">Status</label>
-              <select id="" {...register("status")}>
-                <option value="iniciante">Iniciante</option>
-                <option value="intermediario">Intermediário</option>
-                <option value="avancado">Avançado</option>
-              </select>
-              <button type="submit">Salvar</button>
-            </Form>
-          </Modal>
-        )}
-      </Container>
-    </>
+        </DivLeft>
+        <DivMidle>
+          <FriendList />
+          <PostList postList={posts} />
+        </DivMidle>
+      </MainFeed>
+      <DivRight>
+        <CardsNews />
+      </DivRight>
+      <FooterMobile />
+      {updateUser && (
+        <Modal>
+          <Form onSubmit={handleSubmit(updateProfile)}>
+            <header className="divHeader">
+              <h3>Atualizar Perfil</h3>
+              <AiOutlineClose onClick={() => setUpdateUser(!updateUser)} />
+            </header>
+            <CustomInput
+              id="username"
+              label="Nome de usuário"
+              placeholder="Insira o novo nome de usuário"
+              register={register}
+              error={errors?.username?.message}
+            />
+            <div className="doubled__buttons">
+              <UploaderButton
+                uploader={uploader}
+                options={{ multi: false }}
+                onComplete={(files) =>
+                  setUser({ ...user, avatar_url: files[0].fileUrl })
+                }
+              >
+                {({ onClick }) => (
+                  <Button
+                    bg="var(--medium-grey)"
+                    color="var(--white)"
+                    hover="var(--dark-grey)"
+                    onClick={onClick}
+                  >
+                    Alterar avatar
+                  </Button>
+                )}
+              </UploaderButton>
+              <UploaderButton
+                uploader={uploader}
+                options={{ multi: false }}
+                onComplete={(files) =>
+                  setUser({ ...user, background_img: files[0].fileUrl })
+                }
+              >
+                {({ onClick }) => (
+                  <Button
+                    bg="var(--medium-grey)"
+                    color="var(--white)"
+                    hover="var(--dark-grey)"
+                    onClick={onClick}
+                  >
+                    Alterar capa
+                  </Button>
+                )}
+              </UploaderButton>
+            </div>
+            <div className="doubled__buttons">
+              <Button
+                buttonStyle="primary"
+                bg="var(--ligth-blue)"
+                color="var(--white)"
+                disColor="var(--disabled-blue)"
+                hover="var(--medium-blue)"
+                type="submit"
+              >
+                Salvar
+              </Button>
+              <Button
+                buttonStyle="primary"
+                bg="var(--color-negative)"
+                color="var(--white)"
+                hover="var(--negative-hover)"
+              >
+                Apagar Conta
+              </Button>
+            </div>
+          </Form>
+        </Modal>
+      )}
+    </ContainerFeed>
   );
 };
+
+export default Dashboard;

@@ -53,7 +53,6 @@ const PostList = ({ postList }: IPostList) => {
           Publicar
         </Button>
       </TextareaContainer>
-      <h2 className="list__title">Minhas Postagens</h2>
       {postList.length > 0 ? (
         <List>
           {postList.map(

@@ -6,23 +6,23 @@ export const DivContainer = styled.div`
   flex-direction: column;
   position: fixed;
   height: 70%;
-  width: 15rem;
+  width: 17rem;
   gap: 0.5rem;
   background-color: var(--whitesmoke);
   box-sizing: border-box;
-  padding: 1rem 0 0;
+  padding: 1rem;
   bottom: ${({ yPos }: IFriendListSlide) => yPos};
   right: 0.2rem;
   z-index: 2;
   animation: ${({ animationName }: IFriendListSlide) => animationName} 1 300ms
     linear;
-    
-    .friendlist__header {
+
+  .friendlist__header {
     display: flex;
     justify-content: space-between;
     padding: 0 1rem;
   }
-  
+
   ul {
     width: 100%;
     height: 100%;
@@ -66,6 +66,7 @@ export const DivContainer = styled.div`
     max-height: 50vh;
     border-radius: 8px;
     z-index: unset;
+    animation: unset;
 
     ul {
       flex-direction: row;
