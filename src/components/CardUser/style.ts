@@ -1,5 +1,6 @@
+import { url } from "inspector";
 import styled from "styled-components";
-import { IButtonIconProp } from "../../interfaces/styles";
+import { IButtonIconProp, IUserBG } from "../../interfaces/styles";
 
 export const ContainerCardUser = styled.div`
   position: relative;
@@ -16,7 +17,7 @@ export const ContainerCardUser = styled.div`
     top: 0;
     width: 100%;
     height: 9rem;
-    background-image: url("https://www.modulo.com.br/wp-content/uploads/2021/07/iStock-1224500457-1-1.jpg");
+    background-image: ${({cover}: IUserBG) => `url(${cover})`};
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;

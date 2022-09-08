@@ -32,7 +32,7 @@ export interface IUser {
   id: string;
   following: [] | string[];
   avatar_url: string;
-  background_img: null | string;
+  background_img: string;
 }
 
 export interface IAdress {

@@ -36,8 +36,8 @@ const Register = () => {
         address: cep,
         role: role,
         following: [],
-        avatar_url: null,
-        background_img: null
+        avatar_url: "https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png",
+        background_img: "https://www.modulo.com.br/wp-content/uploads/2021/07/iStock-1224500457-1-1.jpg",
       };
   
       try {

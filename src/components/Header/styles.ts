@@ -6,21 +6,32 @@ export const HeaderContainer = styled.div`
   left: 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 10vh;
   width: 100%;
   padding: 0 5%;
   background-image: var(--gradient);
   z-index: 2;
 
+  svg {
+    cursor: pointer;
+  }
+
   img {
     height: 8vh;
+    width: 8vh;
     border-radius: 50%;
     border: 2px solid var(--green-black);
   }
 
+  button {
+    max-height: 60%;
+    line-height: 0;
+  }
+
   .HeaderContent {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
     align-items: center;
 
     .HeaderPortfyLogo {
