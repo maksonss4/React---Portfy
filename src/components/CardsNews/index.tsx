@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { INews } from "../../interfaces/components";
 import { Card, Container } from "./style";
-
+// 
 export const CardsNews = () => {
   const [news, setnews] = useState<INews[]>([]);
   

@@ -1,7 +1,7 @@
 import { UploadButton } from "react-uploader";
 import styled from "styled-components";
 import { IStyledButton } from "../../interfaces/styles";
-
+// 
 export const PrimaryButton = styled.button`
   height: 3rem;
   border: none;

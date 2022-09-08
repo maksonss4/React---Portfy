@@ -11,7 +11,7 @@ export const ContainerFeed = styled.div`
 
     .container__friends {
       height: 30rem;
-      
+
       ul {
         flex-direction: column;
         flex-wrap: nowrap;
@@ -20,13 +20,12 @@ export const ContainerFeed = styled.div`
           width: 100%;
         }
       }
-
     }
   }
 
   .display-nome_mobile {
     display: none;
-    
+
     @media (min-width: 1000px) {
       display: unset;
     }
@@ -64,7 +63,6 @@ export const UlPosts = styled.ul`
   flex-direction: column-reverse;
   gap: 1rem;
   margin-top: 1rem;
-  width: 35rem;
 
   li {
     position: relative;
@@ -109,5 +107,9 @@ export const UlPosts = styled.ul`
     border: 0;
     background-color: transparent;
     height: max-content;
+  }
+
+  @media (min-width: 1024px) {
+    width: 35rem;
   }
 `;

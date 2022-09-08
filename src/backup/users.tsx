@@ -7,9 +7,9 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import api from "../services/api";
 import { toast } from "react-toastify";
 import { IUser } from "../interfaces/contexts";
+import api from "../services/api";
 
 export interface IUserContext {
   arrayUsers: IUser[] | [];
@@ -49,6 +49,7 @@ const UserProvider = ({ children }: IUserProviderProps) => {
     // };
 
     //  getUsersList();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateUser = async (data: IUser) => {
