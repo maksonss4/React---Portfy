@@ -33,7 +33,6 @@ export const Feed = () => {
 
   // prettier-ignore
   const { register: registerTech, handleSubmit: addHandler, formState: { errors: techErrors } } = useForm<IAddTech>({
-   
   });
 
   const { updateUser, addTechs, setAddTechs, setUpdateUser } =
@@ -43,11 +42,12 @@ export const Feed = () => {
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
   const addTechUser: SubmitHandler<IAddTech> = (data) => {
-    console.log(data);
     api
       .post("/techs", { ...data, userId: user.id })
-      .then((res) => setTechs(res.data))
+      .then(() =>  api.get("/techs").then((res)=> setTechs(res.data))
+      )
       .catch((err) => console.log(err));
+      setAddTechs(!addTechs)
   };
 
   return (

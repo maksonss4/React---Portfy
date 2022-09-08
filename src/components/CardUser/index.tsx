@@ -12,7 +12,6 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
   const { user, users, techs, setTechs} = useContext(AuthContext);
   const { setAddTechs, setUpdateUser, addTechs, updateUser } =
     useContext(SwitchContext);
-  console.log(techs)
  
   
   useEffect(() => {
