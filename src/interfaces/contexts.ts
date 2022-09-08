@@ -16,6 +16,8 @@ export interface ISwitcherContext {
   setUpdateUser: React.Dispatch<React.SetStateAction<boolean>>;
   updateUser: boolean;
   addTechs: boolean;
+  textFade: (str: string, btn: string) => void;
+  text: string;
 }
 
 export interface IUser {

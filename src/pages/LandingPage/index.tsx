@@ -10,25 +10,8 @@ import { CircleBG, FormScreen, LandingPageBackground, ParagraphText } from "./st
 
 const LandingPage = () => {
   const [display, setDisplay] = useState("none");
-  const [text, setText] = useState(
-    "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva."
-  );
-  const { animation, setAnimation, screenSwitcher, setScreenSwitcher } = useContext(SwitchContext);
+  const { animation, setAnimation, screenSwitcher, textFade, text } = useContext(SwitchContext);
   const [delay, setDelay] = useState<ISwitcher>(screenSwitcher);
-
-  const textFade = (str: string, btn: string) => {
-    btn === "login"
-      ? setScreenSwitcher({ login: true, register: false })
-      : btn === "register"
-      ? setScreenSwitcher({ login: false, register: true })
-      : setScreenSwitcher({ login: false, register: false });
-
-    setAnimation({ ...animation, text: "fade-out 1 250ms linear" });
-    setTimeout(() => {
-      setAnimation({ ...animation, text: "fade-in 1 250ms linear" });
-      setText(str);
-    }, 240);
-  };
 
   useEffect(() => {
     if (!Object.values(screenSwitcher).some((idx) => idx)) {

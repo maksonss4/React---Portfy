@@ -12,6 +12,7 @@ import { IRegisterRequest } from "../../../interfaces/pages";
 import api from "../../../services/api";
 import { registerSchema } from "../../../validations/register";
 import { toast } from "react-toastify";
+import { SwitchContext } from "../../../contexts/SwitchContext";
 
 const Register = () => {
   // prettier-ignore
@@ -20,6 +21,7 @@ const Register = () => {
   });
 
   const { cep, setUser } = useContext(AuthContext);
+  const { textFade } = useContext(SwitchContext);
   const { updateToast, base } = useContext(NotificationContext);
   //  prettier-ignore
   const registerApply: SubmitHandler<IRegisterRequest> = async ({ username, name, cpf, email, password, role }) => {
@@ -41,6 +43,11 @@ const Register = () => {
       try {
         const { data } = await api.post<ICoreResponse>("/signup", options);
         setUser(data.user);
+        textFade(
+          "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva.",
+          "landing"
+        );
+        
         updateToast(load, "Usuário cadastrado", "top-center", "success");
       } catch (error) {
         updateToast(load, "Email atualmente em uso", "top-center", "error");
