@@ -8,10 +8,25 @@ export const ContainerFeed = styled.div`
     display: flex;
     justify-content: center;
     gap: 2rem;
+
+    .container__friends {
+      height: 30rem;
+      
+      ul {
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        li {
+          width: 100%;
+        }
+      }
+
+    }
   }
 
   .display-nome_mobile {
     display: none;
+    
     @media (min-width: 1000px) {
       display: unset;
     }

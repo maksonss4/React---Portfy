@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ContainerCardUsers = styled.div`
   padding: 1.5rem;
   width: 100%;
+  height: 40rem;
   background: var(--white);
   border-radius: 8px;
   box-shadow: var(--boxshadow);
@@ -14,6 +15,17 @@ export const ContainerCardUsers = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+    height: 100%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--ligth-grey);
+      border-radius: 20px;
+    }
   }
 `;
 

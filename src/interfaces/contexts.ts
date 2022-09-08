@@ -90,6 +90,12 @@ interface IPost {
   userId: number | string;
 }
 
+interface IPost {
+  content: string;
+  id: number | string;
+  userId: number | string;
+}
+
 export interface ICoreResponse {
   accessToken: string;
   user: IUser;

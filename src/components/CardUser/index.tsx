@@ -41,19 +41,23 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
             <p>{techs.filter((elem: any) => elem.userId === user.id).map((tech: any) => tech.name).join(" | ")}</p>
           </div>
           <div className="icon">
-            <ButtonIcon
-              display={buttonIcon}
-              onClick={() => setUpdateUser(!updateUser)}
-            >
-              {iconPencil}
-            </ButtonIcon>
-            <ButtonIcon
-              display={buttonIcon}
-              onClick={() => setAddTechs(!addTechs)}
-            >
-              {iconMore}
-            </ButtonIcon>
-            <ButtonIcon display={buttonIcon}>{iconPaper}</ButtonIcon>
+            {
+              iconPencil ? (
+                <ButtonIcon
+                  display={buttonIcon}
+                  onClick={() => setUpdateUser(!updateUser)}
+                >
+                  {iconPencil}
+                </ButtonIcon>
+
+              ) : (
+                <ButtonIcon
+                  display={buttonIcon}
+                  onClick={() => setAddTechs(!addTechs)}
+                >
+                  {iconMore}
+                </ButtonIcon>
+            )}
           </div>
         </div>
       </div>

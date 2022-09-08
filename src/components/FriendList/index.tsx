@@ -11,7 +11,7 @@ const FriendList = () => {
 
   const { users, user } = useContext(AuthContext);
 
-  const { hideFL, setHideFL, animation, setAnimation } =
+  const { hideFL, animation, setAnimation } =
     useContext(SwitchContext);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const FriendList = () => {
   }, [hideFL]);
 
   return (
-    <DivContainer animationName={animation.friendList} yPos={position}>
+    <DivContainer className="container__friends" animationName={animation.friendList} yPos={position}>
       <div className="friendlist__header">
         <h2>Amigos</h2>
       </div>

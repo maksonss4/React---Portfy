@@ -13,9 +13,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useForm, SubmitHandler } from "react-hook-form";
 import api from "../../services/api";
 import CustomInput from "../../components/Input";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { updateUserSchema } from "../../validations/updateUser";
-import { IAddTech, IUpdateUser } from "../../interfaces/pages";
+import { IAddTech } from "../../interfaces/pages";
 import { statusOptions } from "../../components/Input/options";
 import Button from "../../components/Button";
 import PostList from "../../components/PostList";
@@ -24,16 +22,11 @@ import CardUsers from "../../components/Users";
 import FooterMobile from "../../components/FooterMobile";
 
 export const Feed = () => {
-  const { user, posts, setPosts, setTechs, users, techs } =
+  const { user, posts, setPosts, setTechs, users } =
     useContext(AuthContext);
-  // prettier-ignore
-  const { register, handleSubmit, formState: { errors } } = useForm<IUpdateUser>({
-    resolver: yupResolver(updateUserSchema)
-  });
 
   // prettier-ignore
-  const { register: registerTech, handleSubmit: addHandler, formState: { errors: techErrors } } = useForm<IAddTech>({
-  });
+  const { register, handleSubmit, formState: { errors } } = useForm<IAddTech>();
 
   const { updateUser, addTechs, setAddTechs, setUpdateUser } =
     useContext(SwitchContext);
@@ -52,11 +45,11 @@ export const Feed = () => {
   useEffect(() => {
     const getAllPosts = () => {
       api.get("/posts").then((res) => {
-        console.log(res.data);
         setPosts(res.data);
       });
     };
     getAllPosts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -66,9 +59,7 @@ export const Feed = () => {
         <DivLeft>
           <div className="display-nome_mobile">
             <CardUser
-              iconMore={<MdAdd />}
-              iconPencil={<HiPencil />}
-              iconPaper={<BsFilePdf />}
+              iconMore={<MdAdd size={20} />}
             />
           </div>
           <div className="display-nome_mobile">
@@ -90,7 +81,7 @@ export const Feed = () => {
                     </figure>
                     <div className="div-description">
                       <h2>{filtrado?.username}</h2>
-                      <span>{}</span>
+                      <span>{filtrado?.role}</span>
                       <p>{content}</p>
                     </div>
                   </li>
@@ -115,47 +106,12 @@ export const Feed = () => {
                 <h3>Atualizar Perfil</h3>
                 <AiOutlineClose onClick={() => setUpdateUser(!updateUser)} />
               </header>
-              {/* <CustomInput
-                id="username"
-                label="Nome de usuário"
-                placeholder="Insira o novo nome de usuário"
-                register={register}
-                error={errors?.username?.message}
-              />
-              <CustomInput
-                id="avatar_url"
-                label="URL"
-                placeholder="Insira a URL da imagem"
-                register={register}
-                error={errors?.avatar_url?.message}
-              />
-              <div className="doubled__buttons">
-                <Button
-                  buttonStyle="primary"
-                  bg="var(--ligth-blue)"
-                  color="var(--white)"
-                  disColor="var(--disabled-blue)"
-                  hover="var(--medium-blue)"
-                  type="submit"
-                >
-                  Salvar
-                </Button>
-                <Button
-                  buttonStyle="primary"
-                  bg="var(--color-negative)"
-                  color="var(--white)"
-                  hover="var(--negative-hover)"
-                  type="submit"
-                >
-                  Apagar Conta
-                </Button>
-              </div> */}
             </Form>
           </Modal>
         )}
         {addTechs && (
           <Modal>
-            <Form onSubmit={addHandler(addTechUser)}>
+            <Form onSubmit={handleSubmit(addTechUser)}>
               <header className="divHeader">
                 <h3>Nova Tecnologia</h3>
                 <AiOutlineClose onClick={() => setAddTechs(!addTechs)} />
@@ -164,14 +120,14 @@ export const Feed = () => {
                 id="name"
                 label="Tech"
                 placeholder="Nova Tecnologia"
-                register={registerTech}
-                error={techErrors?.tech_name?.message}
+                register={register}
+                error={errors?.tech_name?.message}
               />
               <CustomInput
                 select
                 id="status"
                 label="Status"
-                register={registerTech}
+                register={register}
                 options={statusOptions}
               />
               <Button
