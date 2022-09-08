@@ -2,8 +2,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import { MdAdd } from "react-icons/md";
 import CardUser from "../../components/CardUser";
 import { Header } from "../../components/Header";
-import { HiPencil } from "react-icons/hi";
-import { BsFilePdf } from "react-icons/bs";
 import { ContainerFeed, DivLeft, DivMidle, DivRight, UlPosts } from "./style";
 import { Modal } from "../../components/Modal";
 import Form from "../../components/Formulary/styles";

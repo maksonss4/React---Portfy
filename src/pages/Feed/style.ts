@@ -61,9 +61,10 @@ export const DivRight = styled.div`
 
 export const UlPosts = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 1rem;
   margin-top: 1rem;
+  width: 35rem;
 
   li {
     position: relative;
@@ -73,6 +74,13 @@ export const UlPosts = styled.ul`
     box-shadow: var(--boxshadow);
     padding: 1rem;
     border-radius: 10px;
+
+    .div-description {
+      span {
+        font-size: 0.8rem;
+        color: var(--medium-grey);
+      }
+    }
   }
 
   img {

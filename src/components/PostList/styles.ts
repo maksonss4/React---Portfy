@@ -20,7 +20,7 @@ export const Container = styled.div`
   gap: 1rem;
 
   background-color: var(--white);
-  
+
   .list__title {
     width: 100%;
     height: 2rem;
@@ -34,11 +34,20 @@ export const Container = styled.div`
 
 export const Textarea = styled.textarea`
   display: flex;
-  width: 90%;
+  width: 100%;
   height: 100px;
   border: none;
   outline: none;
   resize: none;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--ligth-grey);
+    border-radius: 20px;
+  }
 
   &::placeholder {
     transition: 400ms ease;
@@ -51,6 +60,7 @@ export const Textarea = styled.textarea`
 `;
 export const TextareaContainer = styled.form`
   display: flex;
+  flex-direction: column;
   width: 100%;
   background-color: var(--white);
   box-shadow: var(--boxshadow);
