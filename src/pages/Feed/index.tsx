@@ -15,10 +15,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import api from "../../services/api";
 import CustomInput from "../../components/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  updateUserSchema,
-  createTechSchema,
-} from "../../validations/updateUser";
+import { updateUserSchema } from "../../validations/updateUser";
 import { IAddTech, IUpdateUser } from "../../interfaces/pages";
 import { statusOptions } from "../../components/Input/options";
 import Button from "../../components/Button";
@@ -28,7 +25,7 @@ import CardUsers from "../../components/Users";
 import FooterMobile from "../../components/FooterMobile";
 
 export const Feed = () => {
-  const { user, posts } = useContext(AuthContext);
+  const { user, posts, setTechs } = useContext(AuthContext);
   // prettier-ignore
   const { register, handleSubmit, formState: { errors } } = useForm<IUpdateUser>({
     resolver: yupResolver(updateUserSchema)
@@ -36,7 +33,7 @@ export const Feed = () => {
 
   // prettier-ignore
   const { register: registerTech, handleSubmit: addHandler, formState: { errors: techErrors } } = useForm<IAddTech>({
-    resolver: yupResolver(createTechSchema)
+   
   });
 
   const { updateUser, addTechs, setAddTechs, setUpdateUser } =
@@ -46,9 +43,10 @@ export const Feed = () => {
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
   const addTechUser: SubmitHandler<IAddTech> = (data) => {
+    console.log(data);
     api
       .post("/techs", { ...data, userId: user.id })
-      .then((res) => console.log(res))
+      .then((res) => setTechs(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -135,7 +133,7 @@ export const Feed = () => {
                 <AiOutlineClose onClick={() => setAddTechs(!addTechs)} />
               </header>
               <CustomInput
-                id="tech_name"
+                id="name"
                 label="Tech"
                 placeholder="Nova Tecnologia"
                 register={registerTech}

@@ -61,6 +61,8 @@ export interface IAuth {
   setPosts: any;
   users: IUser[];
   setUsers: any;
+  techs: any;
+  setTechs: any;
 }
 
 export interface ICoreResponse {
