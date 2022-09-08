@@ -75,9 +75,6 @@ export const Feed = () => {
           <div className="display-nome_mobile">
             <CardUsers />
           </div>
-          <div className="display-nome_mobile">
-            <CardsNews />
-          </div>
         </DivRight>
         <FooterMobile />
         {updateUser && (

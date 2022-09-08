@@ -1,17 +1,11 @@
 import { useEffect } from "react";
 import { Request } from "../../backup/post";
 import { useContext } from "react";
-import { CardsNews } from "../../components/CardsNews";
 import CardUser from "../../components/CardUser";
 import FooterMobile from "../../components/FooterMobile";
 import FriendList from "../../components/FriendList";
 import { Header } from "../../components/Header";
-import { MdAdd } from "react-icons/md";
-import { HiPencil } from "react-icons/hi";
-import { BsFilePdf } from "react-icons/bs";
 import { CardsNews } from "../../components/CardsNews";
-import { Container } from "./style";
-import PostList from "../../components/PostList";
 import PostList from "../../components/PostList";
 import { VscFilePdf } from "react-icons/vsc";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -23,7 +17,6 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import Button from "../../components/Button";
 import CustomInput from "../../components/Input";
 import { useForm } from "react-hook-form";
-import api from "../../services/api";
 import UserProvider from "../../backup/users";
 import { IUpdateUser } from "../../interfaces/pages";
 import { UploaderButton } from "../../components/Button/styles";
@@ -48,22 +41,23 @@ const Dashboard = () => {
 
   useEffect(() => {
     setUpdateUser(false);
-  }, [user.username])
+  }, [user.username]);
 
   return (
     <ContainerFeed>
       <Header h2={user.username} location="feed" />
       <MainFeed>
         <DivLeft>
-          <CardUser
-            iconMore={<AiOutlinePlus size={20} />}
-            iconPaper={<VscFilePdf size={20} />}
-            iconPencil={<AiFillEdit size={20} />}
-          />
-          <UserProvider>
-            <PostList postList={posts} />
-          </UserProvider>
-        </div>
+          <div>
+            <CardUser
+              iconMore={<AiOutlinePlus size={20} />}
+              iconPaper={<VscFilePdf size={20} />}
+              iconPencil={<AiFillEdit size={20} />}
+            />
+            <UserProvider>
+              <PostList postList={posts} />
+            </UserProvider>
+          </div>
         </DivLeft>
         <DivMidle>
           <FriendList />

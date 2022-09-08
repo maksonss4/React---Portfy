@@ -20,6 +20,7 @@ export const Container = styled.div`
   gap: 1rem;
 
   background-color: var(--white);
+  
   .list__title {
     width: 100%;
     height: 2rem;

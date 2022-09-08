@@ -1,5 +1,5 @@
 import { List, Container, Textarea, TextareaContainer } from "./styles";
-import { MouseEvent, useContext, useEffect, useState } from "react";
+import { MouseEvent, useContext, useState } from "react";
 import { IPostList, IPostProps } from "../../interfaces/components";
 import Button from "../Button";
 import { Request } from "../../backup/post";
@@ -8,8 +8,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 const PostList = ({ postList }: IPostList) => {
   const [post, setPost] = useState("");
-  const { setPosts, posts, techs } = useContext(AuthContext);
-  console.log(posts);
+  const { setPosts, techs, users } = useContext(AuthContext);
   const userLogadoId = localStorage.getItem("@portfy(id)");
   const token = localStorage.getItem("@portfy(token)");
 
@@ -31,6 +30,7 @@ const PostList = ({ postList }: IPostList) => {
         .catch((erro) => console.log(erro));
     }
   };
+
 
   return (
     <Container>
@@ -55,8 +55,9 @@ const PostList = ({ postList }: IPostList) => {
       </TextareaContainer>
       {postList.length > 0 ? (
         <List>
-          {postList.map(
+          {postList.reverse().map(
             ({ content, id, userAvatar, userId, userName }: IPostProps) => (
+              
               <Post
                 key={id}
                 h2={userName}
