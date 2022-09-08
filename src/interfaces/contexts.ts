@@ -29,7 +29,8 @@ export interface IUser {
   role?: string;
   id: string;
   following: [] | string[];
-  urlPhoto?: string | "";
+  avatar_url: string;
+  background_img: null | string;
 }
 
 export interface IAdress {

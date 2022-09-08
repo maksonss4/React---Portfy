@@ -53,7 +53,7 @@ const CardUsers = () => {
                 <LiContainer key={use.id}>
                   <figure>
                     <img
-                      src={use.urlPhoto ? use.urlPhoto : stringFoto}
+                      src={use.avatar_url ? use.avatar_url : stringFoto}
                       alt={use.name}
                     />
                   </figure>

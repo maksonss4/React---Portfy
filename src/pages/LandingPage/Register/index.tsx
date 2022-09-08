@@ -34,7 +34,8 @@ const Register = () => {
         address: cep,
         role: role,
         following: [],
-        urlPhoto: ""
+        avatar_url: null,
+        background_img: null
       };
   
       try {

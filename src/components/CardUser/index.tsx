@@ -3,8 +3,6 @@ import { ButtonIcon, ContainerCardUser } from "./style";
 import { useContext, useEffect, useState } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
 import { AuthContext } from "../../contexts/AuthContext";
-import api from "../../services/api";
-
 
 // prettier-ignore
 const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProps) => {
