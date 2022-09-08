@@ -23,6 +23,7 @@ const Register = () => {
   const { cep, setUser } = useContext(AuthContext);
   const { textFade } = useContext(SwitchContext);
   const { updateToast, base } = useContext(NotificationContext);
+  
   //  prettier-ignore
   const registerApply: SubmitHandler<IRegisterRequest> = async ({ username, name, cpf, email, password, role }) => {
     const load = toast.loading("Solicitação em andamento...", {...base, position: "top-center"})

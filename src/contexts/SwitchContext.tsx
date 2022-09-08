@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { Uploader } from "uploader";
 import { IGeneralProps } from "../interfaces/components";
 import { ISwitcherContext } from "../interfaces/contexts";
 import { ISwitcher } from "../interfaces/pages";
@@ -15,22 +16,26 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
   });
   const [text, setText] = useState(
     "Compartilhe, crie e busque portfólios profissionais de maneira simples e intuitiva."
-  );
-  const [condicionModal, setCondicionlModal] = useState<boolean>(false);
-  const [hideFL, setHideFL] = useState(true);
-  const [animation, setAnimation] = useState<IGeneralAnimations>({
-    form: "",
+    );
+    const [condicionModal, setCondicionlModal] = useState<boolean>(false);
+    const [hideFL, setHideFL] = useState(true);
+    const [animation, setAnimation] = useState<IGeneralAnimations>({
+      form: "",
     friendList: "",
     text: "fade-in 1 250ms linear",
   });
   const [updateUser, setUpdateUser] = useState<boolean>(false);
   const [addTechs, setAddTechs] = useState<boolean>(false);
+  
+  const uploader = new Uploader({
+    apiKey: "public_12a1xpN95cSJca11WdwpqVJMa6Qi",
+  });
 
   const textFade = (str: string, btn: string) => {
     btn === "login"
-      ? setScreenSwitcher({ login: true, register: false })
-      : btn === "register"
-      ? setScreenSwitcher({ login: false, register: true })
+    ? setScreenSwitcher({ login: true, register: false })
+    : btn === "register"
+    ? setScreenSwitcher({ login: false, register: true })
       : setScreenSwitcher({ login: false, register: false });
 
     setAnimation({ ...animation, text: "fade-out 1 250ms linear" });
@@ -56,7 +61,9 @@ const SwitchProvider = ({ children }: IGeneralProps) => {
         updateUser,
         addTechs,
         textFade,
-        text,
+        text, 
+        uploader
+
       }}
     >
       {children}
