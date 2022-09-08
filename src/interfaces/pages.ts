@@ -1,5 +1,4 @@
 import { DeepRequired, FieldErrorsImpl, FieldValues } from "react-hook-form";
-import { string } from "yup";
 
 export interface ILoginRequest {
   email?: string;

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { IUser } from "../../interfaces/contexts";
 import api from "../../services/api";
@@ -19,6 +19,7 @@ const CardUsers = () => {
     api.get<IUser[]>("/users").then((res) => {
       setUsers(res.data);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const followOrUnfollow = (id: string) => {

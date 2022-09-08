@@ -17,13 +17,11 @@ import { SwitchContext } from "../../contexts/SwitchContext";
 import Button from "../../components/Button";
 import CustomInput from "../../components/Input";
 import { useForm } from "react-hook-form";
-import UserProvider from "../../backup/users";
 import { IUpdateUser } from "../../interfaces/pages";
 import { UploaderButton } from "../../components/Button/styles";
 
 const Dashboard = () => {
-  const { user, setUser, posts, setPosts, updateProfile } =
-    useContext(AuthContext);
+  const { user, setUser, setPosts, updateProfile } = useContext(AuthContext);
   const { updateUser, setUpdateUser, uploader } = useContext(SwitchContext);
 
   const {
@@ -36,11 +34,8 @@ const Dashboard = () => {
     Request.get("/posts")
       .then((response) => setPosts(response.data))
       .catch((erro) => console.log(erro));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
     setUpdateUser(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import { ICardUserProps, ITechData } from "../../interfaces/components";
+import { ICardUserProps } from "../../interfaces/components";
 import { ButtonIcon, ContainerCardUser } from "./style";
 import { useContext, useEffect, useState } from "react";
 import { SwitchContext } from "../../contexts/SwitchContext";
@@ -25,6 +25,7 @@ const CardUser = ({ iconMore, iconPaper, iconPencil, buttonIcon }: ICardUserProp
     .get("/techs")
     .then((res) => setTechs(res.data))
     .catch((err) => console.log(err));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

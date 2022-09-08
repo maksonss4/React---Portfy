@@ -8,7 +8,6 @@ import { IAdress, IAuth, IUser } from "../interfaces/contexts";
 import { IUpdateUser } from "../interfaces/pages";
 import api from "../services/api";
 import { NotificationContext } from "./NotificationContext";
-import { SwitchContext } from "./SwitchContext";
 export const AuthContext = createContext<IAuth>({} as IAuth);
 
 const AuthProvider = ({ children }: IGeneralProps) => {
@@ -22,7 +21,6 @@ const AuthProvider = ({ children }: IGeneralProps) => {
   const [cepError, setCepError] = useState(false);
 
   const { base, updateToast } = useContext(NotificationContext);
-  const { updateUser, setUpdateUser } = useContext(SwitchContext);
 
   const navigate = useNavigate();
 

@@ -11,7 +11,7 @@ const FriendList = () => {
 
   const { users, user } = useContext(AuthContext);
 
-  const { hideFL, setHideFL, animation, setAnimation } =
+  const { hideFL, animation, setAnimation } =
     useContext(SwitchContext);
 
   useEffect(() => {

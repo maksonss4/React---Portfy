@@ -5,9 +5,8 @@ import { IoMdTrash } from "react-icons/io";
 import { Request } from "../../backup/post";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { UserContext } from "../../backup/users";
 
-export const Post = ({ src, h2, techs, p, id, userId }: IPostContent) => {
+export const Post = ({ src, h2, techs, p, id }: IPostContent) => {
   const token = localStorage.getItem("@portfy(token)");
   const { user, setPosts } = useContext(AuthContext);
 
