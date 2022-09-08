@@ -89,7 +89,7 @@ export const Feed = () => {
                 <h3>Atualizar Perfil</h3>
                 <AiOutlineClose onClick={() => setUpdateUser(!updateUser)} />
               </header>
-              <CustomInput
+              {/* <CustomInput
                 id="username"
                 label="Nome de usuário"
                 placeholder="Insira o novo nome de usuário"
@@ -123,7 +123,7 @@ export const Feed = () => {
                 >
                   Apagar Conta
                 </Button>
-              </div>
+              </div> */}
             </Form>
           </Modal>
         )}

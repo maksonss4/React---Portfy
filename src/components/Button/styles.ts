@@ -1,3 +1,4 @@
+import { UploadButton } from "react-uploader";
 import styled from "styled-components";
 import { IStyledButton } from "../../interfaces/styles";
 
@@ -32,5 +33,20 @@ export const SecondaryButton = styled.button`
 
   &:hover {
     background-color: ${({hover}: IStyledButton) => hover};
+  }
+`;
+
+export const UploaderButton = styled(UploadButton)`
+  height: 3rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  background-color: var(--ligth-grey);
+  color: var(--black);
+  font-weight: 500;
+  transition: 200ms ease-in-out;
+
+  &:hover {
+    background-color: var(--medium-grey);
   }
 `;

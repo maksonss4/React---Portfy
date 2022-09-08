@@ -1,9 +1,14 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
+import { SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { IGeneralProps } from "../interfaces/components";
 import { IAdress, IAuth, IUser } from "../interfaces/contexts";
+import { IUpdateUser } from "../interfaces/pages";
 import api from "../services/api";
+import { NotificationContext } from "./NotificationContext";
+import { SwitchContext } from "./SwitchContext";
 
 export const AuthContext = createContext<IAuth>({} as IAuth);
 
@@ -16,7 +21,28 @@ const AuthProvider = ({ children }: IGeneralProps) => {
   const [cep, setCep] = useState<IAdress>({});
   const [cepError, setCepError] = useState(false);
 
+  const { base, updateToast } = useContext(NotificationContext);
+  const { updateUser, setUpdateUser } = useContext(SwitchContext);
+
   const navigate = useNavigate();
+
+  const updateProfile: SubmitHandler<IUpdateUser> = async ({ username }) => {
+    const load = toast.loading("Aguarde", { ...base, position: "top-right" });
+
+    const options = { ...user, username: username };
+    await api
+      .put<IUser>(`/users/${user.id}`, options)
+      .then(({ data }) => {
+        setUser(data);
+        updateToast(
+          load,
+          "Perfil atualizado com sucesso",
+          "top-right",
+          "success"
+        );
+      })
+      .catch((error) => console.log(error) /* updateToast(load, "Ocorreu um erro", "top-right", "error") */);
+  };
 
   const logout = () => {
     localStorage.removeItem("@portfy(token)");
@@ -41,7 +67,7 @@ const AuthProvider = ({ children }: IGeneralProps) => {
       setTimeout(() => {
         setLoading(false);
       }, 1000);
-    }
+    };
     loadUser();
   }, []);
 
@@ -75,6 +101,7 @@ const AuthProvider = ({ children }: IGeneralProps) => {
         setPosts,
         users,
         setUsers,
+        updateProfile,
       }}
     >
       {children}

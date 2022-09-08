@@ -12,7 +12,7 @@ export const Container = styled.div`
   min-height: 100%;
   background-color: var(--faded-black);
   backdrop-filter: blur(2px);
-  margin: 0px;
+  z-index: 5;
 
   form {
     max-width: 95%;

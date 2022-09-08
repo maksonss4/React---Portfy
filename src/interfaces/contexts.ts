@@ -1,7 +1,9 @@
 import React from "react";
-import { ISwitcher } from "./pages";
+import { ISwitcher, IUpdateUser } from "./pages";
 import { Id, ToastOptions, ToastPosition, UpdateOptions } from "react-toastify";
 import { IGeneralAnimations } from "./styles";
+import { Uploader } from "uploader";
+import { SubmitHandler } from "react-hook-form";
 
 export interface ISwitcherContext {
   screenSwitcher: ISwitcher;
@@ -18,6 +20,7 @@ export interface ISwitcherContext {
   addTechs: boolean;
   textFade: (str: string, btn: string) => void;
   text: string;
+  uploader: Uploader;
 }
 
 export interface IUser {
@@ -31,6 +34,20 @@ export interface IUser {
   role?: string;
   id: string;
   following: [] | string[];
+  avatar_url: string;
+  background_img: string;
+}
+
+export interface ILoggedUser {
+  username?: string;
+  name: string;
+  cpf?: string;
+  adress?: IAdress;
+  email?: string;
+  password?: string;
+  role?: string;
+  id: string;
+  following: [] | number[];
   avatar_url: string;
   background_img: string;
 }
@@ -61,6 +78,7 @@ export interface IAuth {
   setPosts: any;
   users: IUser[];
   setUsers: any;
+  updateProfile: SubmitHandler<IUpdateUser>;
 }
 
 export interface ICoreResponse {

@@ -26,7 +26,6 @@ export interface ISwitcher {
 
 export interface IUpdateUser {
   username?: string;
-  avatar_url?: string;
   errors?: FieldErrorsImpl<DeepRequired<FieldValues>>;
 }
 
