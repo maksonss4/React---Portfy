@@ -50,6 +50,16 @@ export const Feed = () => {
     setAddTechs(!addTechs);
   };
 
+  const deletePost = (id: string | number) => {
+    api
+      .delete(`/posts/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => api.get("/posts").then((res) => setPosts(res.data)));
+  };
+
   useEffect(() => {
     const getAllPosts = () => {
       api.get("/posts").then((res) => {
@@ -108,7 +118,13 @@ export const Feed = () => {
                     </div>
                     {`${userId}` ===
                       `${localStorage.getItem("@portfy(id)")}` && (
-                      <IoMdTrash color="var(--color-negative)" size={30} />
+                      <button
+                        className="button-delete"
+                        title="button"
+                        onClick={() => deletePost(id)}
+                      >
+                        <IoMdTrash color="var(--color-negative)" size={30} />
+                      </button>
                     )}
                   </li>
                 );
