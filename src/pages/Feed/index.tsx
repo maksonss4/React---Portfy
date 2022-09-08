@@ -20,6 +20,7 @@ import PostList from "../../components/PostList";
 import FriendList from "../../components/FriendList";
 import CardUsers from "../../components/Users";
 import FooterMobile from "../../components/FooterMobile";
+import { IoMdTrash } from "react-icons/io";
 
 export const Feed = () => {
   const { user, posts, setPosts, setTechs, users } =
@@ -42,6 +43,16 @@ export const Feed = () => {
     setAddTechs(!addTechs);
   };
 
+  const deletePost = (id: string | number) => {
+    api
+      .delete(`/posts/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => api.get("/posts").then((res) => setPosts(res.data)));
+  };
+
   useEffect(() => {
     const getAllPosts = () => {
       api.get("/posts").then((res) => {
@@ -49,7 +60,14 @@ export const Feed = () => {
       });
     };
     getAllPosts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    const getAllTechs = () => {
+      api.get("/techs").then((res) => {
+        setTechs(res.data);
+      });
+    };
+    getAllTechs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -73,6 +91,9 @@ export const Feed = () => {
             <UlPosts>
               {posts.map(({ content, id, userId }) => {
                 const filtrado = users.find((us) => `${us.id}` === `${userId}`);
+                const techsFiltradas = techs.filter(
+                  (tec) => `${tec.userId}` === `${userId}`
+                );
 
                 return (
                   <li className="li-post" key={id}>
@@ -82,8 +103,23 @@ export const Feed = () => {
                     <div className="div-description">
                       <h2>{filtrado?.username}</h2>
                       <span>{filtrado?.role}</span>
+
+                      {/* <span>
+                        {techsFiltradas.map((t) => t.name).join(" | ")}
+                      </span> */}
+
                       <p>{content}</p>
                     </div>
+                    {`${userId}` ===
+                      `${localStorage.getItem("@portfy(id)")}` && (
+                      <button
+                        className="button-delete"
+                        title="button"
+                        onClick={() => deletePost(id)}
+                      >
+                        <IoMdTrash color="var(--color-negative)" size={30} />
+                      </button>
+                    )}
                   </li>
                 );
               })}

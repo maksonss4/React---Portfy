@@ -51,25 +51,6 @@ const PostList = () => {
           Publicar
         </Button>
       </TextareaContainer>
-      {/* {postList.length > 0 ? (
-        <List>
-          {postList
-            .reverse()
-            .map(({ content, id, userAvatar, userId }: IPostProps) => (
-              <Post
-                key={id}
-                h2={"Nome do usuário"}
-                src={userAvatar}
-                p={content}
-                id={id}
-                userId={userId}
-                techs={techs}
-              />
-            ))}
-        </List>
-      ) : (
-        <p>Não existem postagens</p>
-      )} */}
     </Container>
   );
 };
