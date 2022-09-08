@@ -2,6 +2,7 @@ import React from "react";
 import { ISwitcher, IUpdateUser } from "./pages";
 import { Id, ToastOptions, ToastPosition, UpdateOptions } from "react-toastify";
 import { IGeneralAnimations } from "./styles";
+import { ITechData } from "./components";
 import { Uploader } from "uploader";
 import { SubmitHandler } from "react-hook-form";
 

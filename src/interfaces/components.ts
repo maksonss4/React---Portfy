@@ -56,6 +56,7 @@ export interface IPostContent {
   id?: string;
   token?: string;
   userId?: string;
+  techs?: ITechData[] | [];
 }
 
 export interface INews {

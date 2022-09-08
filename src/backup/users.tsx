@@ -30,20 +30,25 @@ const UserProvider = ({ children }: IUserProviderProps) => {
 
   useEffect(() => {
     setUserId(user.id);
-    const getUsersList = async () => {
-      try {
-        const { data } = await api.get<IUser[] | []>(`/users`);
-        setArrayUsers(data);
-        const filteredUser = arrayUsers.filter(
-          ({ id }: IUser) => id === userId
-        );
-        setUser(filteredUser[0]);
-      } catch (errors) {
-        console.error(errors);
-      }
-    };
 
-    getUsersList();
+    api
+      .get<IUser[] | []>(`/users`)
+      .then((res) => setArrayUsers(res.data))
+      .catch((err) => console.log(err));
+
+    // const getUsersList = async () => {
+    //   try {
+    //     const { data } = await api.get<IUser[] | []>(`/users`);
+    //     setArrayUsers(data);
+    //     console.log(data);
+
+    //     //setUser(filteredUser[0]);
+    //   } catch (errors) {
+    //     console.error(errors);
+    //   }
+    // };
+
+    //  getUsersList();
   }, []);
 
   const updateUser = async (data: IUser) => {

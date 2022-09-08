@@ -7,9 +7,9 @@ import { IGeneralProps, ITechData } from "../interfaces/components";
 import { IAdress, IAuth, IUser } from "../interfaces/contexts";
 import { IUpdateUser } from "../interfaces/pages";
 import api from "../services/api";
+import { ITechData } from "../interfaces/components";
 import { NotificationContext } from "./NotificationContext";
 import { SwitchContext } from "./SwitchContext";
-
 export const AuthContext = createContext<IAuth>({} as IAuth);
 
 const AuthProvider = ({ children }: IGeneralProps) => {
@@ -18,6 +18,7 @@ const AuthProvider = ({ children }: IGeneralProps) => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [techs, setTechs] = useState<ITechData[]>([]);
+
   const [cep, setCep] = useState<IAdress>({});
   const [cepError, setCepError] = useState(false);
 
